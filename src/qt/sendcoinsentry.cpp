@@ -38,10 +38,10 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle *platformStyle, QWidget *pare
 
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
 
-    // normal navcoin address field
+    // normal odynstock address field
     GUIUtil::setupAddressWidget(ui->payTo, this);
     GUIUtil::setupAddressWidget(ui->customChange, this);
-    // just a label for displaying navcoin address(es)
+    // just a label for displaying odynstock address(es)
     ui->payTo_is->setFont(GUIUtil::fixedPitchFont());
 
     QPixmap p1(":/icons/mininav");
@@ -115,14 +115,14 @@ void SendCoinsEntry::setTotalPrivateAmount(const CAmount& amount)
 {
     totalPrivateAmount = amount;
     if (fPrivate)
-        ui->availableLabel->setText(tr("Available: %1").arg(NavcoinUnits::formatWithUnit(unit, amount, false, NavcoinUnits::separatorAlways, fPrivate)));
+        ui->availableLabel->setText(tr("Available: %1").arg(OdynStockUnits::formatWithUnit(unit, amount, false, OdynStockUnits::separatorAlways, fPrivate)));
 }
 
 void SendCoinsEntry::setTotalAmount(const CAmount& amount)
 {
     totalAmount = amount;
     if (!fPrivate)
-        ui->availableLabel->setText(tr("Available: %1").arg(NavcoinUnits::formatWithUnit(unit, amount, false, NavcoinUnits::separatorAlways, fPrivate)));
+        ui->availableLabel->setText(tr("Available: %1").arg(OdynStockUnits::formatWithUnit(unit, amount, false, OdynStockUnits::separatorAlways, fPrivate)));
 }
 
 void SendCoinsEntry::useFullAmount()
@@ -151,7 +151,7 @@ void SendCoinsEntry::on_addressBookButton_clicked()
 
 void SendCoinsEntry::on_payTo_textChanged(const QString &address)
 {
-    CNavcoinAddress a(address.toStdString());
+    COdynStockAddress a(address.toStdString());
 
     bool fShowmemo = (a.IsPrivateAddress(Params()));
 

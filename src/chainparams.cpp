@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Navcoin Core developers
+// Copyright (c) 2017-2020 The OdynStock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -29,7 +29,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     // txNew.vout[0].scriptPubKey.clear();
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey.clear();
-    txNew.strDZeel = "Navcoin genesis block";
+    txNew.strDZeel = "OdynStock genesis block";
 
     CBlock genesis;
     genesis.nTime    = nTime;
@@ -586,7 +586,7 @@ public:
         }
 
         vSeeds.push_back(CDNSSeedData("testnav.community", "testseed.nav.community"));
-        vSeeds.push_back(CDNSSeedData("testnavcoin.org", "testseed.navcoin.org"));
+        vSeeds.push_back(CDNSSeedData("testodynstock.org", "testseed.odynstock.org"));
 
         assert(consensus.hashGenesisBlock == hashGenesisBlock);
         assert(genesis.hashMerkleRoot == hashMerkleRoot);
@@ -833,7 +833,7 @@ public:
         uint256 hashMerkleRoot = uint256S("0x2d9101b87fe7b9deaea41849c1f3bed71e060739147802a238fe968f75ad0fd9");
         uint32_t nNonce = 2043198879;
         // 5) Rebuild. Launch daemon.
-        // 6) Generate first block using RPC command "./navcoin-cli generate 1"
+        // 6) Generate first block using RPC command "./odynstock-cli generate 1"
 
         genesis = CreateGenesisBlockTestnet(nTimestamp, nNonce, 0xffffffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
@@ -853,7 +853,7 @@ public:
         }
 
         vSeeds.push_back(CDNSSeedData("devnav.community", "devseed.nav.community"));
-        vSeeds.push_back(CDNSSeedData("devnet.navcoin.org", "devseed.navcoin.org"));
+        vSeeds.push_back(CDNSSeedData("devnet.odynstock.org", "devseed.odynstock.org"));
 
         assert(consensus.hashGenesisBlock == hashGenesisBlock);
         assert(genesis.hashMerkleRoot == hashMerkleRoot);
@@ -1108,7 +1108,7 @@ public:
         }
 
         vSeeds.push_back(CDNSSeedData("testnav.community", "testseed.nav.community"));
-        vSeeds.push_back(CDNSSeedData("testnavcoin.org", "testseed.navcoin.org"));
+        vSeeds.push_back(CDNSSeedData("testodynstock.org", "testseed.odynstock.org"));
 
         consensus.hashGenesisBlock = genesis.GetHash();
 

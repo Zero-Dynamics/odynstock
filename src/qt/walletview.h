@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_WALLETVIEW_H
-#define NAVCOIN_QT_WALLETVIEW_H
+#ifndef ODYNSTOCK_QT_WALLETVIEW_H
+#define ODYNSTOCK_QT_WALLETVIEW_H
 
 #include <amount.h>
 #include <splitrewards.h>
@@ -11,7 +11,7 @@
 #include <QStackedWidget>
 #include <QPushButton>
 
-class NavcoinGUI;
+class OdynStockGUI;
 class ClientModel;
 class OverviewPage;
 class OptionsDialog;
@@ -44,13 +44,13 @@ public:
     explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);
     ~WalletView();
 
-    void setNavcoinGUI(NavcoinGUI *gui);
+    void setOdynStockGUI(OdynStockGUI *gui);
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a navcoin wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a odynstock wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
@@ -161,7 +161,7 @@ Q_SIGNALS:
 
     void openAddressHistory();
 
-    friend NavcoinGUI;
+    friend OdynStockGUI;
 };
 
-#endif // NAVCOIN_QT_WALLETVIEW_H
+#endif // ODYNSTOCK_QT_WALLETVIEW_H

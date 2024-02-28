@@ -7,13 +7,13 @@
 # Test node handling
 #
 
-from test_framework.test_framework import NavcoinTestFramework
+from test_framework.test_framework import OdynStockTestFramework
 from test_framework.util import *
 
 import http.client
 import urllib.parse
 
-class NodeHandlingTest (NavcoinTestFramework):
+class NodeHandlingTest (OdynStockTestFramework):
 
     def __init__(self):
         super().__init__()

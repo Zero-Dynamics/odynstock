@@ -4,11 +4,11 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-from test_framework.test_framework import NavcoinTestFramework
+from test_framework.test_framework import OdynStockTestFramework
 from test_framework.util import *
 import urllib.parse
 
-class AbandonConflictTest(NavcoinTestFramework):
+class AbandonConflictTest(OdynStockTestFramework):
     def __init__(self):
         super().__init__()
         self.num_nodes = 2

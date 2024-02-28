@@ -11,7 +11,7 @@
 #include <qt/daopage.h>
 #include <qt/getaddresstoreceive.h>
 #include <qt/guiutil.h>
-#include <qt/navcoingui.h>
+#include <qt/odynstockgui.h>
 #include <qt/optionsdialog.h>
 #include <qt/optionsmodel.h>
 #include <qt/overviewpage.h>
@@ -103,7 +103,7 @@ WalletView::~WalletView()
 {
 }
 
-void WalletView::setNavcoinGUI(NavcoinGUI *gui)
+void WalletView::setOdynStockGUI(OdynStockGUI *gui)
 {
     if (gui)
     {
@@ -431,7 +431,7 @@ void WalletView::exportMasterPrivateKeyAction()
          CExtKey masterKey;
          masterKey.SetMaster(key.begin(), key.size());
 
-         CNavcoinExtKey b58extkey;
+         COdynStockExtKey b58extkey;
          b58extkey.SetKey(masterKey);
 
          QMessageBox::information(this, tr("Show Master Private Key"),
@@ -514,7 +514,7 @@ void WalletView::importPrivateKey()
         return;
       }
 
-      CNavcoinSecret vchSecret;
+      COdynStockSecret vchSecret;
       bool fGood = vchSecret.SetString(privKey.toStdString());
 
       if (!fGood)
@@ -557,7 +557,7 @@ void WalletView::importPrivateKey()
         }
 
         QMessageBox::information(0, tr(PACKAGE_NAME),
-            tr("Navcoin needs to scan the chain... Please, wait."));
+            tr("OdynStock needs to scan the chain... Please, wait."));
 
         // whenever a key is imported, we need to scan the whole chain
         pwalletMain->nTimeFirstKey = 1; // 0 would be considered 'no value'

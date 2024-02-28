@@ -1,5 +1,5 @@
 #if defined(HAVE_CONFIG_H)
-#include <config/navcoin-config.h>
+#include <config/odynstock-config.h>
 #endif
 
 #include <startoptionsdialog.h>

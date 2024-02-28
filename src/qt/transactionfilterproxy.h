@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_TRANSACTIONFILTERPROXY_H
-#define NAVCOIN_QT_TRANSACTIONFILTERPROXY_H
+#ifndef ODYNSTOCK_QT_TRANSACTIONFILTERPROXY_H
+#define ODYNSTOCK_QT_TRANSACTIONFILTERPROXY_H
 
 #include <amount.h>
 
@@ -66,4 +66,4 @@ private:
     bool showInactive = true;
 };
 
-#endif // NAVCOIN_QT_TRANSACTIONFILTERPROXY_H
+#endif // ODYNSTOCK_QT_TRANSACTIONFILTERPROXY_H

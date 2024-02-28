@@ -590,7 +590,7 @@
           <string>S&amp;end</string>
          </property>
          <property name="icon">
-          <iconset resource="../navcoin.qrc">
+          <iconset resource="../odynstock.qrc">
            <normaloff>:/icons/send</normaloff>:/icons/send</iconset>
          </property>
          <property name="autoDefault">
@@ -637,7 +637,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../navcoin.qrc"/>
+  <include location="../odynstock.qrc"/>
  </resources>
  <connections/>
 </ui>

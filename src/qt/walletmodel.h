@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_WALLETMODEL_H
-#define NAVCOIN_QT_WALLETMODEL_H
+#ifndef ODYNSTOCK_QT_WALLETMODEL_H
+#define ODYNSTOCK_QT_WALLETMODEL_H
 
 #include <qt/walletmodeltransaction.h>
 
@@ -95,7 +95,7 @@ public:
     }
 };
 
-/** Interface to Navcoin wallet from Qt view code. */
+/** Interface to OdynStock wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT
@@ -317,4 +317,4 @@ public Q_SLOTS:
     void pollBalanceChanged();
 };
 
-#endif // NAVCOIN_QT_WALLETMODEL_H
+#endif // ODYNSTOCK_QT_WALLETMODEL_H

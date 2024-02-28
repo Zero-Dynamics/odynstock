@@ -1,0 +1,6 @@
+usr/local/bin/odynstock-qt usr/bin
+share/pixmaps/odynstock32.xpm usr/share/pixmaps
+share/pixmaps/odynstock16.xpm usr/share/pixmaps
+share/pixmaps/odynstock128.png usr/share/pixmaps
+debian/odynstock-qt.desktop usr/share/applications
+debian/odynstock-qt.protocol usr/share/kde4/services/

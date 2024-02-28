@@ -1,10 +1,10 @@
-bin_PROGRAMS += bench/bench_navcoin
+bin_PROGRAMS += bench/bench_odynstock
 BENCH_SRCDIR = bench
-BENCH_BINARY = bench/bench_navcoin$(EXEEXT)
+BENCH_BINARY = bench/bench_odynstock$(EXEEXT)
 
 
-bench_bench_navcoin_SOURCES = \
-  bench/bench_navcoin.cpp \
+bench_bench_odynstock_SOURCES = \
+  bench/bench_odynstock.cpp \
   bench/bench.cpp \
   bench/bench.h \
   bench/Examples.cpp \
@@ -12,14 +12,14 @@ bench_bench_navcoin_SOURCES = \
   bench/crypto_hash.cpp \
   bench/base58.cpp
 
-bench_bench_navcoin_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
-bench_bench_navcoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bench_bench_navcoin_LDADD = \
-  $(LIBNAVCOIN_SERVER) \
-  $(LIBNAVCOIN_COMMON) \
-  $(LIBNAVCOIN_UTIL) \
-  $(LIBNAVCOIN_CONSENSUS) \
-  $(LIBNAVCOIN_CRYPTO) \
+bench_bench_odynstock_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
+bench_bench_odynstock_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bench_bench_odynstock_LDADD = \
+  $(LIBODYNSTOCK_SERVER) \
+  $(LIBODYNSTOCK_COMMON) \
+  $(LIBODYNSTOCK_UTIL) \
+  $(LIBODYNSTOCK_CONSENSUS) \
+  $(LIBODYNSTOCK_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1) \
@@ -30,25 +30,25 @@ bench_bench_navcoin_LDADD = \
   $(ZLIB_LIBS)
 
 if ENABLE_ZMQ
-bench_bench_navcoin_LDADD += $(LIBNAVCOIN_ZMQ) $(ZMQ_LIBS)
+bench_bench_odynstock_LDADD += $(LIBODYNSTOCK_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-bench_bench_navcoin_LDADD += $(LIBNAVCOIN_WALLET)
+bench_bench_odynstock_LDADD += $(LIBODYNSTOCK_WALLET)
 endif
 
-bench_bench_navcoin_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(ZLIB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) \
+bench_bench_odynstock_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(ZLIB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) \
 	$(CURL_LIBS) $(LIBBLS) $(LIBEVENT_LIBS) $(LIBSECCOMP_LIBS) $(LIBCAP_LIBS) $(ZLIB_LIBS)
-bench_bench_navcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+bench_bench_odynstock_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-CLEAN_NAVCOIN_BENCH = bench/*.gcda bench/*.gcno
+CLEAN_ODYNSTOCK_BENCH = bench/*.gcda bench/*.gcno
 
-CLEANFILES += $(CLEAN_NAVCOIN_BENCH)
+CLEANFILES += $(CLEAN_ODYNSTOCK_BENCH)
 
-navcoin_bench: $(BENCH_BINARY)
+odynstock_bench: $(BENCH_BINARY)
 
 bench: $(BENCH_BINARY) FORCE
 	$(BENCH_BINARY)
 
-navcoin_bench_clean : FORCE
-	rm -f $(CLEAN_NAVCOIN_BENCH) $(bench_bench_navcoin_OBJECTS) $(BENCH_BINARY)
+odynstock_bench_clean : FORCE
+	rm -f $(CLEAN_ODYNSTOCK_BENCH) $(bench_bench_odynstock_OBJECTS) $(BENCH_BINARY)

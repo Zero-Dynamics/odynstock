@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
-#define NAVCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
+#ifndef ODYNSTOCK_ZMQ_ZMQABSTRACTNOTIFIER_H
+#define ODYNSTOCK_ZMQ_ZMQABSTRACTNOTIFIER_H
 
 #include <zmq/zmqconfig.h>
 
@@ -41,4 +41,4 @@ protected:
     std::string address;
 };
 
-#endif // NAVCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
+#endif // ODYNSTOCK_ZMQ_ZMQABSTRACTNOTIFIER_H

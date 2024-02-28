@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The Navcoin Core developers
+// Copyright (c) 2020 The OdynStock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -26,7 +26,7 @@ SwapXNAVDialog::SwapXNAVDialog(QWidget *parent) :
     icon1 = new QLabel("");
     icon2 = new QLabel("");
 
-    amount = new NavcoinAmountField(0, 0);
+    amount = new OdynStockAmountField(0, 0);
 
     QPixmap pixmap(":/icons/swap");
     QIcon ButtonIcon(pixmap);
@@ -104,9 +104,9 @@ void SwapXNAVDialog::SetPublicBalance(CAmount a)
 
     this->publicBalance = a;
     if (fMode)
-        label1->setText(QString::fromStdString(_("Available: ")) + NavcoinUnits::formatWithUnit(unit, a, false, NavcoinUnits::separatorAlways, false));
+        label1->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, false));
     else
-        label2->setText(QString::fromStdString(_("Available: ")) + NavcoinUnits::formatWithUnit(unit, a, false, NavcoinUnits::separatorAlways, false));
+        label2->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, false));
 }
 
 void SwapXNAVDialog::SetPrivateBalance(CAmount a)
@@ -115,9 +115,9 @@ void SwapXNAVDialog::SetPrivateBalance(CAmount a)
 
     this->privateBalance = a;
     if (fMode)
-        label2->setText(QString::fromStdString(_("Available: ")) + NavcoinUnits::formatWithUnit(unit, a, false, NavcoinUnits::separatorAlways, true));
+        label2->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, true));
     else
-        label1->setText(QString::fromStdString(_("Available: ")) + NavcoinUnits::formatWithUnit(unit, a, false, NavcoinUnits::separatorAlways, true));
+        label1->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, true));
 }
 
 void SwapXNAVDialog::Swap()
@@ -182,7 +182,7 @@ void SwapXNAVDialog::Ok()
     if ((fMode ? publicBalance : privateBalance) < nAmount)
     {
         QMessageBox msgBox(this);
-        std::string str = tr("You don't have that many coins to swap!\n\nAvailable:\n%1").arg(NavcoinUnits::formatWithUnit(0, fMode ? publicBalance : privateBalance, false, NavcoinUnits::separatorAlways, !fMode)).toStdString();
+        std::string str = tr("You don't have that many coins to swap!\n\nAvailable:\n%1").arg(OdynStockUnits::formatWithUnit(0, fMode ? publicBalance : privateBalance, false, OdynStockUnits::separatorAlways, !fMode)).toStdString();
         msgBox.setText(tr(str.c_str()));
         msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
         msgBox.setIcon(QMessageBox::Warning);
@@ -201,13 +201,13 @@ void SwapXNAVDialog::Ok()
         return;
     }
 
-    CNavcoinAddress address;
+    COdynStockAddress address;
 
     if (fMode)
     {
         blsctDoublePublicKey k;
         if (pwalletMain->GetBLSCTSubAddressPublicKeys(std::make_pair(0, 0), k))
-            address = CNavcoinAddress(k);
+            address = COdynStockAddress(k);
         else
         {
             QMessageBox msgBox(this);
@@ -242,7 +242,7 @@ void SwapXNAVDialog::Ok()
         }
         CKeyID keyID = newKey.GetID();
 
-        address = CNavcoinAddress(keyID);
+        address = COdynStockAddress(keyID);
     }
 
     CScript scriptPubKey = GetScriptForDestination(address.Get());
@@ -306,11 +306,11 @@ void SwapXNAVDialog::Ok()
         if (QMessageBox::No == QMessageBox(QMessageBox::Information,
                                            tr("Swap!"),
                                            tr("In order to swap %1 to %2, you will have to pay a fee of %3.").arg(
-                                               NavcoinUnits::formatWithUnit(0, nAmount, false, NavcoinUnits::separatorAlways, !fMode),
+                                               OdynStockUnits::formatWithUnit(0, nAmount, false, OdynStockUnits::separatorAlways, !fMode),
                                                fMode ? "xNAV" : "NAV",
-                                               NavcoinUnits::formatWithUnit(0, nFeeRequired, false, NavcoinUnits::separatorAlways, !fMode))
+                                               OdynStockUnits::formatWithUnit(0, nFeeRequired, false, OdynStockUnits::separatorAlways, !fMode))
                                                +"<br><br>"+tr("You will receive a total of %1.").arg(
-                                               NavcoinUnits::formatWithUnit(0, nAmount - nFeeRequired, false, NavcoinUnits::separatorAlways, fMode))
+                                               OdynStockUnits::formatWithUnit(0, nAmount - nFeeRequired, false, OdynStockUnits::separatorAlways, fMode))
                                                +"<br><br>"+tr("Do you want to continue?"),
                                            QMessageBox::Yes|QMessageBox::No).exec())
         {

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_MERKLEBLOCK_H
-#define NAVCOIN_MERKLEBLOCK_H
+#ifndef ODYNSTOCK_MERKLEBLOCK_H
+#define ODYNSTOCK_MERKLEBLOCK_H
 
 #include <serialize.h>
 #include <uint256.h>
@@ -154,4 +154,4 @@ public:
     }
 };
 
-#endif // NAVCOIN_MERKLEBLOCK_H
+#endif // ODYNSTOCK_MERKLEBLOCK_H

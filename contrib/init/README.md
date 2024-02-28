@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: navcoind.service
-Upstart: navcoind.conf
-OpenRC:  navcoind.openrc
-         navcoind.openrcconf
-CentOS:  navcoind.init
-OS X:    org.navcoin.navcoind.plist
+SystemD: odynstockd.service
+Upstart: odynstockd.conf
+OpenRC:  odynstockd.openrc
+         odynstockd.openrcconf
+CentOS:  odynstockd.init
+OS X:    org.odynstock.odynstockd.plist
 
 have been made available to assist packagers in creating node packages here.
 

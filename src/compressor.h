@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_COMPRESSOR_H
-#define NAVCOIN_COMPRESSOR_H
+#ifndef ODYNSTOCK_COMPRESSOR_H
+#define ODYNSTOCK_COMPRESSOR_H
 
 #include <primitives/transaction.h>
 #include <script/script.h>
@@ -182,4 +182,4 @@ public:
     }
 };
 
-#endif // NAVCOIN_COMPRESSOR_H
+#endif // ODYNSTOCK_COMPRESSOR_H

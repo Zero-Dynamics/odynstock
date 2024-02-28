@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The Navcoin developers
+// Copyright (c) 2020 The OdynStock developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -958,9 +958,9 @@ CAmount AggregationSession::GetMaxFee()
 
 void AggregationSessionThread()
 {
-    LogPrintf("NavcoinCandidateCoinsThread started\n");
+    LogPrintf("OdynStockCandidateCoinsThread started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("navcoin-candidate-coins");
+    RenameThread("odynstock-candidate-coins");
 
     int aggSleep = GetArg("-blsctsleepagg", BLSCT_THREAD_SLEEP_AGG);
 
@@ -1003,19 +1003,19 @@ void AggregationSessionThread()
             MilliSleep(GetRand(aggSleep, 180000));
         }
     } catch (const boost::thread_interrupted&) {
-        LogPrintf("NavcoinCandidateCoinsThread terminated\n");
+        LogPrintf("OdynStockCandidateCoinsThread terminated\n");
         throw;
     } catch (const std::runtime_error& e) {
-        LogPrintf("NavcoinCandidateCoinsThread runtime error: %s\n", e.what());
+        LogPrintf("OdynStockCandidateCoinsThread runtime error: %s\n", e.what());
         return;
     }
 }
 
 void CandidateVerificationThread()
 {
-    LogPrintf("NavcoinCandidateVerificationThread started\n");
+    LogPrintf("OdynStockCandidateVerificationThread started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("navcoin-candidate-coins-verification");
+    RenameThread("odynstock-candidate-coins-verification");
 
     int verSleep = GetArg("-blsctsleepver", BLSCT_THREAD_SLEEP_VER);
 
@@ -1128,10 +1128,10 @@ void CandidateVerificationThread()
             MilliSleep(GetRand(verSleep, verSleep + 100));
         }
     } catch (const boost::thread_interrupted&) {
-        LogPrintf("NavcoinCandidateVerificationThread terminated\n");
+        LogPrintf("OdynStockCandidateVerificationThread terminated\n");
         throw;
     } catch (const std::runtime_error& e) {
-        LogPrintf("NavcoinCandidateVerificationThread runtime error: %s\n", e.what());
+        LogPrintf("OdynStockCandidateVerificationThread runtime error: %s\n", e.what());
         return;
     }
 }

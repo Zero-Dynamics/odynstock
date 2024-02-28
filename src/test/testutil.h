@@ -5,11 +5,11 @@
 /**
  * Utility functions shared by unit tests
  */
-#ifndef NAVCOIN_TEST_TESTUTIL_H
-#define NAVCOIN_TEST_TESTUTIL_H
+#ifndef ODYNSTOCK_TEST_TESTUTIL_H
+#define ODYNSTOCK_TEST_TESTUTIL_H
 
 #include <fs.h>
 
 fs::path GetTempPath();
 
-#endif // NAVCOIN_TEST_TESTUTIL_H
+#endif // ODYNSTOCK_TEST_TESTUTIL_H

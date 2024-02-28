@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_CONSENSUS_PARAMS_H
-#define NAVCOIN_CONSENSUS_PARAMS_H
+#ifndef ODYNSTOCK_CONSENSUS_PARAMS_H
+#define ODYNSTOCK_CONSENSUS_PARAMS_H
 
 #include <amount.h>
 #include <uint256.h>
@@ -151,4 +151,4 @@ struct Params {
 };
 } // namespace Consensus
 
-#endif // NAVCOIN_CONSENSUS_PARAMS_H
+#endif // ODYNSTOCK_CONSENSUS_PARAMS_H

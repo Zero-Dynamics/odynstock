@@ -23,32 +23,32 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-NAVCOIN_CONFIG_INCLUDES=-I$(builddir)/config
-NAVCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS) $(SODIUM_CFLAGS)
+ODYNSTOCK_CONFIG_INCLUDES=-I$(builddir)/config
+ODYNSTOCK_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS) $(SODIUM_CFLAGS)
 
-NAVCOIN_INCLUDES += -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include
-NAVCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
+ODYNSTOCK_INCLUDES += -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include
+ODYNSTOCK_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBNAVCOIN_SERVER=libnavcoin_server.a
-LIBNAVCOIN_COMMON=libnavcoin_common.a
-LIBNAVCOIN_CONSENSUS=libnavcoin_consensus.a
-LIBNAVCOIN_CLI=libnavcoin_cli.a
-LIBNAVCOIN_UTIL=libnavcoin_util.a
-LIBNAVCOIN_CRYPTO=crypto/libnavcoin_crypto.a
-LIBNAVCOINQT=qt/libnavcoinqt.a
+LIBODYNSTOCK_SERVER=libodynstock_server.a
+LIBODYNSTOCK_COMMON=libodynstock_common.a
+LIBODYNSTOCK_CONSENSUS=libodynstock_consensus.a
+LIBODYNSTOCK_CLI=libodynstock_cli.a
+LIBODYNSTOCK_UTIL=libodynstock_util.a
+LIBODYNSTOCK_CRYPTO=crypto/libodynstock_crypto.a
+LIBODYNSTOCKQT=qt/libodynstockqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 LIBBLS=bls/build/libbls.a
 LIBMCLBN=mcl/build/lib/libmclbn384_256.a
 LIBMCL=mcl/build/lib/libmcl.a
 
 if ENABLE_ZMQ
-LIBNAVCOIN_ZMQ=libnavcoin_zmq.a
+LIBODYNSTOCK_ZMQ=libodynstock_zmq.a
 endif
-if BUILD_NAVCOIN_LIBS
-LIBNAVCOINCONSENSUS=libnavcoinconsensus.la
+if BUILD_ODYNSTOCK_LIBS
+LIBODYNSTOCKCONSENSUS=libodynstockconsensus.la
 endif
 if ENABLE_WALLET
-LIBNAVCOIN_WALLET=libnavcoin_wallet.a
+LIBODYNSTOCK_WALLET=libodynstock_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
@@ -64,32 +64,32 @@ $(LIBMCLBN):
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBNAVCOIN_CRYPTO) \
-  $(LIBNAVCOIN_UTIL) \
-  $(LIBNAVCOIN_COMMON) \
-  $(LIBNAVCOIN_CONSENSUS) \
-  $(LIBNAVCOIN_SERVER) \
-  $(LIBNAVCOIN_CLI) \
-  $(LIBNAVCOIN_WALLET) \
-  $(LIBNAVCOIN_ZMQ)
+  $(LIBODYNSTOCK_CRYPTO) \
+  $(LIBODYNSTOCK_UTIL) \
+  $(LIBODYNSTOCK_COMMON) \
+  $(LIBODYNSTOCK_CONSENSUS) \
+  $(LIBODYNSTOCK_SERVER) \
+  $(LIBODYNSTOCK_CLI) \
+  $(LIBODYNSTOCK_WALLET) \
+  $(LIBODYNSTOCK_ZMQ)
 
-lib_LTLIBRARIES = $(LIBNAVCOINCONSENSUS)
+lib_LTLIBRARIES = $(LIBODYNSTOCKCONSENSUS)
 
 bin_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_NAVCOIND
-  bin_PROGRAMS += navcoind
+if BUILD_ODYNSTOCKD
+  bin_PROGRAMS += odynstockd
 endif
 
-if BUILD_NAVCOIN_UTILS
-  bin_PROGRAMS += navcoin-cli navcoin-tx
+if BUILD_ODYNSTOCK_UTILS
+  bin_PROGRAMS += odynstock-cli odynstock-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# navcoin core #
-NAVCOIN_CORE_H = \
+# odynstock core #
+ODYNSTOCK_CORE_H = \
   addressindex.h \
   spentindex.h \
   timestampindex.h \
@@ -200,12 +200,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libnavcoin_util_a-clientversion.$(OBJEXT): obj/build.h
+libodynstock_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between navcoind and navcoin-qt
-libnavcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libnavcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnavcoin_server_a_SOURCES = \
+# server: shared between odynstockd and odynstock-qt
+libodynstock_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libodynstock_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstock_server_a_SOURCES = \
   addrman.cpp \
   bloom.cpp \
   blockencodings.cpp \
@@ -250,23 +250,23 @@ libnavcoin_server_a_SOURCES = \
   utils/dns_utils.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(NAVCOIN_CORE_H)
+  $(ODYNSTOCK_CORE_H)
 
 if ENABLE_ZMQ
-libnavcoin_zmq_a_CPPFLAGS = $(NAVCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libnavcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnavcoin_zmq_a_SOURCES = \
+libodynstock_zmq_a_CPPFLAGS = $(ODYNSTOCK_INCLUDES) $(ZMQ_CFLAGS)
+libodynstock_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstock_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between navcoind and navcoin-qt, but only linked
+# wallet: shared between odynstockd and odynstock-qt, but only linked
 # when wallet enabled
-libnavcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES)
-libnavcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnavcoin_wallet_a_SOURCES = \
+libodynstock_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
+libodynstock_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstock_wallet_a_SOURCES = \
   blsct/rpc.cpp \
   consensus/dao.cpp \
   mnemonic/dictionary.cpp \
@@ -280,12 +280,12 @@ libnavcoin_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   policy/rbf.cpp \
   daoversionbit.cpp \
-  $(NAVCOIN_CORE_H)
+  $(ODYNSTOCK_CORE_H)
 
 # crypto primitives library
-crypto_libnavcoin_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_CONFIG_INCLUDES)
-crypto_libnavcoin_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libnavcoin_crypto_a_SOURCES = \
+crypto_libodynstock_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_CONFIG_INCLUDES)
+crypto_libodynstock_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libodynstock_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.cpp \
@@ -317,9 +317,9 @@ crypto_libnavcoin_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # consensus: shared between all executables that validate any consensus rules.
-libnavcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES)
-libnavcoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnavcoin_consensus_a_SOURCES = \
+libodynstock_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
+libodynstock_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstock_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -395,10 +395,10 @@ libnavcoin_consensus_a_SOURCES = \
   utiltime.h \
   version.h
 
-# common: shared between navcoind, and navcoin-qt and non-server tools
-libnavcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES)
-libnavcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnavcoin_common_a_SOURCES = \
+# common: shared between odynstockd, and odynstock-qt and non-server tools
+libodynstock_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
+libodynstock_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstock_common_a_SOURCES = \
   amount.cpp \
   base58.cpp \
   blsct/bulletproofs.cpp \
@@ -417,14 +417,14 @@ libnavcoin_common_a_SOURCES = \
   scheduler.cpp \
   script/sign.cpp \
   script/standard.cpp \
-  $(NAVCOIN_CORE_H)
+  $(ODYNSTOCK_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libnavcoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES)
-libnavcoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnavcoin_util_a_SOURCES = \
+libodynstock_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
+libodynstock_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstock_util_a_SOURCES = \
   support/pagelocker.cpp \
   uint256.cpp \
   chainparamsbase.cpp \
@@ -440,42 +440,42 @@ libnavcoin_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(NAVCOIN_CORE_H)
+  $(ODYNSTOCK_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libnavcoin_util_a_SOURCES += compat/glibc_compat.cpp
+libodynstock_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between navcoin-cli and navcoin-qt
-libnavcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES)
-libnavcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnavcoin_cli_a_SOURCES = \
+# cli: shared between odynstock-cli and odynstock-qt
+libodynstock_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
+libodynstock_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstock_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(NAVCOIN_CORE_H)
+  $(ODYNSTOCK_CORE_H)
 
-nodist_libnavcoin_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libodynstock_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# navcoind binary #
-navcoind_SOURCES = navcoind.cpp
-navcoind_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES) $(LIBEVENT_CFLAGS) $(LIBSECCOMP_CFLAGS) $(LIBCAP_CFLAGS) $(ZLIB_CFLAGS)
-navcoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-navcoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# odynstockd binary #
+odynstockd_SOURCES = odynstockd.cpp
+odynstockd_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES) $(LIBEVENT_CFLAGS) $(LIBSECCOMP_CFLAGS) $(LIBCAP_CFLAGS) $(ZLIB_CFLAGS)
+odynstockd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+odynstockd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-navcoind_SOURCES += navcoind-res.rc
+odynstockd_SOURCES += odynstockd-res.rc
 endif
 
-navcoind_LDADD = \
-                 $(LIBNAVCOIN_SERVER) \
-                 $(LIBNAVCOIN_COMMON) \
+odynstockd_LDADD = \
+                 $(LIBODYNSTOCK_SERVER) \
+                 $(LIBODYNSTOCK_COMMON) \
                  $(LIBUNIVALUE) \
-                 $(LIBNAVCOIN_UTIL) \
-                 $(LIBNAVCOIN_WALLET) \
-                 $(LIBNAVCOIN_ZMQ) \
-                 $(LIBNAVCOIN_CONSENSUS) \
-                 $(LIBNAVCOIN_CRYPTO) \
+                 $(LIBODYNSTOCK_UTIL) \
+                 $(LIBODYNSTOCK_WALLET) \
+                 $(LIBODYNSTOCK_ZMQ) \
+                 $(LIBODYNSTOCK_CONSENSUS) \
+                 $(LIBODYNSTOCK_CRYPTO) \
                  $(LIBLEVELDB) \
                  $(LIBMEMENV) \
                  $(LIBSECP256K1) \
@@ -484,7 +484,7 @@ navcoind_LDADD = \
                  $(LIBCAP_LIBS) \
                  $(ZLIB_LIBS)
 
-navcoind_LDADD += \
+odynstockd_LDADD += \
                   $(BOOST_LIBS) \
                   $(BDB_LIBS) \
                   $(ZLIB_LIBS) \
@@ -505,59 +505,59 @@ navcoind_LDADD += \
                   $(LIBCAP_LDFLAGS) \
                   $(ZLIB_LDFLAGS)
 
-# navcoin-cli binary #
-navcoin_cli_SOURCES = navcoin-cli.cpp
-navcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES) $(EVENT_CFLAGS)
-navcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-navcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# odynstock-cli binary #
+odynstock_cli_SOURCES = odynstock-cli.cpp
+odynstock_cli_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES) $(EVENT_CFLAGS)
+odynstock_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+odynstock_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-navcoin_cli_SOURCES += navcoin-cli-res.rc
+odynstock_cli_SOURCES += odynstock-cli-res.rc
 endif
 
-navcoin_cli_LDADD = \
-  $(LIBNAVCOIN_CLI) \
+odynstock_cli_LDADD = \
+  $(LIBODYNSTOCK_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBNAVCOIN_UTIL) \
-  $(LIBNAVCOIN_CRYPTO)
+  $(LIBODYNSTOCK_UTIL) \
+  $(LIBODYNSTOCK_CRYPTO)
 
-navcoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(SODIUM_LIBS) $(EVENT_LIBS)
+odynstock_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(SODIUM_LIBS) $(EVENT_LIBS)
 #
 
-# navcoin-tx binary #
-navcoin_tx_SOURCES = navcoin-tx.cpp
-navcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(NAVCOIN_INCLUDES)
-navcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-navcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# odynstock-tx binary #
+odynstock_tx_SOURCES = odynstock-tx.cpp
+odynstock_tx_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
+odynstock_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+odynstock_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-navcoin_tx_SOURCES += navcoin-tx-res.rc
+odynstock_tx_SOURCES += odynstock-tx-res.rc
 endif
 
-navcoin_tx_LDADD = \
+odynstock_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBNAVCOIN_COMMON) \
-  $(LIBNAVCOIN_UTIL) \
-  $(LIBNAVCOIN_CONSENSUS) \
-  $(LIBNAVCOIN_CRYPTO) \
+  $(LIBODYNSTOCK_COMMON) \
+  $(LIBODYNSTOCK_UTIL) \
+  $(LIBODYNSTOCK_CONSENSUS) \
+  $(LIBODYNSTOCK_CRYPTO) \
   $(LIBSECP256K1)
 
-navcoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
+odynstock_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
 #
 
-# navcoinconsensus library #
-if BUILD_NAVCOIN_LIBS
-include_HEADERS = script/navcoinconsensus.h
-libnavcoinconsensus_la_SOURCES = $(crypto_libnavcoin_crypto_a_SOURCES) $(libnavcoin_consensus_a_SOURCES)
+# odynstockconsensus library #
+if BUILD_ODYNSTOCK_LIBS
+include_HEADERS = script/odynstockconsensus.h
+libodynstockconsensus_la_SOURCES = $(crypto_libodynstock_crypto_a_SOURCES) $(libodynstock_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libnavcoinconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libodynstockconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libnavcoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(BOOST_LIBS) $(SODIUM_LIBS)
-libnavcoinconsensus_la_LIBADD = $(LIBSECP256K1) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
-libnavcoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include -DBUILD_NAVCOIN_INTERNAL
-libnavcoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libodynstockconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(BOOST_LIBS) $(SODIUM_LIBS)
+libodynstockconsensus_la_LIBADD = $(LIBSECP256K1) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
+libodynstockconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include -DBUILD_ODYNSTOCK_INTERNAL
+libodynstockconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #

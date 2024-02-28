@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_WALLET_WALLETDB_H
-#define NAVCOIN_WALLET_WALLETDB_H
+#ifndef ODYNSTOCK_WALLET_WALLETDB_H
+#define ODYNSTOCK_WALLET_WALLETDB_H
 
 #include <amount.h>
 #include <blsct/key.h>
@@ -322,4 +322,4 @@ private:
 
 void ThreadFlushWalletDB(const std::string& strFile);
 
-#endif // NAVCOIN_WALLET_WALLETDB_H
+#endif // ODYNSTOCK_WALLET_WALLETDB_H

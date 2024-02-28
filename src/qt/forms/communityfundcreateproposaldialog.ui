@@ -37,7 +37,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="labelNavcoinAddressTitle">
+      <widget class="QLabel" name="labelOdynStockAddressTitle">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -51,12 +51,12 @@
         </font>
        </property>
        <property name="text">
-        <string>Navcoin Address:</string>
+        <string>OdynStock Address:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QValidatedLineEdit" name="lineEditNavcoinAddress"/>
+      <widget class="QValidatedLineEdit" name="lineEditOdynStockAddress"/>
      </item>
      <item>
       <widget class="QLabel" name="labelRequestedAmountTitle">
@@ -78,7 +78,7 @@
       </widget>
      </item>
      <item>
-      <widget class="NavcoinAmountField" name="lineEditRequestedAmount"/>
+      <widget class="OdynStockAmountField" name="lineEditRequestedAmount"/>
      </item>
      <item>
       <widget class="QLabel" name="labelDescriptionTitle">
@@ -220,9 +220,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>NavcoinAmountField</class>
+   <class>OdynStockAmountField</class>
    <extends>QLineEdit</extends>
-   <header>navcoinamountfield.h</header>
+   <header>odynstockamountfield.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

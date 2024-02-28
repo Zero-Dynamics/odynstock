@@ -1,5 +1,5 @@
-# Navcoin v6.0.2 Release Notes
+# OdynStock v6.0.2 Release Notes
 
 ## xNAV transaction mempool policy
 
-<[Pull Request 794](https://github.com/navcoin/navcoin-core/pull/794)>
+<[Pull Request 794](https://github.com/odynstock/odynstock-core/pull/794)>

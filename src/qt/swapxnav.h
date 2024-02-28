@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The Navcoin Core developers
+// Copyright (c) 2020 The OdynStock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,9 +6,9 @@
 #define SWAPXNAV_H
 
 #include "aggregationsession.h"
-#include "navcoinunits.h"
+#include "odynstockunits.h"
 #include "optionsmodel.h"
-#include "navcoinamountfield.h"
+#include "odynstockamountfield.h"
 #include "blsct/key.h"
 #include "wallet/wallet.h"
 #include "clientmodel.h"
@@ -54,7 +54,7 @@ private:
     QLabel *toplabel1;
     QLabel *toplabel2;
     QPushButton *swapButton;
-    NavcoinAmountField *amount;
+    OdynStockAmountField *amount;
 
     QLabel *icon1;
     QLabel *icon2;

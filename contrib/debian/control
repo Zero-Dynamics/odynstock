@@ -1,4 +1,4 @@
-Source: navcoin
+Source: odynstock
 Section: utils
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
@@ -23,45 +23,45 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: https://navcoincore.org/
-Vcs-Git: git://github.com/navcoin/navcoin.git
-Vcs-Browser: https://github.com/navcoin/navcoin
+Homepage: https://odynstockcore.org/
+Vcs-Git: git://github.com/odynstock/odynstock.git
+Vcs-Browser: https://github.com/odynstock/odynstock
 
-Package: navcoind
+Package: odynstockd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Navcoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Navcoin uses peer-to-peer
+ OdynStock is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. OdynStock uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Navcoin Core
+ and issuing money are carried out collectively by the network. OdynStock Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, navcoind, and the CLI tool
- navcoin-cli to interact with the daemon.
+ This package provides the daemon, odynstockd, and the CLI tool
+ odynstock-cli to interact with the daemon.
 
-Package: navcoin-qt
+Package: odynstock-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Navcoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Navcoin uses peer-to-peer
+ OdynStock is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. OdynStock uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Navcoin Core
+ and issuing money are carried out collectively by the network. OdynStock Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Navcoin-Qt, a GUI for Navcoin based on Qt.
+ This package provides OdynStock-Qt, a GUI for OdynStock based on Qt.
 
-Package: navcoin-tx
+Package: odynstock-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Navcoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Navcoin uses peer-to-peer
+ OdynStock is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. OdynStock uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Navcoin Core
+ and issuing money are carried out collectively by the network. OdynStock Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides navcoin-tx, a command-line transaction creation
- tool which can be used without a navcoin daemon.  Some means of
+ This package provides odynstock-tx, a command-line transaction creation
+ tool which can be used without a odynstock daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

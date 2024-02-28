@@ -1,12 +1,12 @@
-![Navcoin](./img/logo-extended.png)
+![OdynStock](./img/logo-extended.png)
 
-This is the working repository for Navcoin Core, our fork of bitcoin-core 0.13.
+This is the working repository for OdynStock Core, our fork of bitcoin-core 0.13.
 
 For more information please visit the website:
 
- https://navcoin.org/en/roadmap 
+ https://odynstock.org/en/roadmap 
 
-[![Build Status](https://travis-ci.org/navcoin/navcoin-core.svg?branch=master)](https://travis-ci.org/navcoin/navcoin-core)
+[![Build Status](https://travis-ci.org/odynstock/odynstock-core.svg?branch=master)](https://travis-ci.org/odynstock/odynstock-core)
 
 ## Building
 
@@ -28,13 +28,13 @@ For building the wallet see the markdown files in [doc](doc) folder
 
 | Site | link |
 |:-----------|:-----------|
-| Freenode IRC | #navcoin-dev |
+| Freenode IRC | #odynstock-dev |
 | Medium | https://medium.com/nav-coin |
-| Twitter | https://twitter.com/Navcoin |
+| Twitter | https://twitter.com/OdynStock |
 | Discord | https://discord.gg/y4Vu9jw |
-| Telegram | https://t.me/navcoin |
-| Reddit | http://www.reddit.com/r/navcoin |
-| Facebook | https://www.facebook.com/NAVCoin |
+| Telegram | https://t.me/odynstock |
+| Reddit | http://www.reddit.com/r/odynstock |
+| Facebook | https://www.facebook.com/OdynStock |
 | Instagram | https://www.instagram.com/navcore/ |
 | Bitcointalk | https://bitcointalk.org/index.php?topic=679791 |
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The Navcoin Core developers
+// Copyright (c) 2019-2020 The OdynStock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,8 +18,8 @@
 #include "daosupport.h"
 #include "daoversionbit.h"
 #include "main.h"
-#include "navcoinpushbutton.h"
-#include "navcoinunits.h"
+#include "odynstockpushbutton.h"
+#include "odynstockunits.h"
 #include "optionsmodel.h"
 #include "txdb.h"
 #include "wallet/wallet.h"
@@ -200,11 +200,11 @@ private:
     QVector<ConsensusEntry> consensusModel;
 
     QLabel* viewLbl;
-    NavcoinPushButton* proposalsBtn;
-    NavcoinPushButton* paymentRequestsBtn;
-    NavcoinPushButton* consultationsBtn;
-    NavcoinPushButton* deploymentsBtn;
-    NavcoinPushButton* consensusBtn;
+    OdynStockPushButton* proposalsBtn;
+    OdynStockPushButton* paymentRequestsBtn;
+    OdynStockPushButton* consultationsBtn;
+    OdynStockPushButton* deploymentsBtn;
+    OdynStockPushButton* consensusBtn;
     QLabel* filterLbl;
     QLabel* childFilterLbl;
     QComboBox* filterCmb;

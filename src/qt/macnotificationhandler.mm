@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.navcoinfoundation.Navcoin-Qt";
+        return @"org.odynstockfoundation.OdynStock-Qt";
     } else {
         return [self __bundleIdentifier];
     }

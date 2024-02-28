@@ -4,7 +4,7 @@
 
 #include <compressor.h>
 #include <util.h>
-#include <test/test_navcoin.h>
+#include <test/test_odynstock.h>
 
 #include <stdint.h>
 

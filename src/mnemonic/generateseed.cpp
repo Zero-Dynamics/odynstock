@@ -6,7 +6,7 @@
 #include <key.h>
 #include <mnemonic/mnemonic.h>
 
-namespace navcoin {
+namespace odynstock {
 
 uint512 GenerateNewMnemonicSeed(std::string& mnemonic, const std::string& strLanguage)
 {

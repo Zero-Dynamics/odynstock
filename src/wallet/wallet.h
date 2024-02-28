@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_WALLET_WALLET_H
-#define NAVCOIN_WALLET_WALLET_H
+#ifndef ODYNSTOCK_WALLET_WALLET_H
+#define ODYNSTOCK_WALLET_WALLET_H
 
 #include <amount.h>
 #include <blsct/aggregationsession.h>
@@ -1276,4 +1276,4 @@ public:
 void LockOutputFor(uint256 hash, unsigned int n, uint64_t time);
 bool IsOutputLocked(uint256 hash, unsigned int n);
 
-#endif // NAVCOIN_WALLET_WALLET_H
+#endif // ODYNSTOCK_WALLET_WALLET_H

@@ -3,12 +3,12 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import NavcoinTestFramework
+from test_framework.test_framework import OdynStockTestFramework
 from test_framework.util import *
 
 BLOCK_REWARD = 50
 
-class WalletTest (NavcoinTestFramework):
+class WalletTest (OdynStockTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -202,7 +202,7 @@ class WalletTest (NavcoinTestFramework):
 
         #do some -walletbroadcast tests
         stop_nodes(self.nodes)
-        wait_navcoinds()
+        wait_odynstockds()
         self.nodes = start_nodes(3, self.options.tmpdir, [['-walletbroadcast=0','-staking=0'],['-walletbroadcast=0','-staking=0'],['-walletbroadcast=0','-staking=0']])
         connect_nodes_bi(self.nodes,0,1)
         connect_nodes_bi(self.nodes,1,2)
@@ -237,7 +237,7 @@ class WalletTest (NavcoinTestFramework):
 
         #restart the nodes with -walletbroadcast=1
         stop_nodes(self.nodes)
-        wait_navcoinds()
+        wait_odynstockds()
         self.nodes = start_nodes(3, self.options.tmpdir, [['-staking=0'], ['-staking=0'], ['-staking=0']])
         connect_nodes_bi(self.nodes,0,1)
         connect_nodes_bi(self.nodes,1,2)
@@ -349,13 +349,13 @@ class WalletTest (NavcoinTestFramework):
         #     '-reindex',
         #     '-zapwallettxes=1',
         #     '-zapwallettxes=2',
-        #     # disabled until issue is fixed: https://github.com/navcoin/navcoin/issues/7463
+        #     # disabled until issue is fixed: https://github.com/odynstock/odynstock/issues/7463
         #     # '-salvagewallet',
         # ]
         # for m in maintenance:
         #     print("check " + m)
         #     stop_nodes(self.nodes)
-        #     wait_navcoinds()
+        #     wait_odynstockds()
         #     self.nodes = start_nodes(3, self.options.tmpdir, [[m]] * 3)
         #     while m == '-reindex' and [block_count] * 3 != [self.nodes[i].getblockcount() for i in range(3)]:
         #         # reindex will leave rpc warm up "early"; Wait for it to finish
