@@ -26,7 +26,7 @@ QList<OdynStockUnits::Unit> OdynStockUnits::availableUnits()
 {
     QList<OdynStockUnits::Unit> unitlist;
 
-    unitlist.append(NAV); // OdynStock
+    unitlist.append(ODYNS); // OdynStock
     unitlist.append(BTC); // Bitcoin
     unitlist.append(EUR); // Euro
     unitlist.append(USD); // United States Dollar
@@ -68,7 +68,7 @@ bool OdynStockUnits::valid(int unit)
 {
     switch(unit)
     {
-        case NAV:
+        case ODYNS:
         case BTC:
         case EUR:
         case USD:
@@ -112,7 +112,7 @@ QString OdynStockUnits::name(int unit, bool fPrivate)
 {
     switch(unit)
     {
-        case NAV: if (fPrivate) return QString("xNAV"); else return QString("NAV");
+        case ODYNS: if (fPrivate) return QString("x0DYNS"); else return QString("0DYNS");
         case BTC: return QString("BTC");
         case EUR: return QString("EUR");
         case USD: return QString("USD");
@@ -154,7 +154,7 @@ QString OdynStockUnits::description(int unit)
 {
     switch(unit)
     {
-        case NAV: return QString("OdynStock");
+        case ODYNS: return QString("OdynStock");
         case BTC: return QString("Bitcoin");
         case EUR: return QString("Euro");
         case USD: return QString("United States Dollar");
@@ -199,7 +199,7 @@ qint64 OdynStockUnits::factor(int unit)
 
     switch(unit)
     {
-        case NAV: return 100000000;
+        case ODYNS: return 100000000;
         case BTC: return settings.value("btcFactor", 0).toFloat();
         case EUR: return settings.value("eurFactor", 0).toFloat();
         case USD: return settings.value("usdFactor", 0).toFloat();
@@ -241,7 +241,7 @@ int OdynStockUnits::decimals(int unit)
 {
     switch(unit)
     {
-        case NAV: return 8;
+        case ODYNS: return 8;
         case BTC: return 8;
         case EUR:
         case USD:

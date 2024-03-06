@@ -67,7 +67,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Requested Amount (NAV):</string>
+        <string>Requested Amount (0DYNS):</string>
        </property>
       </widget>
      </item>

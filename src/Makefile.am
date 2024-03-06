@@ -335,10 +335,10 @@ libodynstock_consensus_a_SOURCES = \
   ctokens/ctokens.h \
   ctokens/tokenutxos.h \
   ctokens/tokenid.h \
-  dotnav/namedata.h \
-  dotnav/namerecord.h \
-  dotnav/names.h \
-  dotnav/names.cpp \
+  dotodyns/namedata.h \
+  dotodyns/namerecord.h \
+  dotodyns/names.h \
+  dotodyns/names.cpp \
   aes_helper.c \
   blake.c \
   bmw.c \

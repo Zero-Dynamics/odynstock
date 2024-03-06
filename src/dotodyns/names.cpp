@@ -4,9 +4,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <dotnav/names.h>
+#include <dotodyns/names.h>
 
-namespace DotNav
+namespace DotOdynS
 {
 
 std::string to_lower(const std::string& str) {
@@ -30,7 +30,7 @@ bool IsValid(const std::string& name_)
 
     return name.substr(1, name.size()-5).find_first_not_of("abcdefghijklmnopqrstuvwxyz01234566789-") == std::string::npos &&
             name.substr(0, 1).find_first_not_of("abcdefghijklmnopqrstuvwxyz01234566789") == std::string::npos &&
-            name.size() < 64 && name.size() >= 5 && name.substr(name.size()-4, 4) == ".nav";
+            name.size() < 64 && name.size() >= 5 && name.substr(name.size()-4, 4) == ".0dyns";
 }
 
 bool IsValidKey(const std::string& name_)

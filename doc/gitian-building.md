@@ -443,10 +443,10 @@ Then when building, override the remote URLs that gbuild would otherwise pull fr
 cd /some/root/path/
 git clone https://github.com/odynstock-core/odynstock-detached-sigs.git
 
-NAVPATH=/some/root/path/odynstock
+ODYNSPATH=/some/root/path/odynstock
 SIGPATH=/some/root/path/odynstock-detached-sigs
 
-./bin/gbuild --url odynstock=${NAVPATH},signature=${SIGPATH} ../odynstock/contrib/gitian-descriptors/gitian-win-signer.yml
+./bin/gbuild --url odynstock=${ODYNSPATH},signature=${SIGPATH} ../odynstock/contrib/gitian-descriptors/gitian-win-signer.yml
 ```
 
 Building with Debian 9.5.0

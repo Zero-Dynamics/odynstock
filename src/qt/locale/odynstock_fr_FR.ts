@@ -536,7 +536,7 @@
     </message>
 </context>
 <context>
-    <name>NavTechInit</name>
+    <name>OdynSTechInit</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -1508,14 +1508,14 @@ Importation ...</translation>
     </message>
 </context>
 <context>
-    <name>navtechitem</name>
+    <name>odynstechitem</name>
     <message>
         <source>Form</source>
         <translation>Formulaire</translation>
     </message>
     </context>
 <context>
-    <name>navtechsetup</name>
+    <name>odynstechsetup</name>
     <message>
         <source>Remove</source>
         <translation>Retirer</translation>

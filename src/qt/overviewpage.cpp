@@ -30,7 +30,7 @@ class TxViewDelegate : public QAbstractItemDelegate
     Q_OBJECT
 public:
     TxViewDelegate(const PlatformStyle *platformStyle):
-        QAbstractItemDelegate(), unit(OdynStockUnits::NAV),
+        QAbstractItemDelegate(), unit(OdynStockUnits::ODYNS),
         platformStyle(platformStyle)
     {
 
@@ -130,7 +130,7 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
     connect(ui->swapButton, SIGNAL(clicked()), this, SLOT(ShowSwapDialog()));
 
-    swapDialog = new SwapXNAVDialog(this);
+    swapDialog = new SwapX0DYNSDialog(this);
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex &index)
@@ -288,7 +288,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         model->StartBalanceTimer();
     }
 
-    // update the display unit, to not use the default ("NAV")
+    // update the display unit, to not use the default ("0DYNS")
     updateDisplayUnit();
 }
 
@@ -333,7 +333,7 @@ void OverviewPage::ShowSwapDialog()
     if (!IsBLSCTEnabled(chainActive.Tip(),Params().GetConsensus()))
     {
         QMessageBox::warning(this, tr("Not available"),
-                "xNAV is not active yet!");
+                "x0DYNS is not active yet!");
         return;
     }
 

@@ -183,7 +183,7 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (ser_action.ForRead())
         {
-            bool fXNav = false;
+            bool fXOdynS = false;
             uint64_t nFlags;
             READWRITE(nFlags);
             if (nFlags == ~(uint64_t)0)
@@ -195,7 +195,7 @@ public:
                 BulletproofsRangeproof vbp;
                 READWRITE(vbp);
                 bp = std::shared_ptr<BulletproofsRangeproof>(new BulletproofsRangeproof(vbp));
-                fXNav = true;
+                fXOdynS = true;
             }
             else if (nFlags & (uint64_t)0x2<<62)
             {
@@ -225,7 +225,7 @@ public:
                     READWRITE(vData);
                 }
 
-                fXNav = true;
+                fXOdynS = true;
             }
             else
             {
@@ -233,7 +233,7 @@ public:
             }
             READWRITE(*(CScriptBase*)(&scriptPubKey));
 
-            if (fXNav)
+            if (fXOdynS)
                 cacheHash = SerializeHash(*this);
         }
         else

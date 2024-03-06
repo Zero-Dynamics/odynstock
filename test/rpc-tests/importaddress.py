@@ -48,7 +48,7 @@ class ImportAddressTest(OdynStockTestFramework):
         # Create the cold address
         coldstaking_address = self.nodes[0].getcoldstakingaddress(staking_address, spending_address)
 
-        # Send some nav to new addresses
+        # Send some 0dyns to new addresses
         self.nodes[0].sendtoaddress(address, 512)
         self.nodes[0].sendtoaddress(coldstaking_address, 256)
         self.nodes[0].sendtoaddress(coldstaking_address, 128)

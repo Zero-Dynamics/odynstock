@@ -55,7 +55,7 @@ class WalletTest (OdynStockTestFramework):
         assert_equal(len(self.nodes[1].listunspent()), 51)
         assert_equal(len(self.nodes[2].listunspent()), 0)
 
-        # Send 21 NAV from 0 to 2 using sendtoaddress call.
+        # Send 21 0DYNS from 0 to 2 using sendtoaddress call.
         self.nodes[0].sendtoaddress(self.nodes[2].getnewaddress(), 11)
         self.nodes[0].sendtoaddress(self.nodes[2].getnewaddress(), 10)
 
@@ -111,7 +111,7 @@ class WalletTest (OdynStockTestFramework):
         assert_equal(str(self.nodes[2].getbalance()), "59800043.99980000")
         assert_equal(str(self.nodes[2].getbalance("from1")), "59800022.99980000")
 
-        # Send 10 NAV normal
+        # Send 10 0DYNS normal
         address = self.nodes[0].getnewaddress("test")
         fee_per_byte = Decimal('0.001') / 1000
         self.nodes[2].settxfee(fee_per_byte * 1000)
@@ -122,7 +122,7 @@ class WalletTest (OdynStockTestFramework):
         assert_equal(self.nodes[0].getbalance(), Decimal('10'))
 
 
-        # Send 10 NAV with subtract fee from amount
+        # Send 10 0DYNS with subtract fee from amount
         txid = self.nodes[2].sendtoaddress(address, 10, "", "", "", True)
         slow_gen(self.nodes[2], 1)
         self.sync_all()
@@ -131,7 +131,7 @@ class WalletTest (OdynStockTestFramework):
         node_0_bal = self.check_fee_amount(self.nodes[0].getbalance(), Decimal('20'), fee_per_byte, count_bytes(self.nodes[2].getrawtransaction(txid)))
 
 
-        # Sendmany 10 NAV
+        # Sendmany 10 0DYNS
         txid = self.nodes[2].sendmany('from1', {address: 10}, 0, "", [])
         slow_gen(self.nodes[2], 1)
         self.sync_all()
@@ -140,7 +140,7 @@ class WalletTest (OdynStockTestFramework):
         assert_equal(self.nodes[0].getbalance(), node_0_bal)
 
 
-        # Sendmany 10 NAV with subtract fee from amount
+        # Sendmany 10 0DYNS with subtract fee from amount
         txid = self.nodes[2].sendmany('from1', {address: 10}, 0, "", [address])
         slow_gen(self.nodes[2], 1)
         self.sync_all()
@@ -225,7 +225,7 @@ class WalletTest (OdynStockTestFramework):
         self.sync_all()
 
         # We need to adjust the balance since new block/s got confirmed
-        # And we sent 2 NAV to it
+        # And we sent 2 0DYNS to it
         node_2_bal += BLOCK_REWARD + 2
         txObjNotBroadcasted = self.nodes[0].gettransaction(txIdNotBroadcasted)
         assert_equal(self.nodes[2].getbalance(), node_2_bal)
@@ -249,7 +249,7 @@ class WalletTest (OdynStockTestFramework):
         block_count_new = self.nodes[0].getblockcount()
 
         # We need to adjust the balance since new block/s got confirmed
-        # And we sent 2 NAV to it
+        # And we sent 2 0DYNS to it
         node_2_bal += (block_count_new - block_count) * BLOCK_REWARD + 2
 
         #tx should be added to balance because after restarting the nodes tx should be broadcastet

@@ -1,5 +1,5 @@
 from distutils.core import setup
-setup(name='NAVspendfrom',
+setup(name='ODYNSspendfrom',
       version='1.0',
       description='Command-line utility for odynstock "coin control"',
       author='Gavin Andresen',

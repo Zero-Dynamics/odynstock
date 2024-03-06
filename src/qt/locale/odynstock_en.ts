@@ -205,7 +205,7 @@
     </message>
     <message>
         <location line="+35"/>
-        <source>Requested Amount (NAV):</source>
+        <source>Requested Amount (0DYNS):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -245,7 +245,7 @@
     </message>
     <message>
         <location line="+22"/>
-        <source>Requested Amount (NAV):</source>
+        <source>Requested Amount (0DYNS):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -280,7 +280,7 @@
     </message>
     <message>
         <location line="+12"/>
-        <source>By submitting the proposal a X NAV deduction will occur from your wallet </source>
+        <source>By submitting the proposal a X 0DYNS deduction will occur from your wallet </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -308,12 +308,12 @@
     </message>
     <message>
         <location line="+24"/>
-        <source>NAV Requested:</source>
+        <source>0DYNS Requested:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+12"/>
-        <source>100 NAV</source>
+        <source>100 0DYNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -357,7 +357,7 @@
     <message>
         <location line="+15"/>
         <location line="+48"/>
-        <source>100 NAV</source>
+        <source>100 0DYNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -478,7 +478,7 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>https://navcommunity.net/view-proposal/95dbb71cfa4b67b258b34c1489e11e96955e1a9f26dd58a19f63417a37bce5d4</source>
+        <source>https://0dynscommunity.net/view-proposal/95dbb71cfa4b67b258b34c1489e11e96955e1a9f26dd58a19f63417a37bce5d4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -516,12 +516,12 @@
     </message>
     <message>
         <location line="+24"/>
-        <source>NAV Requested</source>
+        <source>0DYNS Requested</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>100 NAV</source>
+        <source>100 0DYNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <location line="+15"/>
-        <source>100 NAV</source>
+        <source>100 0DYNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -668,7 +668,7 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>https://navcommunity.net/view-proposal/95dbb71cfa4b67b258b34c1489e11e96955e1a9f26dd58a19f63417a37bce5d4</source>
+        <source>https://0dynscommunity.net/view-proposal/95dbb71cfa4b67b258b34c1489e11e96955e1a9f26dd58a19f63417a37bce5d4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -708,7 +708,7 @@
         <location line="+38"/>
         <location line="+18"/>
         <location line="+18"/>
-        <source>100 NAV</source>
+        <source>100 0DYNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1259,7 +1259,7 @@
     </message>
     <message>
         <location line="+108"/>
-        <source>Swap NAV/xNAV</source>
+        <source>Swap 0DYNS/x0DYNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1302,7 +1302,7 @@
         <location line="+17"/>
         <location line="+20"/>
         <location line="+17"/>
-        <source>1 000.00000000 NAV</source>
+        <source>1 000.00000000 0DYNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2032,7 +2032,7 @@
     </message>
     <message>
         <location line="+28"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By selecting which coins you want to spend, you can greatly improve your privacy. Select coins with a higher mix count when using xNAV, to increase your level of anonymity.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By selecting which coins you want to spend, you can greatly improve your privacy. Select coins with a higher mix count when using x0DYNS, to increase your level of anonymity.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2058,12 +2058,12 @@
     </message>
     <message>
         <location line="+16"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can send an encrypted message together with the transaction when using xNAV. This encrypted message can only be read by the receiver.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can send an encrypted message together with the transaction when using x0DYNS. This encrypted message can only be read by the receiver.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+47"/>
-        <source>A&amp;mount (NAV):</source>
+        <source>A&amp;mount (0DYNS):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2153,7 +2153,7 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>100 NAV / 100 EUR / 100 USD / 100 BTC</source>
+        <source>100 0DYNS / 100 EUR / 100 USD / 100 BTC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2178,7 +2178,7 @@
     </message>
     <message>
         <location line="+16"/>
-        <source>By submitting the proposal a X NAV deduction will occur from your wallet </source>
+        <source>By submitting the proposal a X 0DYNS deduction will occur from your wallet </source>
         <translation type="unfinished"></translation>
     </message>
     <message>

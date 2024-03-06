@@ -179,7 +179,7 @@ void SendCoinsDialog::on_sendButton_clicked()
         if (!IsBLSCTEnabled(chainActive.Tip(),Params().GetConsensus()))
         {
             QMessageBox::warning(this, tr("Not available"),
-                    "xNAV is not active yet!");
+                    "x0DYNS is not active yet!");
             return;
         }
 
@@ -325,9 +325,9 @@ void SendCoinsDialog::on_sendButton_clicked()
     CAmount totalAmount = nTotalAmount + (rcp.fSubtractFeeFromAmount ? 0 : txFee);
     QStringList alternativeUnits;
 
-    // Check if we have selected a display unit that is not NAV
-    if (model->getOptionsModel()->getDisplayUnit() != OdynStockUnits::NAV)
-        alternativeUnits.append(OdynStockUnits::formatHtmlWithUnit(OdynStockUnits::NAV, totalAmount));
+    // Check if we have selected a display unit that is not 0DYNS
+    if (model->getOptionsModel()->getDisplayUnit() != OdynStockUnits::ODYNS)
+        alternativeUnits.append(OdynStockUnits::formatHtmlWithUnit(OdynStockUnits::ODYNS, totalAmount));
 
     // Check if we have selected a display unit that is not BTC
     if (model->getOptionsModel()->getDisplayUnit() != OdynStockUnits::BTC)

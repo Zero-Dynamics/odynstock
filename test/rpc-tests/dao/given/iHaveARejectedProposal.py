@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #
-# Expanded helper routines for regression testing of the NAV Coin community fund
+# Expanded helper routines for regression testing of the OdynStock community fund
 #
 
 import sys, os #include the parent folder so the test_framework is available

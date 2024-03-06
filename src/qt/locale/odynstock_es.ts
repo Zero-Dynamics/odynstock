@@ -1077,7 +1077,7 @@
         <translation>Aviso importante de red.</translation>
     </message>
     <message>
-        <source>The Nav Coin Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. &lt;br&gt;&lt;br&gt;For more information on the proposal, please visit &lt;a href="https://odynstock.org/community-fund"&gt;this link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Would you like the Nav Coin Network to update the staking rewards to setup a decentralised community fund that will help grow the network?</source>
+        <source>The OdynStock Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. &lt;br&gt;&lt;br&gt;For more information on the proposal, please visit &lt;a href="https://odynstock.org/community-fund"&gt;this link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Would you like the OdynStock Network to update the staking rewards to setup a decentralised community fund that will help grow the network?</source>
         <translation>La red OdynStock esta votando para introducir cambios en el protocolo de consenso. Como participante de nuestra red, nosotros valoramos su participación y la decisión es enteramente suya. Por favor emita su voto. &lt;br&gt;&lt;br&gt;Para mas información en la propuesta, por favor visite&lt;a href="https://odynstock.org/community-fund"&gt;esta dirección &lt;/a&gt;&lt;br&gt;&lt;br&gt; Quisiera que la red OdynStock actualice las recompensas de staking para preparar un fondo descentralizado comunitario que ayudara a crecer la red?</translation>
     </message>
     <message>
@@ -1168,14 +1168,14 @@
     </message>
 </context>
 <context>
-    <name>NavTechInit</name>
+    <name>OdynSTechInit</name>
     <message>
-        <source>NavTech Setup</source>
-        <translation>Preparador NavTech</translation>
+        <source>OdynSTech Setup</source>
+        <translation>Preparador OdynSTech</translation>
     </message>
     <message>
-        <source>OdynStock uses an unique parallel cluster of nodes called NavTech to protect the privacy of your transactions.</source>
-        <translation>OdynStock usa un clúster paralelo único de nodos llamado NavTech para proteger la privacidad de sus transacciones.</translation>
+        <source>OdynStock uses an unique parallel cluster of nodes called OdynSTech to protect the privacy of your transactions.</source>
+        <translation>OdynStock usa un clúster paralelo único de nodos llamado OdynSTech para proteger la privacidad de sus transacciones.</translation>
     </message>
     <message>
         <source>You will find below the list of the OdynStock Foundation Servers. Feel free to modify this list to include your prefered servers:</source>
@@ -1507,24 +1507,24 @@
         <translation>24H:</translation>
     </message>
     <message>
-        <source>87 312.312 123 NAV</source>
-        <translation>87 312.312 123 NAV</translation>
+        <source>87 312.312 123 0DYNS</source>
+        <translation>87 312.312 123 0DYNS</translation>
     </message>
     <message>
         <source>7D</source>
         <translation>7D</translation>
     </message>
     <message>
-        <source>1 312.312 NAV</source>
-        <translation>1 312.312 NAV</translation>
+        <source>1 312.312 0DYNS</source>
+        <translation>1 312.312 0DYNS</translation>
     </message>
     <message>
         <source>30D</source>
         <translation>30D</translation>
     </message>
     <message>
-        <source>132 431.41 NAV</source>
-        <translation>132 431.41 NAV</translation>
+        <source>132 431.41 0DYNS</source>
+        <translation>132 431.41 0DYNS</translation>
     </message>
     <message>
         <source>Cold Staking</source>
@@ -1607,7 +1607,7 @@
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid OdynStock address or malformed URI parameters.</source>
-        <translation>¡URI no puede ser analizado! Esto puede ser causado por una dirección NAvTech invalida o un parámetro URI mal formado.</translation>
+        <translation>¡URI no puede ser analizado! Esto puede ser causado por una dirección OdynStock invalida o un parámetro URI mal formado.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -2306,16 +2306,16 @@
         <translation>(Tarifa inteligente no inicializado aún. Esto generalmente lleva a pocos bloques...)</translation>
     </message>
     <message>
-        <source>You don't have any NAVTech server added. </source>
-        <translation>No tiene ningún servidor NAVTech agregado.</translation>
+        <source>You don't have any ODYNSTech server added. </source>
+        <translation>No tiene ningún servidor ODYNSTech agregado.</translation>
     </message>
     <message>
         <source>Private payment</source>
         <translation>Pago privado</translation>
     </message>
     <message>
-        <source>Manage NAVTech servers</source>
-        <translation>Administre servidores NAVTech</translation>
+        <source>Manage ODYNSTech servers</source>
+        <translation>Administre servidores ODYNSTech</translation>
     </message>
     <message>
         <source>Use full amount</source>
@@ -2382,8 +2382,8 @@
         <translation>Copiar cambio</translation>
     </message>
     <message>
-        <source>NAVTech server returned a different number of addresses.</source>
-        <translation>Servidor NAVtech devolvió un numero diferente de direcciones.</translation>
+        <source>ODYNSTech server returned a different number of addresses.</source>
+        <translation>Servidor ODYNStech devolvió un numero diferente de direcciones.</translation>
     </message>
     <message>
         <source>Something went wrong:</source>
@@ -2430,12 +2430,12 @@
         <translation>La siguiente cuota sera deducida</translation>
     </message>
     <message>
-        <source>Navtech server fee:</source>
-        <translation>Cuota del servidor NavTech:</translation>
+        <source>OdynStech server fee:</source>
+        <translation>Cuota del servidor OdynSTech:</translation>
     </message>
     <message>
-        <source>will be deducted as Navtech fee.</source>
-        <translation>sera deducido como cuota NavTech.</translation>
+        <source>will be deducted as OdynStech fee.</source>
+        <translation>sera deducido como cuota OdynSTech.</translation>
     </message>
     <message>
         <source>Total Amount %1</source>
@@ -2569,8 +2569,8 @@
         <translation>Guarde en Libro de Direcciones</translation>
     </message>
     <message>
-        <source>A&amp;mount (NAV):</source>
-        <translation>C&amp;antidad (NAV):</translation>
+        <source>A&amp;mount (0DYNS):</source>
+        <translation>C&amp;antidad (0DYNS):</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -3593,8 +3593,8 @@
         <translation>&lt;category&gt; puede ser:</translation>
     </message>
     <message>
-        <source>Add a NavTech node to use for private transactions</source>
-        <translation>Agregue un nodo Navtech para usar en transacciones privadas</translation>
+        <source>Add a OdynSTech node to use for private transactions</source>
+        <translation>Agregue un nodo OdynStech para usar en transacciones privadas</translation>
     </message>
     <message>
         <source>Adds a ntp server to use for clock syncronization</source>
@@ -4332,7 +4332,7 @@
     </message>
 </context>
 <context>
-    <name>navtechitem</name>
+    <name>odynstechitem</name>
     <message>
         <source>Form</source>
         <translation>Formulario</translation>
@@ -4355,14 +4355,14 @@
     </message>
 </context>
 <context>
-    <name>navtechsetup</name>
+    <name>odynstechsetup</name>
     <message>
         <source>Dialog</source>
         <translation>Dialogo</translation>
     </message>
     <message>
-        <source>List of Navtech servers currently configured in your wallet to process private payments:</source>
-        <translation>Lista de servidores Navtech actualmente configurados en su monedero para procesar pagos privados:</translation>
+        <source>List of OdynStech servers currently configured in your wallet to process private payments:</source>
+        <translation>Lista de servidores OdynStech actualmente configurados en su monedero para procesar pagos privados:</translation>
     </message>
     <message>
         <source>When performing a private payment, a random server from this list will be used.</source>
@@ -4389,12 +4389,12 @@
         <translation>Guardar</translation>
     </message>
     <message>
-        <source>Remove Navtech server</source>
-        <translation>Remover servidor Navtech</translation>
+        <source>Remove OdynStech server</source>
+        <translation>Remover servidor OdynStech</translation>
     </message>
     <message>
-        <source>You are about to remove the following Navtech server: </source>
-        <translation>Usted esta a punto de remover el siguiente servidor Navtech:</translation>
+        <source>You are about to remove the following OdynStech server: </source>
+        <translation>Usted esta a punto de remover el siguiente servidor OdynStech:</translation>
     </message>
     <message>
         <source>Are you sure?</source>
@@ -4405,8 +4405,8 @@
         <translation>Removido.</translation>
     </message>
     <message>
-        <source>Navtech server</source>
-        <translation>Servidor Navtech</translation>
+        <source>OdynStech server</source>
+        <translation>Servidor OdynStech</translation>
     </message>
     <message>
         <source>Address: </source>

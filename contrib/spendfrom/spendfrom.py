@@ -26,7 +26,7 @@ from jsonrpc import ServiceProxy, json
 BASE_FEE=Decimal("0.001")
 
 def check_json_precision():
-    """Make sure json library being used does not lose precision converting NAV values"""
+    """Make sure json library being used does not lose precision converting 0DYNS values"""
     n = Decimal("20000000.00000003")
     satoshis = int(json.loads(json.dumps(float(n)))*1.0e8)
     if satoshis != 2000000000000003:
@@ -152,7 +152,7 @@ def create_tx(odynstockd, fromaddresses, toaddress, amount, fee):
         total_available += all_coins[addr]["total"]
 
     if total_available < needed:
-        sys.stderr.write("Error, only %f NAV available, need %f\n"%(total_available, needed));
+        sys.stderr.write("Error, only %f 0DYNS available, need %f\n"%(total_available, needed));
         sys.exit(1)
 
     #

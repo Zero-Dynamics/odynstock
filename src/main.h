@@ -404,7 +404,7 @@ int64_t GetTransactionSigOpCost(const CTransaction& tx, const CStateViewCache& i
  * instead of being performed inline.
  */
 bool CheckInputs(const CTransaction& tx, CValidationState &state, const CStateViewCache &view, bool fScriptChecks,
-                 unsigned int flags, bool cacheStore, std::vector<RangeproofEncodedData>& blsctData, PrecomputedTransactionData& txdata, const bool& fXNavSer, std::vector<CScriptCheck> *pvChecks = NULL, CAmount allowedInPrivate = 0);
+                 unsigned int flags, bool cacheStore, std::vector<RangeproofEncodedData>& blsctData, PrecomputedTransactionData& txdata, const bool& fXOdynSSer, std::vector<CScriptCheck> *pvChecks = NULL, CAmount allowedInPrivate = 0);
 
 /** Apply the effects of this transaction on the UTXO set represented by view */
 void UpdateCoins(const CTransaction& tx, CStateViewCache& inputs, int nHeight);
@@ -547,8 +547,8 @@ bool IsCommunityFundAmountV2Enabled(const CBlockIndex* pindexPrev, const Consens
 bool IsVoteCacheStateEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);
 bool IsDAOEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);
 bool IsDaoConsensusEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);
-bool IsXNavSerEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);
-bool IsDotNavEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);
+bool IsXOdynSSerEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);
+bool IsDotOdynSEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);
 
 /** Check whether the static reward has been activated **/
 bool IsStaticRewardEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);

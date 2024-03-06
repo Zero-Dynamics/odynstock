@@ -1486,7 +1486,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
 
             for (const CTxOut& txout: tx.vout)
             {
-                if (IsDotNavEnabled(chainActive.Tip(), Params().GetConsensus()))
+                if (IsDotOdynSEnabled(chainActive.Tip(), Params().GetConsensus()))
                 {
                     if (txout.vData.size() > 0) {
                         try {
@@ -1502,12 +1502,12 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
                             }
                             else if (program.action == UPDATE_NAME_FIRST)
                             {
-                                if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_NAVNS_FEE, view)))
+                                if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_ODYNSNS_FEE, view)))
                                     return state.DoS(100, false, REJECT_INVALID, "register-name-missing-contribution");
 
                                 NameRecordValue recordvalue;
 
-                                if (!viewMemPool.GetNameRecord(DotNav::GetHashIdName(program.sParameters[0], program.kParameters[0]), recordvalue))
+                                if (!viewMemPool.GetNameRecord(DotOdynS::GetHashIdName(program.sParameters[0], program.kParameters[0]), recordvalue))
                                     return state.DoS(100, false, REJECT_INVALID, "wrong-salt-name");
 
                                 if (chainActive.Tip()->nHeight-recordvalue.height < 6)
@@ -1515,20 +1515,20 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
 
                                 NameDataValues data;
 
-                                if (viewMemPool.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                                if (viewMemPool.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                                 {
-                                    auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight);
+                                    auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight);
                                     if (mapData.count("_key"))
                                         return state.DoS(100, false, REJECT_INVALID, strprintf("already-revealed:%s", program.sParameters[0]));
                                 }
 
-                                if (!(DotNav::IsValid(program.sParameters[0])))
+                                if (!(DotOdynS::IsValid(program.sParameters[0])))
                                     return state.DoS(100, false, REJECT_INVALID, "invalid-name");
 
-                                if (!(DotNav::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
+                                if (!(DotOdynS::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
                                     return state.DoS(100, false, REJECT_INVALID, "invalid-subdomain");
 
-                                if (!(DotNav::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
+                                if (!(DotOdynS::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
                                     return state.DoS(100, false, REJECT_INVALID, "invalid-key");
 
 
@@ -1542,27 +1542,27 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
                                     }
                                 }
 
-                                if (!viewMemPool.AddNameData(hash, DotNav::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue("_expiry", std::to_string(chainActive.Tip()->nHeight+GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_LENGTH, view))))))
+                                if (!viewMemPool.AddNameData(hash, DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue("_expiry", std::to_string(chainActive.Tip()->nHeight+GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_LENGTH, view))))))
                                     return state.DoS(100, false, REJECT_INVALID, "name-could-not-update");
-                                if (!viewMemPool.AddNameData(hash, DotNav::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue("_key", HexStr(program.kParameters[0].Serialize())))))
+                                if (!viewMemPool.AddNameData(hash, DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue("_key", HexStr(program.kParameters[0].Serialize())))))
                                     return state.DoS(100, false, REJECT_INVALID, "name-could-not-update");
-                                if (!viewMemPool.AddNameData(hash, DotNav::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
+                                if (!viewMemPool.AddNameData(hash, DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
                                     return state.DoS(100, false, REJECT_INVALID, "name-could-not-update");
-                                if (viewMemPool.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                                if (viewMemPool.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                                 {
-                                    auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight);
-                                    if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= std::floor(DotNav::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA, view)))
+                                    auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight);
+                                    if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= std::floor(DotOdynS::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA, view)))
                                         return state.DoS(100, false, REJECT_INVALID, "register-name-missing-contribution");
                                 } else {
                                     return state.DoS(100, false, REJECT_INVALID, "could-not-verify-written-data");
                                 }
 
-                                LogPrint("dotnav", "%s: updated name first %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
+                                LogPrint("dotodyns", "%s: updated name first %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
                             } else if (program.action == UPDATE_NAME) {
                                 NameDataValues data;
-                                if (!view.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                                if (!view.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                                     return state.DoS(100, false, REJECT_INVALID, strprintf("error-name:%s", program.sParameters[0]));
-                                auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight);
+                                auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight);
                                 if (!mapData.count("_key"))
                                     return state.DoS(100, false, REJECT_INVALID, "name-has-no-key");
                                 try {
@@ -1572,11 +1572,11 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
                                 {
                                     return state.DoS(100, false, REJECT_INVALID, "error-parsing-key");
                                 }
-                                if (!(DotNav::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
+                                if (!(DotOdynS::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
                                     return state.DoS(100, false, REJECT_INVALID, "invalid-subdomain");
-                                if (!(DotNav::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
+                                if (!(DotOdynS::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
                                     return state.DoS(100, false, REJECT_INVALID, "invalid-key");
-                                if (program.sParameters[3].size() > GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA, view))
+                                if (program.sParameters[3].size() > GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA, view))
                                     return state.DoS(100, false, REJECT_INVALID, "too-long-value");
                                 if (program.sParameters[2] == "_key")
                                 {
@@ -1588,34 +1588,34 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
                                     }
                                 }
 
-                                if (!viewMemPool.AddNameData(hash, DotNav::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
+                                if (!viewMemPool.AddNameData(hash, DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(chainActive.Tip()->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
                                     return state.DoS(100, false, REJECT_INVALID, "name-could-not-update");
 
-                                if (viewMemPool.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                                if (viewMemPool.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                                 {
-                                    auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight);
+                                    auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight);
 
-                                    if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= std::floor(DotNav::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA, view)))
+                                    if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= std::floor(DotOdynS::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA, view)))
                                         return state.DoS(100, false, REJECT_INVALID, "register-name-missing-contribution");
                                 } else {
                                     return state.DoS(100, false, REJECT_INVALID, "could-not-verify-written-data");
                                 }
 
-                                LogPrint("dotnav", "%s: updated name %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
+                                LogPrint("dotodyns", "%s: updated name %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
                             } else if (program.action == RENEW_NAME) {
-                                if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_NAVNS_FEE, view)))
+                                if (!(txout.scriptPubKey.IsCommunityFundContribution() && txout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_ODYNSNS_FEE, view)))
                                     return state.DoS(100, false, REJECT_INVALID, "renew-name-missing-contribution");
                                 NameDataValues data;
 
-                                if (view.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                                if (view.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                                 {
-                                    auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight);
+                                    auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight);
                                     if (!mapData.count("_key"))
                                         return state.DoS(100, false, REJECT_INVALID, "name-not-active");
                                 } else {
                                     return state.DoS(100, false, REJECT_INVALID, "name-not-active");
                                 }
-                                LogPrint("dotnav", "%s: renewed name %s %s %s %s\n", __func__, program.sParameters[0]);
+                                LogPrint("dotodyns", "%s: renewed name %s %s %s %s\n", __func__, program.sParameters[0]);
                             }
                         } catch(std::exception& e) {
                             return state.DoS(100, false, REJECT_INVALID, strprintf("error-program-vdata(%s)", e.what()));
@@ -1623,7 +1623,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
                     }
                 }
 
-                if (IsXNavSerEnabled(chainActive.Tip(), Params().GetConsensus()))
+                if (IsXOdynSSerEnabled(chainActive.Tip(), Params().GetConsensus()))
                 {
                     if (txout.vData.size() > 0 && GetConsensusParameter(Consensus::CONSENSUS_PARAMS_CONFIDENTIAL_TOKENS_ENABLED, view))
                     {
@@ -2056,18 +2056,18 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
             scriptVerifyFlags = GetArg("-promiscuousmempoolflags", scriptVerifyFlags);
         }
 
-        bool fXNavSer = IsXNavSerEnabled(chainActive.Tip(), Params().GetConsensus());
+        bool fXOdynSSer = IsXOdynSSerEnabled(chainActive.Tip(), Params().GetConsensus());
 
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
         PrecomputedTransactionData txdata(tx);
 
-        if (!CheckInputs(tx, state, view, true, scriptVerifyFlags, true, blsctData, txdata, fXNavSer)) {
+        if (!CheckInputs(tx, state, view, true, scriptVerifyFlags, true, blsctData, txdata, fXOdynSSer)) {
             // SCRIPT_VERIFY_CLEANSTACK requires SCRIPT_VERIFY_WITNESS, so we
             // need to turn both off, and compare against just turning off CLEANSTACK
             // to see if the failure is specifically due to witness validation.
-            if (CheckInputs(tx, state, view, true, scriptVerifyFlags & ~(SCRIPT_VERIFY_WITNESS | SCRIPT_VERIFY_CLEANSTACK), true, blsctData, txdata, fXNavSer) &&
-                    !CheckInputs(tx, state, view, true, scriptVerifyFlags & ~SCRIPT_VERIFY_CLEANSTACK, true, blsctData, txdata, fXNavSer)) {
+            if (CheckInputs(tx, state, view, true, scriptVerifyFlags & ~(SCRIPT_VERIFY_WITNESS | SCRIPT_VERIFY_CLEANSTACK), true, blsctData, txdata, fXOdynSSer) &&
+                    !CheckInputs(tx, state, view, true, scriptVerifyFlags & ~SCRIPT_VERIFY_CLEANSTACK, true, blsctData, txdata, fXOdynSSer)) {
                 // Only the witness is wrong, so the transaction itself may be fine.
                 state.SetCorruptionPossible();
             }
@@ -2083,7 +2083,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CCriticalSection *mpcs, CCritica
         // There is a similar check in CreateNewBlock() to prevent creating
         // invalid blocks, however allowing such transactions into the mempool
         // can be exploited as a DoS attack.
-        if (!CheckInputs(tx, state, view, true, MANDATORY_SCRIPT_VERIFY_FLAGS, true, blsctData, txdata, fXNavSer))
+        if (!CheckInputs(tx, state, view, true, MANDATORY_SCRIPT_VERIFY_FLAGS, true, blsctData, txdata, fXOdynSSer))
         {
             return error("%s: BUG! PLEASE REPORT THIS! ConnectInputs failed against MANDATORY but not STANDARD flags %s, %s",
                          __func__, hash.ToString(), FormatStateMessage(state));
@@ -2569,7 +2569,7 @@ int GetSpendHeight(const CStateViewCache& inputs)
 }
 
 namespace Consensus {
-bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CStateViewCache& inputs, int nSpendHeight, std::vector<RangeproofEncodedData>& blsctData, const bool &fXNavSer, CAmount allowedInPrivate = 0)
+bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CStateViewCache& inputs, int nSpendHeight, std::vector<RangeproofEncodedData>& blsctData, const bool &fXOdynSSer, CAmount allowedInPrivate = 0)
 {
     // This doesn't trigger the DoS code on purpose; if it did, it would make it easier
     // for an attacker to attempt to split the network.
@@ -2584,7 +2584,7 @@ bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CState
         const CCoins *coins = inputs.AccessCoins(prevout.hash);
         assert(coins);
 
-        if ((!fXNavSer && coins->vout[prevout.n].IsBLSCT()) || (fXNavSer && coins->vout[prevout.n].spendingKey.size()))
+        if ((!fXOdynSSer && coins->vout[prevout.n].IsBLSCT()) || (fXOdynSSer && coins->vout[prevout.n].spendingKey.size()))
         {
             if (!fHasBLSInput && i > 0)
                 return state.Invalid(false,
@@ -2593,7 +2593,7 @@ bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CState
             fHasBLSInput = true;
         }
 
-        if (fHasBLSInput && !((!fXNavSer && coins->vout[prevout.n].IsBLSCT()) || (fXNavSer && coins->vout[prevout.n].spendingKey.size())))
+        if (fHasBLSInput && !((!fXOdynSSer && coins->vout[prevout.n].IsBLSCT()) || (fXOdynSSer && coins->vout[prevout.n].spendingKey.size())))
             return state.Invalid(false,
                                  REJECT_INVALID, "bad-mix-bls-inputs",
                                  "transaction mixes bls and legacy inputs");
@@ -2659,11 +2659,11 @@ bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CState
 }
 }// namespace Consensus
 
-bool CheckInputs(const CTransaction& tx, CValidationState &state, const CStateViewCache &inputs, bool fScriptChecks, unsigned int flags, bool cacheStore, std::vector<RangeproofEncodedData>& blsctData, PrecomputedTransactionData& txdata, const bool &fXNavSer, std::vector<CScriptCheck> *pvChecks, CAmount allowedInPrivate)
+bool CheckInputs(const CTransaction& tx, CValidationState &state, const CStateViewCache &inputs, bool fScriptChecks, unsigned int flags, bool cacheStore, std::vector<RangeproofEncodedData>& blsctData, PrecomputedTransactionData& txdata, const bool &fXOdynSSer, std::vector<CScriptCheck> *pvChecks, CAmount allowedInPrivate)
 {
     if (!tx.IsCoinBase())
     {
-        if (!Consensus::CheckTxInputs(tx, state, inputs, GetSpendHeight(inputs), blsctData, fXNavSer, allowedInPrivate))
+        if (!Consensus::CheckTxInputs(tx, state, inputs, GetSpendHeight(inputs), blsctData, fXOdynSSer, allowedInPrivate))
             return false;
 
         if (pvChecks)
@@ -2877,7 +2877,7 @@ bool DisconnectBlock(const CBlock& block, CValidationState& state, const CBlockI
 
     bool fCFund = IsCommunityFundEnabled(pindex->pprev, Params().GetConsensus());
     bool fDAOConsultations = IsDAOEnabled(pindex->pprev, Params().GetConsensus());
-    bool fDotNav = IsDotNavEnabled(pindex->pprev, Params().GetConsensus());
+    bool fDotOdynS = IsDotOdynSEnabled(pindex->pprev, Params().GetConsensus());
 
     // undo transactions in reverse order
     for (int i = block.vtx.size() - 1; i >= 0; i--) {
@@ -2984,7 +2984,7 @@ bool DisconnectBlock(const CBlock& block, CValidationState& state, const CBlockI
                         }
                     }
 
-                    if (fDotNav)
+                    if (fDotOdynS)
                     {
                         if (program.action == REGISTER_NAME) {
                             if (!view.HaveNameRecord(program.hParameters[0]))
@@ -2992,7 +2992,7 @@ bool DisconnectBlock(const CBlock& block, CValidationState& state, const CBlockI
                             view.RemoveNameRecord(program.hParameters[0]);
                         } else if (program.action == UPDATE_NAME_FIRST || program.action == UPDATE_NAME || program.action == RENEW_NAME) {
                             view.RemoveNameData(NameDataKey(program.sParameters[0], pindex->nHeight));
-                            LogPrint("dotnav", "%s: removing name data for %s %d\n", __func__, program.sParameters[0], pindex->nHeight);
+                            LogPrint("dotodyns", "%s: removing name data for %s %d\n", __func__, program.sParameters[0], pindex->nHeight);
                         }
                     }
                 } catch(...) {
@@ -4581,12 +4581,12 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                 }
             }
 
-            bool fXNavSer = IsXNavSerEnabled(pindex->pprev, Params().GetConsensus());
+            bool fXOdynSSer = IsXOdynSSerEnabled(pindex->pprev, Params().GetConsensus());
 
             std::vector<CScriptCheck> vChecks;
             std::vector<RangeproofEncodedData> dummyData;
             bool fCacheResults = fJustCheck; /* Don't cache results if we're actually connecting blocks (still consult the cache, though) */
-            if (!CheckInputs(tx, state, view, fScriptChecks, flags, fCacheResults, tx.IsCTOutput()?blsctData[i]:dummyData, txdata[i], fXNavSer, nScriptCheckThreads ? &vChecks : nullptr))
+            if (!CheckInputs(tx, state, view, fScriptChecks, flags, fCacheResults, tx.IsCTOutput()?blsctData[i]:dummyData, txdata[i], fXOdynSSer, nScriptCheckThreads ? &vChecks : nullptr))
                 return error("ConnectBlock(): CheckInputs on %s failed with %s",
                              tx.GetHash().ToString(), FormatStateMessage(state));
             control.Add(vChecks);
@@ -4766,7 +4766,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
             nMovedToBLS += view.GetValueIn(tx) - tx.GetValueOut();
         }
 
-        bool fDotNav = IsDotNavEnabled(pindex->pprev, Params().GetConsensus());
+        bool fDotOdynS = IsDotOdynSEnabled(pindex->pprev, Params().GetConsensus());
 
 
         for (unsigned int i = 0; i < tx.vout.size(); i++)
@@ -4875,7 +4875,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                         }
                     }
 
-                    if (fDotNav) {
+                    if (fDotOdynS) {
                         if (program.action == REGISTER_NAME) {
                             if (view.HaveNameRecord(program.hParameters[0]))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("register-name-hash-already-known:%s", program.sParameters[0]));
@@ -4883,12 +4883,12 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                             if (!view.AddNameRecord(std::make_pair(program.hParameters[0], NameRecordValue(pindex->nHeight))))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("register-name-could-not-add:%s", program.sParameters[0]));
                         } else if (program.action == UPDATE_NAME_FIRST) {
-                            if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_NAVNS_FEE, view)))
+                            if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_ODYNSNS_FEE, view)))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("register-name-missing-contribution:%s", program.sParameters[0]));
 
                             NameRecordValue recordvalue;
 
-                            if (!view.GetNameRecord(DotNav::GetHashIdName(program.sParameters[0], program.kParameters[0]), recordvalue))
+                            if (!view.GetNameRecord(DotOdynS::GetHashIdName(program.sParameters[0], program.kParameters[0]), recordvalue))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("wrong-salt-name:%s", program.sParameters[0]));
 
                             if (pindex->nHeight-recordvalue.height < 6)
@@ -4896,17 +4896,17 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 
                             NameDataValues data;
 
-                            if (view.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                            if (view.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                             {
-                                auto mapData = DotNav::Consolidate(data, pindex->nHeight);
+                                auto mapData = DotOdynS::Consolidate(data, pindex->nHeight);
                                 if (mapData.count("_key"))
                                     return state.DoS(100, false, REJECT_INVALID, strprintf("already-revealed:%s", program.sParameters[0]));
                             }
-                            if (!(DotNav::IsValid(program.sParameters[0])))
+                            if (!(DotOdynS::IsValid(program.sParameters[0])))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("invalid-name:%s", program.sParameters[0]));
-                            if (!(DotNav::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
+                            if (!(DotOdynS::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("invalid-subdomain:%s", program.sParameters[0]));
-                            if (!(DotNav::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
+                            if (!(DotOdynS::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("invalid-name:%s", program.sParameters[0]));
                             if (program.sParameters[2] == "_key")
                             {
@@ -4917,51 +4917,51 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                                     return state.DoS(100, false, REJECT_INVALID, strprintf("invalid-key-to-update:%s", program.sParameters[0]));
                                 }
                             }
-                            if (!view.AddNameData(DotNav::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue("_expiry", std::to_string(pindex->nHeight+GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_LENGTH, view))))))
+                            if (!view.AddNameData(DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue("_expiry", std::to_string(pindex->nHeight+GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_LENGTH, view))))))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("name-could-not-update:%s", program.sParameters[0]));
-                            if (!view.AddNameData(DotNav::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue("_key", HexStr(program.kParameters[0].Serialize())))))
+                            if (!view.AddNameData(DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue("_key", HexStr(program.kParameters[0].Serialize())))))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("name-could-not-update:%s", program.sParameters[0]));
-                            if (!view.AddNameData(DotNav::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
+                            if (!view.AddNameData(DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("name-could-not-update:%s", program.sParameters[0]));
-                            if (view.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                            if (view.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                             {
-                                auto mapData = DotNav::Consolidate(data, pindex->nHeight);
+                                auto mapData = DotOdynS::Consolidate(data, pindex->nHeight);
 
-                                if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= std::floor(DotNav::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA, view)))
+                                if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= std::floor(DotOdynS::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA, view)))
                                     return state.DoS(100, false, REJECT_INVALID, strprintf("register-name-missing-contribution:%s", program.sParameters[0]));
                             } else {
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("could-not-verify-written-data:%s", program.sParameters[0]));
                             }
 
-                            LogPrint("dotnav", "%s: updated name first %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
+                            LogPrint("dotodyns", "%s: updated name first %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
                         } else if (program.action == RENEW_NAME) {
-                            if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_NAVNS_FEE, view)))
+                            if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= GetConsensusParameter(Consensus::CONSENSUS_PARAM_ODYNSNS_FEE, view)))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("register-name-missing-contribution:%s", program.sParameters[0]));
                             NameDataValues data;
 
-                            if (view.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                            if (view.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                             {
-                                auto mapData = DotNav::Consolidate(data, pindex->nHeight);
+                                auto mapData = DotOdynS::Consolidate(data, pindex->nHeight);
                                 if (!mapData.count("_key"))
                                     return state.DoS(100, false, REJECT_INVALID, strprintf("name-not-active:%s", program.sParameters[0]));
                             } else {
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("name-not-active:%s", program.sParameters[0]));
                             }
-                            if (!view.AddNameData(DotNav::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue("_expiry", std::to_string(pindex->nHeight+GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_LENGTH, view))))))
+                            if (!view.AddNameData(DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue("_expiry", std::to_string(pindex->nHeight+GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_LENGTH, view))))))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("name-could-not-update:%s", program.sParameters[0]));
 
-                            LogPrint("dotnav", "%s: renewed name %s\n", __func__, program.sParameters[0]);
+                            LogPrint("dotodyns", "%s: renewed name %s\n", __func__, program.sParameters[0]);
                         } else if (program.action == UPDATE_NAME) {
                             NameDataValues data;
-                            if (!view.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                            if (!view.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("error-name:%s", program.sParameters[0]));
-                            if (!(DotNav::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
+                            if (!(DotOdynS::IsValidKey(program.sParameters[1]) || program.sParameters[1] == ""))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("invalid-subdomain:%s", program.sParameters[0]));
-                            if (!(DotNav::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
+                            if (!(DotOdynS::IsValidKey(program.sParameters[2]) || program.sParameters[2] == "_key"))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("invalid-name:%s", program.sParameters[0]));
-                            if (program.sParameters[3].size() > GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA, view))
+                            if (program.sParameters[3].size() > GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA, view))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("too-long-value:%s", program.sParameters[0]));
-                            auto mapData = DotNav::Consolidate(data, pindex->nHeight);
+                            auto mapData = DotOdynS::Consolidate(data, pindex->nHeight);
                             if (!mapData.count("_key"))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("name-has-no-key:%s", program.sParameters[0]));
                             try {
@@ -4981,19 +4981,19 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                                     return state.DoS(100, false, REJECT_INVALID, strprintf("invalid-key-to-update:%s", program.sParameters[0]));
                                 }
                             }
-                            if (!view.AddNameData(DotNav::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
+                            if (!view.AddNameData(DotOdynS::GetHashName(program.sParameters[0]), std::make_pair(pindex->nHeight, NameDataValue(program.sParameters[2], program.sParameters[3], program.sParameters[1]))))
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("name-could-not-update:%s", program.sParameters[0]));
 
-                            if (view.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                            if (view.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                             {
-                                auto mapData = DotNav::Consolidate(data, pindex->nHeight);
-                                if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= std::floor(DotNav::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA, view)))
+                                auto mapData = DotOdynS::Consolidate(data, pindex->nHeight);
+                                if (!(vout.scriptPubKey.IsCommunityFundContribution() && vout.nValue >= std::floor(DotOdynS::CalculateSize(mapData)/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA, view)))
                                     return state.DoS(100, false, REJECT_INVALID, strprintf("register-name-missing-contribution:%s", program.sParameters[0]));
                             } else {
                                 return state.DoS(100, false, REJECT_INVALID, strprintf("could-not-verify-written-data:%s", program.sParameters[0]));
                             }
 
-                            LogPrint("dotnav", "%s: updated name %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
+                            LogPrint("dotodyns", "%s: updated name %s %s %s %s\n", __func__, program.sParameters[1], program.sParameters[0], program.sParameters[2], program.sParameters[3]);
                         }
                     }
                 } catch(...) {
@@ -6604,16 +6604,16 @@ bool IsDaoConsensusEnabled(const CBlockIndex* pindexPrev, const Consensus::Param
     return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_DAO_CONSENSUS, versionbitscache) == THRESHOLD_ACTIVE);
 }
 
-bool IsXNavSerEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
+bool IsXOdynSSerEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
 {
     LOCK(cs_main);
-    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_XNAV_SER, versionbitscache) == THRESHOLD_ACTIVE);
+    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_XODYNS_SER, versionbitscache) == THRESHOLD_ACTIVE);
 }
 
-bool IsDotNavEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
+bool IsDotOdynSEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
 {
     LOCK(cs_main);
-    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_DOT_NAV, versionbitscache) == THRESHOLD_ACTIVE);
+    return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_DOT_ODYNS, versionbitscache) == THRESHOLD_ACTIVE);
 }
 
 // Compute at which vout of the block's coinbase transaction the witness
@@ -8541,7 +8541,7 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
 
         if(pfrom->nVersion < 80020 && IsBLSCTEnabled(chainActive.Tip(), Params().GetConsensus()))
         {
-            reason = "xNAV has been enabled and you are using an old version of OdynStock, please update.";
+            reason = "x0DYNS has been enabled and you are using an old version of OdynStock, please update.";
             fObsolete = true;
         }
 

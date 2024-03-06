@@ -146,12 +146,12 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 10 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_ODYNSNS_FEE].value = 10 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_CONFIDENTIAL_TOKENS_ENABLED].value = 0;
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_LENGTH].value = 2880 * 400; // 400 days
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA].value = 1024; // 1KB
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA].value = 3 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_LENGTH].value = 2880 * 400; // 400 days
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA].value = 1024; // 1KB
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA].value = 3 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
         consensus.nCoinbaseMaturity = 50;
@@ -264,15 +264,15 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nStartTime = 1637712000; // Nov 24th, 2021
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of xNAV serialization update
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].bit = 33;
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nStartTime = 1637712000; // Nov 24th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of x0DYNS serialization update
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].bit = 33;
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nStartTime = 1637712000; // Nov 24th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of dotNAV update
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].bit = 34;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nStartTime = 1637712000; // Nov 24th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of dotODYNS update
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].bit = 34;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nStartTime = 1637712000; // Nov 24th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nTimeout = 1700784000; // Nov 24th, 2023
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -306,8 +306,8 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        vSeeds.push_back(CDNSSeedData("seed 1 nav.community", "seed.nav.community"));
-        vSeeds.push_back(CDNSSeedData("seed 2 nav.community", "seed2.nav.community"));
+        vSeeds.push_back(CDNSSeedData("seed 1 odyns.community", "seed.odyns.community"));
+        vSeeds.push_back(CDNSSeedData("seed 2 odyns.community", "seed2.odyns.community"));
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
@@ -436,12 +436,12 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 10 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_ODYNSNS_FEE].value = 10 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_CONFIDENTIAL_TOKENS_ENABLED].value = 1;
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_LENGTH].value = 2880 * 400; // 400 days
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA].value = 1024; // 1KB
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA].value = 3 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_LENGTH].value = 2880 * 400; // 400 days
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA].value = 1024; // 1KB
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA].value = 3 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
         consensus.nCoinbaseMaturity = 50;
@@ -542,15 +542,15 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nStartTime = 1633704250; // Oct 8th, 2021
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of xNAV serialization update
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].bit = 33;
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nStartTime = 1633704250; // Oct 8th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of x0DYNS serialization update
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].bit = 33;
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nStartTime = 1633704250; // Oct 8th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of dotNAV update
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].bit = 34;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nStartTime = 1633704250; // Nov 24th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of dotODYNS update
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].bit = 34;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nStartTime = 1633704250; // Nov 24th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nTimeout = 1700784000; // Nov 24th, 2023
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -585,7 +585,7 @@ public:
             printf("new testnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
         }
 
-        vSeeds.push_back(CDNSSeedData("testnav.community", "testseed.nav.community"));
+        vSeeds.push_back(CDNSSeedData("testodyns.community", "testseed.odyns.community"));
         vSeeds.push_back(CDNSSeedData("testodynstock.org", "testseed.odynstock.org"));
 
         assert(consensus.hashGenesisBlock == hashGenesisBlock);
@@ -694,12 +694,12 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 10 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_ODYNSNS_FEE].value = 10 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_CONFIDENTIAL_TOKENS_ENABLED].value = 1;
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_LENGTH].value = 400; // 400 blocks
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA].value = 1024; // 1KB
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA].value = 3 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_LENGTH].value = 400; // 400 blocks
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA].value = 1024; // 1KB
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA].value = 3 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
         consensus.nCoinbaseMaturity = 5;
@@ -799,15 +799,15 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nStartTime = 1633704250; // Oct 8th, 2021
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of xNAV serialization update
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].bit = 33;
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nStartTime = 1633704250; // Oct 8th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of x0DYNS serialization update
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].bit = 33;
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nStartTime = 1633704250; // Oct 8th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of dotNAV update
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].bit = 34;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nStartTime = 1633704250; // Nov 24th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of dotODYNS update
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].bit = 34;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nStartTime = 1633704250; // Nov 24th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nTimeout = 1700784000; // Nov 24th, 2023
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -852,7 +852,7 @@ public:
             printf("use the new values to update CDevNetParams class in src/chainparams.cpp\n");
         }
 
-        vSeeds.push_back(CDNSSeedData("devnav.community", "devseed.nav.community"));
+        vSeeds.push_back(CDNSSeedData("devodyns.community", "devseed.odyns.community"));
         vSeeds.push_back(CDNSSeedData("devnet.odynstock.org", "devseed.odynstock.org"));
 
         assert(consensus.hashGenesisBlock == hashGenesisBlock);
@@ -961,12 +961,12 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 10 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_ODYNSNS_FEE].value = 10 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_CONFIDENTIAL_TOKENS_ENABLED].value = 1;
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_LENGTH].value = 2880 * 400; // 400 days
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA].value = 1024; // 1KB
-        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA].value = 3 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_LENGTH].value = 2880 * 400; // 400 days
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA].value = 1024; // 1KB
+        consensus.vParameters[Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA].value = 3 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
         consensus.nCoinbaseMaturity = 50;
@@ -1066,15 +1066,15 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nStartTime = 1633704250; // Oct 8th, 2021
         consensus.vDeployments[Consensus::DEPLOYMENT_BURN_FEES].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of xNAV serialization update
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].bit = 33;
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nStartTime = 1633704250; // Oct 8th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_XNAV_SER].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of x0DYNS serialization update
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].bit = 33;
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nStartTime = 1633704250; // Oct 8th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_XODYNS_SER].nTimeout = 1700784000; // Nov 24th, 2023
 
-        // Deployment of dotNAV update
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].bit = 34;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nStartTime = 1633704250; // Nov 24th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_NAV].nTimeout = 1700784000; // Nov 24th, 2023
+        // Deployment of dotODYNS update
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].bit = 34;
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nStartTime = 1633704250; // Nov 24th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_DOT_ODYNS].nTimeout = 1700784000; // Nov 24th, 2023
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -1107,7 +1107,7 @@ public:
             hashMerkleRoot = genesis.hashMerkleRoot;
         }
 
-        vSeeds.push_back(CDNSSeedData("testnav.community", "testseed.nav.community"));
+        vSeeds.push_back(CDNSSeedData("testodyns.community", "testseed.odyns.community"));
         vSeeds.push_back(CDNSSeedData("testodynstock.org", "testseed.odynstock.org"));
 
         consensus.hashGenesisBlock = genesis.GetHash();

@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "swapxnav.h"
+#include "swapx0dyns.h"
 
-SwapXNAVDialog::SwapXNAVDialog(QWidget *parent) :
+SwapX0DYNSDialog::SwapX0DYNSDialog(QWidget *parent) :
     layout(new QVBoxLayout)
 {
     this->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Expanding);
@@ -88,17 +88,17 @@ SwapXNAVDialog::SwapXNAVDialog(QWidget *parent) :
     Swap();
 }
 
-void SwapXNAVDialog::setModel(WalletModel *model)
+void SwapX0DYNSDialog::setModel(WalletModel *model)
 {
     this->model = model;
 }
 
-void SwapXNAVDialog::setClientModel(ClientModel *model)
+void SwapX0DYNSDialog::setClientModel(ClientModel *model)
 {
     this->clientModel = model;
 }
 
-void SwapXNAVDialog::SetPublicBalance(CAmount a)
+void SwapX0DYNSDialog::SetPublicBalance(CAmount a)
 {
     int unit = 0;
 
@@ -109,7 +109,7 @@ void SwapXNAVDialog::SetPublicBalance(CAmount a)
         label2->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, false));
 }
 
-void SwapXNAVDialog::SetPrivateBalance(CAmount a)
+void SwapX0DYNSDialog::SetPrivateBalance(CAmount a)
 {
     int unit = 0;
 
@@ -120,11 +120,11 @@ void SwapXNAVDialog::SetPrivateBalance(CAmount a)
         label1->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, true));
 }
 
-void SwapXNAVDialog::Swap()
+void SwapX0DYNSDialog::Swap()
 {
     fMode = !fMode;
 
-    QPixmap pix(":/icons/mininav");
+    QPixmap pix(":/icons/mini0dyns");
     QPixmap scaled = pix.scaled(64,64,Qt::KeepAspectRatio,Qt::SmoothTransformation);
 
     QBitmap map(64,64);
@@ -134,7 +134,7 @@ void SwapXNAVDialog::Swap()
     painter.drawRect( 0, 0, 64, 64);
     scaled.setMask(map);
 
-    QPixmap pix2(":/icons/minixnav");
+    QPixmap pix2(":/icons/minix0dyns");
     QPixmap scaled2 = pix2.scaled(64,64,Qt::KeepAspectRatio,Qt::SmoothTransformation);
 
     QBitmap map2(64,64);
@@ -146,16 +146,16 @@ void SwapXNAVDialog::Swap()
 
     if (fMode)
     {
-        toplabel1->setText(tr("From: NAV"));
+        toplabel1->setText(tr("From: 0DYNS"));
         icon1->setPixmap(scaled);
-        toplabel2->setText(tr("To: xNAV"));
+        toplabel2->setText(tr("To: x0DYNS"));
         icon2->setPixmap(scaled2);
     }
     else
     {
-        toplabel1->setText(tr("From: xNAV"));
+        toplabel1->setText(tr("From: x0DYNS"));
         icon1->setPixmap(scaled2);
-        toplabel2->setText(tr("To: NAV"));
+        toplabel2->setText(tr("To: 0DYNS"));
         icon2->setPixmap(scaled);
     }
 
@@ -163,7 +163,7 @@ void SwapXNAVDialog::Swap()
     SetPrivateBalance(this->privateBalance);
 }
 
-void SwapXNAVDialog::Ok()
+void SwapX0DYNSDialog::Ok()
 {
     CAmount nAmount = amount->value();
 
@@ -186,7 +186,7 @@ void SwapXNAVDialog::Ok()
         msgBox.setText(tr(str.c_str()));
         msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
         msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setWindowTitle("Insufficient NAV");
+        msgBox.setWindowTitle("Insufficient 0DYNS");
         msgBox.exec();
         return;
     }
@@ -211,7 +211,7 @@ void SwapXNAVDialog::Ok()
         else
         {
             QMessageBox msgBox(this);
-            msgBox.setText(tr("Swap failed: your wallet does not support receiving xNAV"));
+            msgBox.setText(tr("Swap failed: your wallet does not support receiving x0DYNS"));
             msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
             msgBox.setIcon(QMessageBox::Warning);
             msgBox.setWindowTitle("Error");
@@ -307,7 +307,7 @@ void SwapXNAVDialog::Ok()
                                            tr("Swap!"),
                                            tr("In order to swap %1 to %2, you will have to pay a fee of %3.").arg(
                                                OdynStockUnits::formatWithUnit(0, nAmount, false, OdynStockUnits::separatorAlways, !fMode),
-                                               fMode ? "xNAV" : "NAV",
+                                               fMode ? "x0DYNS" : "0DYNS",
                                                OdynStockUnits::formatWithUnit(0, nFeeRequired, false, OdynStockUnits::separatorAlways, !fMode))
                                                +"<br><br>"+tr("You will receive a total of %1.").arg(
                                                OdynStockUnits::formatWithUnit(0, nAmount - nFeeRequired, false, OdynStockUnits::separatorAlways, fMode))

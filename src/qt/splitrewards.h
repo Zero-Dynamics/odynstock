@@ -61,6 +61,6 @@ private Q_SLOTS:
     void onQuit();
 };
 
-CAmount PercentageToNav(int percentage);
+CAmount PercentageToOdynS(int percentage);
 
 #endif // SPLITREWARDS_H

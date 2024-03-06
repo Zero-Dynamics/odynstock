@@ -115,7 +115,7 @@ class CfundForkReorgPreq(OdynStockTestFramework):
     def create_raw_paymentrequest(self, amount, address, proposal_hash, description):
         amount = amount * 100000000
         privkey = self.nodes[0].dumpprivkey(address)
-        message = "I kindly ask to withdraw " + str(amount) + "NAV from the proposal " + proposal_hash + ". Payment request id: " + str(description)
+        message = "I kindly ask to withdraw " + str(amount) + "0DYNS from the proposal " + proposal_hash + ". Payment request id: " + str(description)
         signature = self.nodes[0].signmessagewithprivkey(privkey, message)
 
         # Create a raw payment request

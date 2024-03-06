@@ -50,7 +50,7 @@ class ColdStakingSpending(OdynStockTestFramework):
 
         """send odynstock to our coldstaking address, grab balance & staking weight"""
 
-        # send funds to the cold staking address (leave some nav for fees) -- we specifically require
+        # send funds to the cold staking address (leave some 0dyns for fees) -- we specifically require
         # a transaction fee of minimum 0.002884 odynstock due to the complexity of this transaction
         tx = self.nodes[0].sendtoaddress(coldstaking_address_spending, self.nodes[0].getbalance(), "", "", "", True)
         fee = self.nodes[0].gettransaction(tx)['fee']
@@ -62,7 +62,7 @@ class ColdStakingSpending(OdynStockTestFramework):
         assert(len(listunspent_txs) > 0)
         # asserts that the number of utxo recieved is only 1:
         assert(len(listunspent_txs) == 1)
-        # asserts if amount recieved is what it should be; ~59814699.99660530 NAV
+        # asserts if amount recieved is what it should be; ~59814699.99660530 0DYNS
         assert_equal(int(listunspent_txs[0]["amount"]), int(59814699))
         # grabs updated wallet balance and staking weight
         balance_post_send_one = self.nodes[0].getbalance()

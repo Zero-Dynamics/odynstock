@@ -572,7 +572,7 @@ bool AggregationSession::JoinSingleV3(int index, std::vector<unsigned char>& vPu
     try {
         UniValue msg(UniValue::VOBJ);
         msg.pushKV("reply", 1);
-        EncryptedCandidateTransaction encryptedTx(publicKey, msg, IsXNavSerEnabled(chainActive.Tip(), Params().GetConsensus()));
+        EncryptedCandidateTransaction encryptedTx(publicKey, msg, IsXOdynSSerEnabled(chainActive.Tip(), Params().GetConsensus()));
 
         encryptedTx.nTime = GetTimeMillis();
 
@@ -620,7 +620,7 @@ bool AggregationSession::JoinSingleV2(int index, std::vector<unsigned char>& vPu
     bls::G1Element publicKey = bls::G1Element::FromByteVector(vPublicKey);
 
     try {
-        EncryptedCandidateTransaction encryptedTx(publicKey, tx, IsXNavSerEnabled(chainActive.Tip(), Params().GetConsensus()));
+        EncryptedCandidateTransaction encryptedTx(publicKey, tx, IsXOdynSSerEnabled(chainActive.Tip(), Params().GetConsensus()));
 
         encryptedTx.nTime = GetTimeMillis();
 

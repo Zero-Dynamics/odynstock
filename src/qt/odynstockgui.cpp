@@ -1593,7 +1593,7 @@ void OdynStockGUI::showVotingDialog()
 
     QMessageBox msgBox;
     msgBox.setText(tr("Important network notice."));
-    msgBox.setInformativeText(tr("The Nav Coin Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. <br><br>For more information on the proposal, please visit <a href=\"https://odynstock.org/community-fund\">this link</a><br><br>Would you like the Nav Coin Network to update the staking rewards to setup a decentralised community fund that will help grow the network?"));
+    msgBox.setInformativeText(tr("The OdynStock Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. <br><br>For more information on the proposal, please visit <a href=\"https://odynstock.org/community-fund\">this link</a><br><br>Would you like the OdynStock Network to update the staking rewards to setup a decentralised community fund that will help grow the network?"));
     QAbstractButton *myYesButton = msgBox.addButton(tr("Yes"), QMessageBox::YesRole);
     msgBox.addButton(trUtf8("No"), QMessageBox::NoRole);
     msgBox.setIcon(QMessageBox::Question);
@@ -2061,7 +2061,7 @@ void OdynStockGUI::updatePrice()
         try {
             CURL *curl;
             std::string url(
-                    "https://api.coingecko.com/api/v3/simple/price?ids=nav-coin&vs_currencies="
+                    "https://api.coingecko.com/api/v3/simple/price?ids=odynstock&vs_currencies="
                     "BTC,"
                     "EUR,"
                     "USD,"
@@ -2120,7 +2120,7 @@ void OdynStockGUI::updatePrice()
             boost::property_tree::ptree _json;
             std::istringstream jsonStream(response);
             boost::property_tree::read_json(jsonStream, _json);
-            boost::property_tree::ptree json = _json.get_child("nav-coin");
+            boost::property_tree::ptree json = _json.get_child("odynstock");
 
             // Get an instance of settings
             QSettings settings;

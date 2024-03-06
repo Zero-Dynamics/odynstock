@@ -4,7 +4,7 @@ This is the working repository for OdynStock Core, our fork of bitcoin-core 0.13
 
 For more information please visit the website:
 
- https://odynstock.org/en/roadmap 
+ https://odynstock.org/en/roadmap
 
 [![Build Status](https://travis-ci.org/odynstock/odynstock-core.svg?branch=master)](https://travis-ci.org/odynstock/odynstock-core)
 
@@ -20,7 +20,7 @@ For building the wallet see the markdown files in [doc](doc) folder
 |:-----------|:-----------|
 | Block Spacing | `30 seconds` |
 | Stake Minimum Age | `2 hours` |
- | Stake Reward | `2 NAV per block` | 
+ | Stake Reward | `2 0DYNS per block` |
 | Port | `44440` |
 | RPC Port | `44444` |
 
@@ -29,21 +29,21 @@ For building the wallet see the markdown files in [doc](doc) folder
 | Site | link |
 |:-----------|:-----------|
 | Freenode IRC | #odynstock-dev |
-| Medium | https://medium.com/nav-coin |
+| Medium | https://medium.com/odynstock |
 | Twitter | https://twitter.com/OdynStock |
 | Discord | https://discord.gg/y4Vu9jw |
 | Telegram | https://t.me/odynstock |
 | Reddit | http://www.reddit.com/r/odynstock |
-| Facebook | https://www.facebook.com/OdynStock |
-| Instagram | https://www.instagram.com/navcore/ |
+| Facebook | https://www.facebook.com/odynStock |
+| Instagram | https://www.instagram.com/odynscore/ |
 | Bitcointalk | https://bitcointalk.org/index.php?topic=679791 |
 
 ## Community Resources
 
 | Site         | link                                                                                                                    |
 | :----------- | :---------------------------------------------------------------------------------------------------------------------- |
-| Trello Board | [https://trello.com/nav-community](https://trello.com/invite/b/rPdvVVL4/ba5c40a885fd3c02cda2a8b406ff7124/nav-community) |
-| NavHub       | http://navhub.org                                                                                                       |
+| Trello Board | [https://trello.com/odyns-community](https://trello.com/invite/b/rPdvVVL4/ba5c40a885fd3c02cda2a8b406ff7124/odyns-community) |
+| OdynSHub       | http://odynshub.org                                                                                                       |
 
 
 

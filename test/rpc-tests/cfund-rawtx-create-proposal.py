@@ -17,7 +17,7 @@ class CommunityFundRawTXCreateProposalTest(OdynStockTestFramework):
         self.num_nodes = 1
 
 
-        self.goodDescription = "these are not the NAV Droids you are looking for"
+        self.goodDescription = "these are not the 0DYNS Droids you are looking for"
         self.goodDuration = 360000
         self.goodAmount = 100
         self.goodPropHash = ""
@@ -56,7 +56,7 @@ class CommunityFundRawTXCreateProposalTest(OdynStockTestFramework):
         self.test_invalid_proposal("", self.goodAmount, self.goodDuration, "I should not work")
         self.test_invalid_proposal("a", self.goodAmount, self.goodDuration, "I should not work")
         self.test_invalid_proposal("1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY", self.goodAmount, self.goodDuration, "I should not work") # bitcoin address
-        self.test_invalid_proposal("NPyEJsv82GaguVsY3Ur4pu4WwnFCsYQ94g", self.goodAmount, self.goodDuration, "I should not work") # nav address we don't own
+        self.test_invalid_proposal("NPyEJsv82GaguVsY3Ur4pu4WwnFCsYQ94g", self.goodAmount, self.goodDuration, "I should not work") # 0dyns address we don't own
         self.test_invalid_proposal(False, self.goodAmount, self.goodDuration, "I should not work")
         self.test_invalid_proposal(True, self.goodAmount, self.goodDuration, "I should not work")
         self.test_invalid_proposal(8888, self.goodAmount, self.goodDuration, "I should not work")
@@ -270,7 +270,7 @@ class CommunityFundRawTXCreateProposalTest(OdynStockTestFramework):
         self.descTxtAllCharsSymbol3 = "♩ ♪ ♫ ♬ ♭ ♮ ♯  ⌨ ⏏ ⎗ ⎘ ⎙ ⎚ ⌥ ⎇ ⌘ ⌦ ⌫ ⌧ ♲ ♳ ♴ ♵ ♶ ♷ ♸ ♹ ♺ ♻ ♼ ♽ ⁌ ⁍ ⎌ ⌇ ⌲ ⍝ ⍟ ⍣ ⍤ ⍥ ⍨ ⍩ ⎋ ♃ ♄ ♅ ♆ ♇ ♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓ ⏚ ⏛"
 
 
-        self.descTxtWhiteSpace = '''I 
+        self.descTxtWhiteSpace = '''I
 Have
 Enters
 

@@ -94,7 +94,7 @@ SplitRewardsDialog::SplitRewardsDialog(QWidget *parent) :
 
     for (const auto &it: mapAddressBalance)
     {
-        comboAddress->insertItem(i++, it.first +" ("+ QString::fromStdString(FormatMoney(it.second)) +" NAV)",it.first);
+        comboAddress->insertItem(i++, it.first +" ("+ QString::fromStdString(FormatMoney(it.second)) +" 0DYNS)",it.first);
     }
 
     showFor("all");
@@ -130,13 +130,13 @@ void SplitRewardsDialog::showFor(QString sin)
             if (teamAddresses.count(key))
             {
                 if (teamAddresses[key] == "Community Fund")
-                    nCFundContribution += PercentageToNav(amount);
+                    nCFundContribution += PercentageToOdynS(amount);
                 else
-                    descs << QString::fromStdString(FormatMoney(PercentageToNav(amount))) + " to " + teamAddresses[key];
+                    descs << QString::fromStdString(FormatMoney(PercentageToOdynS(amount))) + " to " + teamAddresses[key];
                 jDup[teamAddresses[key]] = amount;
             }
             else {
-                descs << QString::fromStdString(FormatMoney(PercentageToNav(amount))) + " to " + key;
+                descs << QString::fromStdString(FormatMoney(PercentageToOdynS(amount))) + " to " + key;
                 jDup[key] = amount;
             }
 
@@ -163,7 +163,7 @@ void SplitRewardsDialog::showFor(QString sin)
 
     tree->resizeColumnToContents(1);
 
-    strDesc->setText(tr("For each block, %1 NAV will go to the Community Fund, %2 and %3 will be accumulated in your own address").arg(QString::fromStdString(FormatMoney(nCFundContribution)), descs.join(", "), QString::fromStdString(FormatMoney(PercentageToNav(availableAmount)))));
+    strDesc->setText(tr("For each block, %1 0DYNS will go to the Community Fund, %2 and %3 will be accumulated in your own address").arg(QString::fromStdString(FormatMoney(nCFundContribution)), descs.join(", "), QString::fromStdString(FormatMoney(PercentageToOdynS(availableAmount)))));
 
     jmodel->loadJson(doc.toJson());
 }
@@ -311,7 +311,7 @@ void SplitRewardsDialog::onQuit()
     QDialog::accept();
 }
 
-CAmount PercentageToNav(int percentage)
+CAmount PercentageToOdynS(int percentage)
 {
     CStateViewCache view(pcoinsTip);
     return GetStakingRewardPerBlock(view) * percentage / 100;

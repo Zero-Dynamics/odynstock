@@ -190,8 +190,8 @@ void WalletView::GenerateBLSCT()
     if(!walletModel)
         return;
 
-    QMessageBox::information(this, tr("Generation of xNAV keys"),
-        tr("In order to generate your xNAV keys, you will be asked to unlock your wallet"));
+    QMessageBox::information(this, tr("Generation of x0DYNS keys"),
+        tr("In order to generate your x0DYNS keys, you will be asked to unlock your wallet"));
 
     bool fShouldLockAfter = false;
 
@@ -207,13 +207,13 @@ void WalletView::GenerateBLSCT()
 
     if (!walletModel->GenerateBLSCT())
     {
-        QMessageBox::information(this, tr("Generation of xNAV keys"),
-            tr("xNAV keys could not be generated."));
+        QMessageBox::information(this, tr("Generation of x0DYNS keys"),
+            tr("x0DYNS keys could not be generated."));
     }
     else
     {
-        QMessageBox::information(this, tr("Generation of xNAV keys"),
-            tr("xNAV keys have been generated."));
+        QMessageBox::information(this, tr("Generation of x0DYNS keys"),
+            tr("x0DYNS keys have been generated."));
     }
 
     if (fShouldLockAfter)

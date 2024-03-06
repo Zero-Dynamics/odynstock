@@ -107,7 +107,7 @@
            </font>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By selecting which coins you want to spend, you can greatly improve your privacy. Select coins with a higher mix count when using xNAV, to increase your level of anonymity.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By selecting which coins you want to spend, you can greatly improve your privacy. Select coins with a higher mix count when using x0DYNS, to increase your level of anonymity.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Select coins...</string>
@@ -211,7 +211,7 @@
        <enum>Qt::StrongFocus</enum>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can send an encrypted message together with the transaction when using xNAV. This encrypted message can only be read by the receiver.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can send an encrypted message together with the transaction when using x0DYNS. This encrypted message can only be read by the receiver.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -258,7 +258,7 @@
        <string>How much do you want to send?</string>
       </property>
       <property name="text">
-       <string>A&amp;mount (NAV):</string>
+       <string>A&amp;mount (0DYNS):</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

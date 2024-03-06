@@ -1077,7 +1077,7 @@
         <translation>Fontos hálózati figyelmeztetés.</translation>
     </message>
     <message>
-        <source>The Nav Coin Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. &lt;br&gt;&lt;br&gt;For more information on the proposal, please visit &lt;a href="https://odynstock.org/community-fund"&gt;this link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Would you like the Nav Coin Network to update the staking rewards to setup a decentralised community fund that will help grow the network?</source>
+        <source>The OdynStock Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. &lt;br&gt;&lt;br&gt;For more information on the proposal, please visit &lt;a href="https://odynstock.org/community-fund"&gt;this link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Would you like the OdynStock Network to update the staking rewards to setup a decentralised community fund that will help grow the network?</source>
         <translation>A OdynStock hálózata jelenleg az egyetértési protokoll változtatásainak bevezetéséről szavaz. A hálózatunk résztvevőjeként értékeljük a hozzájárulását, és a döntést végső soron Ön hozza meg. Adja le a szavazatát. &lt;br&gt;&lt;br&gt;A javaslattal kapcsolatos további információkért nézze meg &lt;a href="https://odynstock.org/community-fund"&gt;ezt a hivatkozást&lt;/a&gt;&lt;br&gt;&lt;br&gt;Szeretné, hogy a OdynStock hálózata frissítse a bányászási jutalmakat egy decentralizált közösségi alapra, amely segít növelni a hálózatot?</translation>
     </message>
     <message>
@@ -1168,14 +1168,14 @@
     </message>
 </context>
 <context>
-    <name>NavTechInit</name>
+    <name>OdynSTechInit</name>
     <message>
-        <source>NavTech Setup</source>
-        <translation>NavTech beállítása</translation>
+        <source>OdynSTech Setup</source>
+        <translation>OdynSTech beállítása</translation>
     </message>
     <message>
-        <source>OdynStock uses an unique parallel cluster of nodes called NavTech to protect the privacy of your transactions.</source>
-        <translation>A OdynStock egy NavTech elnevezésű, egyedi, párhuzamos csomópontfürtöt használ a tranzakciói adatvédelmének biztosításához.</translation>
+        <source>OdynStock uses an unique parallel cluster of nodes called OdynSTech to protect the privacy of your transactions.</source>
+        <translation>A OdynStock egy OdynSTech elnevezésű, egyedi, párhuzamos csomópontfürtöt használ a tranzakciói adatvédelmének biztosításához.</translation>
     </message>
     <message>
         <source>You will find below the list of the OdynStock Foundation Servers. Feel free to modify this list to include your prefered servers:</source>
@@ -1507,24 +1507,24 @@
         <translation>24Ó:</translation>
     </message>
     <message>
-        <source>87 312.312 123 NAV</source>
-        <translation>87 312.312 123 NAV</translation>
+        <source>87 312.312 123 0DYNS</source>
+        <translation>87 312.312 123 0DYNS</translation>
     </message>
     <message>
         <source>7D</source>
         <translation>7D</translation>
     </message>
     <message>
-        <source>1 312.312 NAV</source>
-        <translation>1 312.312 NAV</translation>
+        <source>1 312.312 0DYNS</source>
+        <translation>1 312.312 0DYNS</translation>
     </message>
     <message>
         <source>30D</source>
         <translation>30D</translation>
     </message>
     <message>
-        <source>132 431.41 NAV</source>
-        <translation>132 431.41 NAV</translation>
+        <source>132 431.41 0DYNS</source>
+        <translation>132 431.41 0DYNS</translation>
     </message>
     <message>
         <source>Cold Staking</source>
@@ -2306,16 +2306,16 @@
         <translation>(Az okos díj még nincs előkészítve. Ez általában néhány blokkig tart…)</translation>
     </message>
     <message>
-        <source>You don't have any NAVTech server added. </source>
-        <translation>Önnek nincs egyetlen NavTech-kiszolgáló sem hozzáadva. </translation>
+        <source>You don't have any ODYNSTech server added. </source>
+        <translation>Önnek nincs egyetlen OdynSTech-kiszolgáló sem hozzáadva. </translation>
     </message>
     <message>
         <source>Private payment</source>
         <translation>Személyes fizetés</translation>
     </message>
     <message>
-        <source>Manage NAVTech servers</source>
-        <translation>NavTech-kiszolgálók kezelése</translation>
+        <source>Manage ODYNSTech servers</source>
+        <translation>OdynSTech-kiszolgálók kezelése</translation>
     </message>
     <message>
         <source>Use full amount</source>
@@ -2382,8 +2382,8 @@
         <translation>Visszajáró másolása</translation>
     </message>
     <message>
-        <source>NAVTech server returned a different number of addresses.</source>
-        <translation>A NavTech-kiszolgáló eltérő számú címet adott vissza.</translation>
+        <source>ODYNSTech server returned a different number of addresses.</source>
+        <translation>A OdynSTech-kiszolgáló eltérő számú címet adott vissza.</translation>
     </message>
     <message>
         <source>Something went wrong:</source>
@@ -2430,12 +2430,12 @@
         <translation>A következő díj lesz levonva</translation>
     </message>
     <message>
-        <source>Navtech server fee:</source>
-        <translation>NavTech-kiszolgáló díja:</translation>
+        <source>OdynStech server fee:</source>
+        <translation>OdynSTech-kiszolgáló díja:</translation>
     </message>
     <message>
-        <source>will be deducted as Navtech fee.</source>
-        <translation>le lesz vonva NavTech díjként.</translation>
+        <source>will be deducted as OdynStech fee.</source>
+        <translation>le lesz vonva OdynSTech díjként.</translation>
     </message>
     <message>
         <source>Total Amount %1</source>
@@ -2569,8 +2569,8 @@
         <translation>Mentés a címjegyzékbe</translation>
     </message>
     <message>
-        <source>A&amp;mount (NAV):</source>
-        <translation>Ö&amp;sszeg (NAV):</translation>
+        <source>A&amp;mount (0DYNS):</source>
+        <translation>Ö&amp;sszeg (0DYNS):</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -3590,8 +3590,8 @@
         <translation>A &lt;category&gt; ez lehet:</translation>
     </message>
     <message>
-        <source>Add a NavTech node to use for private transactions</source>
-        <translation>Egy NavTech-csomópont hozzáadása a személyes tranzakciók használatához</translation>
+        <source>Add a OdynSTech node to use for private transactions</source>
+        <translation>Egy OdynSTech-csomópont hozzáadása a személyes tranzakciók használatához</translation>
     </message>
     <message>
         <source>Adds a ntp server to use for clock syncronization</source>
@@ -4328,7 +4328,7 @@
     </message>
 </context>
 <context>
-    <name>navtechitem</name>
+    <name>odynstechitem</name>
     <message>
         <source>Form</source>
         <translation>Űrlap</translation>
@@ -4351,14 +4351,14 @@
     </message>
 </context>
 <context>
-    <name>navtechsetup</name>
+    <name>odynstechsetup</name>
     <message>
         <source>Dialog</source>
         <translation>Párbeszédablak</translation>
     </message>
     <message>
-        <source>List of Navtech servers currently configured in your wallet to process private payments:</source>
-        <translation>A tárcájában jelenleg beállított NavTech-kiszolgálók listája a személyes fizetések feldolgozásához:</translation>
+        <source>List of OdynStech servers currently configured in your wallet to process private payments:</source>
+        <translation>A tárcájában jelenleg beállított OdynSTech-kiszolgálók listája a személyes fizetések feldolgozásához:</translation>
     </message>
     <message>
         <source>When performing a private payment, a random server from this list will be used.</source>
@@ -4385,12 +4385,12 @@
         <translation>Mentés</translation>
     </message>
     <message>
-        <source>Remove Navtech server</source>
-        <translation>NavTech-kiszolgáló eltávolítása</translation>
+        <source>Remove OdynStech server</source>
+        <translation>OdynSTech-kiszolgáló eltávolítása</translation>
     </message>
     <message>
-        <source>You are about to remove the following Navtech server: </source>
-        <translation>A következő NavTech-kiszolgáló eltávolítására készül: </translation>
+        <source>You are about to remove the following OdynStech server: </source>
+        <translation>A következő OdynSTech-kiszolgáló eltávolítására készül: </translation>
     </message>
     <message>
         <source>Are you sure?</source>
@@ -4401,8 +4401,8 @@
         <translation>Eltávolítva.</translation>
     </message>
     <message>
-        <source>Navtech server</source>
-        <translation>NavTech-kiszolgáló</translation>
+        <source>OdynStech server</source>
+        <translation>OdynSTech-kiszolgáló</translation>
     </message>
     <message>
         <source>Address: </source>

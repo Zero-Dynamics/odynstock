@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SWAPXNAV_H
-#define SWAPXNAV_H
+#ifndef SWAPX0DYNS_H
+#define SWAPX0DYNS_H
 
 #include "aggregationsession.h"
 #include "odynstockunits.h"
@@ -28,12 +28,12 @@
 
 #define DEFAULT_UNIT 0
 
-class SwapXNAVDialog : public QDialog
+class SwapX0DYNSDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    SwapXNAVDialog(QWidget *parent);
+    SwapX0DYNSDialog(QWidget *parent);
 
     void setModel(WalletModel *model);
     void setClientModel(ClientModel *model);
@@ -64,4 +64,4 @@ private Q_SLOTS:
     void Ok();
 };
 
-#endif // SWAPXNAV_H
+#endif // SWAPX0DYNS_H

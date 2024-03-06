@@ -7,7 +7,7 @@
 
 #include <amount.h>
 #include <splitrewards.h>
-#include <swapxnav.h>
+#include <swapx0dyns.h>
 
 #include <QWidget>
 #include <QPushButton>
@@ -98,7 +98,7 @@ private:
     TxViewDelegate *txdelegate;
     TransactionFilterProxy *filter;
 
-    SwapXNAVDialog* swapDialog;
+    SwapX0DYNSDialog* swapDialog;
 
 private Q_SLOTS:
     void updateDisplayUnit();

@@ -98,7 +98,7 @@
     <name>OdynStockGUI</name>
     </context>
 <context>
-    <name>NavTechInit</name>
+    <name>OdynSTechInit</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -193,9 +193,9 @@
     <name>odynstock-core</name>
     </context>
 <context>
-    <name>navtechitem</name>
+    <name>odynstechitem</name>
     </context>
 <context>
-    <name>navtechsetup</name>
+    <name>odynstechsetup</name>
     </context>
 </TS>

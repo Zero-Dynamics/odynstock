@@ -1081,8 +1081,8 @@ Ricorda che criptando il tuo wallet non assicura totalmente i tuoi OdynStock dal
         <translation>Importante notifica di rete.</translation>
     </message>
     <message>
-        <source>The Nav Coin Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. &lt;br&gt;&lt;br&gt;For more information on the proposal, please visit &lt;a href="https://odynstock.org/community-fund"&gt;this link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Would you like the Nav Coin Network to update the staking rewards to setup a decentralised community fund that will help grow the network?</source>
-        <translation>La rete Nav Coin sta attualmente votando per introdurre cambiamenti sul protocollo di consenso. Come membro della rete diamo valore alla tua scelta e la scelta finale sarà soltanto tua. Perfavore inoltra il tuo voto.&lt;br&gt;&lt;br&gt;Per maggiori informazioni sulla proposta, visita&lt;a href="https://odynstock.org/community-fund"&gt;questo link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ti piacerebbe aggiornare le ricompense per lo staking nella rete Nav Coin per creare un fondo comunitario decentralizzato che aiuterà la rete a crescere?</translation>
+        <source>The OdynStock Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. &lt;br&gt;&lt;br&gt;For more information on the proposal, please visit &lt;a href="https://odynstock.org/community-fund"&gt;this link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Would you like the OdynStock Network to update the staking rewards to setup a decentralised community fund that will help grow the network?</source>
+        <translation>La rete OdynStock sta attualmente votando per introdurre cambiamenti sul protocollo di consenso. Come membro della rete diamo valore alla tua scelta e la scelta finale sarà soltanto tua. Perfavore inoltra il tuo voto.&lt;br&gt;&lt;br&gt;Per maggiori informazioni sulla proposta, visita&lt;a href="https://odynstock.org/community-fund"&gt;questo link&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ti piacerebbe aggiornare le ricompense per lo staking nella rete OdynStock per creare un fondo comunitario decentralizzato che aiuterà la rete a crescere?</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -1172,14 +1172,14 @@ Ricorda che criptando il tuo wallet non assicura totalmente i tuoi OdynStock dal
     </message>
 </context>
 <context>
-    <name>NavTechInit</name>
+    <name>OdynSTechInit</name>
     <message>
-        <source>NavTech Setup</source>
-        <translation>NavTech Setup</translation>
+        <source>OdynSTech Setup</source>
+        <translation>OdynSTech Setup</translation>
     </message>
     <message>
-        <source>OdynStock uses an unique parallel cluster of nodes called NavTech to protect the privacy of your transactions.</source>
-        <translation>OdynStock utilizza un cluster parallelo di nodi univoci chiamato NavTech per proteggere la privacy delle transazioni.</translation>
+        <source>OdynStock uses an unique parallel cluster of nodes called OdynSTech to protect the privacy of your transactions.</source>
+        <translation>OdynStock utilizza un cluster parallelo di nodi univoci chiamato OdynSTech per proteggere la privacy delle transazioni.</translation>
     </message>
     <message>
         <source>You will find below the list of the OdynStock Foundation Servers. Feel free to modify this list to include your prefered servers:</source>
@@ -1512,24 +1512,24 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>24H:</translation>
     </message>
     <message>
-        <source>87 312.312 123 NAV</source>
-        <translation>87 312.312 123 NAV</translation>
+        <source>87 312.312 123 0DYNS</source>
+        <translation>87 312.312 123 0DYNS</translation>
     </message>
     <message>
         <source>7D</source>
         <translation>7 Giorni</translation>
     </message>
     <message>
-        <source>1 312.312 NAV</source>
-        <translation>1 312.312 NAV</translation>
+        <source>1 312.312 0DYNS</source>
+        <translation>1 312.312 0DYNS</translation>
     </message>
     <message>
         <source>30D</source>
         <translation>30 Giorni</translation>
     </message>
     <message>
-        <source>132 431.41 NAV</source>
-        <translation>132 431.41 NAV</translation>
+        <source>132 431.41 0DYNS</source>
+        <translation>132 431.41 0DYNS</translation>
     </message>
     <message>
         <source>Cold Staking</source>
@@ -2311,16 +2311,16 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>(Commissione intelligente non ancora inizializzata. Normalmente richiede un'attesa di alcuni blocchi...)</translation>
     </message>
     <message>
-        <source>You don't have any NAVTech server added. </source>
-        <translation>Non hai aggiunto alcun server NAVTech.</translation>
+        <source>You don't have any ODYNSTech server added. </source>
+        <translation>Non hai aggiunto alcun server ODYNSTech.</translation>
     </message>
     <message>
         <source>Private payment</source>
         <translation>Pagamento privato</translation>
     </message>
     <message>
-        <source>Manage NAVTech servers</source>
-        <translation>Gestisci i server NAVTech</translation>
+        <source>Manage ODYNSTech servers</source>
+        <translation>Gestisci i server ODYNSTech</translation>
     </message>
     <message>
         <source>Use full amount</source>
@@ -2387,8 +2387,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Copia resto</translation>
     </message>
     <message>
-        <source>NAVTech server returned a different number of addresses.</source>
-        <translation>Il server NAVTech ha restituito un numero diverso di indirizzi.</translation>
+        <source>ODYNSTech server returned a different number of addresses.</source>
+        <translation>Il server ODYNSTech ha restituito un numero diverso di indirizzi.</translation>
     </message>
     <message>
         <source>Something went wrong:</source>
@@ -2435,12 +2435,12 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>La seguente commissione sarà dedotta</translation>
     </message>
     <message>
-        <source>Navtech server fee:</source>
-        <translation>Tariffa del server Navtech:</translation>
+        <source>OdynStech server fee:</source>
+        <translation>Tariffa del server OdynStech:</translation>
     </message>
     <message>
-        <source>will be deducted as Navtech fee.</source>
-        <translation>verrà detratto come tassa Navtech.</translation>
+        <source>will be deducted as OdynStech fee.</source>
+        <translation>verrà detratto come tassa OdynStech.</translation>
     </message>
     <message>
         <source>Total Amount %1</source>
@@ -2574,8 +2574,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Salva nella Rubrica</translation>
     </message>
     <message>
-        <source>A&amp;mount (NAV):</source>
-        <translation>S&amp;aldo (NAV):</translation>
+        <source>A&amp;mount (0DYNS):</source>
+        <translation>S&amp;aldo (0DYNS):</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -3595,8 +3595,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Valori possibili per &lt;category&gt;:</translation>
     </message>
     <message>
-        <source>Add a NavTech node to use for private transactions</source>
-        <translation>Aggiungi un nodo NavTech da utilizzare per le transazioni private</translation>
+        <source>Add a OdynSTech node to use for private transactions</source>
+        <translation>Aggiungi un nodo OdynSTech da utilizzare per le transazioni private</translation>
     </message>
     <message>
         <source>Adds a ntp server to use for clock syncronization</source>
@@ -4332,7 +4332,7 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     </message>
 </context>
 <context>
-    <name>navtechitem</name>
+    <name>odynstechitem</name>
     <message>
         <source>Form</source>
         <translation>Modulo</translation>
@@ -4355,14 +4355,14 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     </message>
 </context>
 <context>
-    <name>navtechsetup</name>
+    <name>odynstechsetup</name>
     <message>
         <source>Dialog</source>
         <translation>Dialogo</translation>
     </message>
     <message>
-        <source>List of Navtech servers currently configured in your wallet to process private payments:</source>
-        <translation>Elenco dei server Navtech attualmente configurati nel tuo portafoglio per elaborare i pagamenti privati:</translation>
+        <source>List of OdynStech servers currently configured in your wallet to process private payments:</source>
+        <translation>Elenco dei server OdynStech attualmente configurati nel tuo portafoglio per elaborare i pagamenti privati:</translation>
     </message>
     <message>
         <source>When performing a private payment, a random server from this list will be used.</source>
@@ -4389,12 +4389,12 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Salva</translation>
     </message>
     <message>
-        <source>Remove Navtech server</source>
-        <translation>Rimuovere server Navtech</translation>
+        <source>Remove OdynStech server</source>
+        <translation>Rimuovere server OdynStech</translation>
     </message>
     <message>
-        <source>You are about to remove the following Navtech server: </source>
-        <translation>Stai per rimuovere il seguente server Navtech:</translation>
+        <source>You are about to remove the following OdynStech server: </source>
+        <translation>Stai per rimuovere il seguente server OdynStech:</translation>
     </message>
     <message>
         <source>Are you sure?</source>
@@ -4405,8 +4405,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Rimosso.</translation>
     </message>
     <message>
-        <source>Navtech server</source>
-        <translation>Navtech server</translation>
+        <source>OdynStech server</source>
+        <translation>OdynStech server</translation>
     </message>
     <message>
         <source>Address: </source>

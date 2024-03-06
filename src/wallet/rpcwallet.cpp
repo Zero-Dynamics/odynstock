@@ -743,7 +743,7 @@ UniValue privatesendtoaddress(const UniValue& params, bool fHelp)
 
     if (!IsBLSCTEnabled(chainActive.Tip(),Params().GetConsensus()))
     {
-        return JSONRPCError(RPC_MISC_ERROR, "xNAV is not active yet");
+        return JSONRPCError(RPC_MISC_ERROR, "x0DYNS is not active yet");
     }
 
     if (fHelp || params.size() < 2 || params.size() > 6)
@@ -838,7 +838,7 @@ UniValue privatesendmixtoaddress(const UniValue& params, bool fHelp)
 
     if (!IsBLSCTEnabled(chainActive.Tip(),Params().GetConsensus()))
     {
-        return JSONRPCError(RPC_MISC_ERROR, "xNAV is not active yet");
+        return JSONRPCError(RPC_MISC_ERROR, "x0DYNS is not active yet");
     }
 
     if (!GetBoolArg("-blsctmix", DEFAULT_MIX))
@@ -1002,7 +1002,7 @@ UniValue createproposal(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 4)
         throw std::runtime_error(
                 "createproposal \"odynstockaddress\" \"amount\" duration \"desc\" ( fee dump_raw )\n"
-            "\nCreates a proposal for the community fund. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_PROPOSAL_MIN_FEE, view)) + "NAV is required.\n"
+            "\nCreates a proposal for the community fund. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_PROPOSAL_MIN_FEE, view)) + "0DYNS is required.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"odynstockaddress\"       (string, required) The odynstock address where coins would be sent if proposal is approved.\n"
@@ -1123,7 +1123,7 @@ UniValue createtoken(const UniValue& params, bool fHelp)
             "1. \"name\"       (string, required) The name of the token\n"
             "2. max_supply     (numeric, optional) The max supply of the token.\n"
             "\nExamples:\n"
-            + HelpExampleCli("createtoken", "\"BabyNAV\" \"BNAV\" 1000")
+            + HelpExampleCli("createtoken", "\"Baby0DYNS\" \"B0DYNS\" 1000")
                 + HelpExampleCli("createtoken", "\"Wrapped Bitcoin\" \"wBTC\" 21000000")
                 );
 
@@ -1177,12 +1177,12 @@ UniValue registername(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1)
         throw std::runtime_error(
             "registername \"name\"\n"
-            "\nRegister a dotNav name.\n"
+            "\nRegister a dotOdynS name.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"name\"       (string, required) The name to register\n"
             "\nExamples:\n"
-            + HelpExampleCli("registername", "satoshi.nav")
+            + HelpExampleCli("registername", "satoshi.0dyns")
                 );
 
 
@@ -1197,7 +1197,7 @@ UniValue registername(const UniValue& params, bool fHelp)
 
     std::string sName = params[0].get_str();
 
-    if (!DotNav::IsValid(sName))
+    if (!DotOdynS::IsValid(sName))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid name");
 
     blsctKey sk;
@@ -1207,17 +1207,17 @@ UniValue registername(const UniValue& params, bool fHelp)
     if (!pwalletMain->GetBLSCTSpendKey(sk))
         throw JSONRPCError(RPC_TYPE_ERROR, "Wallet not available");
 
-    blsctKey pk = sk.PrivateChildHash(SerializeHash("name/"+DotNav::GetHashName(sName).ToString()));
+    blsctKey pk = sk.PrivateChildHash(SerializeHash("name/"+DotOdynS::GetHashName(sName).ToString()));
     bls::G1Element pkg1 = pk.GetG1Element();
 
-    if (view.HaveNameRecord(DotNav::GetHashIdName(sName, pkg1)))
+    if (view.HaveNameRecord(DotOdynS::GetHashIdName(sName, pkg1)))
         throw JSONRPCError(RPC_TYPE_ERROR, "You already reserved that name, use updatename instead");
-    if (view.HaveNameData(DotNav::GetHashName(sName)))
+    if (view.HaveNameData(DotOdynS::GetHashName(sName)))
         throw JSONRPCError(RPC_TYPE_ERROR, "That name is already registered");
 
     pwalletMain->AddBLSCTTokenKey(pk);
 
-    SendMoney(address.Get(), 0, fSubtractFeeFromAmount, wtx, true, true, false, 0, DotNav::GetRegisterProgram(sName, pkg1));
+    SendMoney(address.Get(), 0, fSubtractFeeFromAmount, wtx, true, true, false, 0, DotOdynS::GetRegisterProgram(sName, pkg1));
 
     return wtx.GetHash().GetHex();
 }
@@ -1234,12 +1234,12 @@ UniValue genkeyname(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1)
         throw std::runtime_error(
             "genkeyname \"name\"\n"
-            "\nGenerates a public key for receiving a dotNav name.\n"
+            "\nGenerates a public key for receiving a dotOdynS name.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"name\"       (string, required) The name \n"
             "\nExamples:\n"
-            + HelpExampleCli("genkeyname", "satoshi.nav")
+            + HelpExampleCli("genkeyname", "satoshi.0dyns")
                 );
 
     if (!params[0].isStr() )
@@ -1247,7 +1247,7 @@ UniValue genkeyname(const UniValue& params, bool fHelp)
 
     std::string sName = params[0].get_str();
 
-    if (!DotNav::IsValid(sName))
+    if (!DotOdynS::IsValid(sName))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid name");
 
     blsctKey sk;
@@ -1257,7 +1257,7 @@ UniValue genkeyname(const UniValue& params, bool fHelp)
     if (!pwalletMain->GetBLSCTSpendKey(sk))
         throw JSONRPCError(RPC_TYPE_ERROR, "Wallet not available");
 
-    blsctKey pk = sk.PrivateChildHash(SerializeHash("name/"+DotNav::GetHashName(sName).ToString()));
+    blsctKey pk = sk.PrivateChildHash(SerializeHash("name/"+DotOdynS::GetHashName(sName).ToString()));
     bls::G1Element pkg1 = pk.GetG1Element();
 
     pwalletMain->AddBLSCTTokenKey(pk);
@@ -1276,12 +1276,12 @@ UniValue renewname(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1)
         throw std::runtime_error(
             "renewname \"name\"\n"
-            "\nRenews a dotNav name.\n"
+            "\nRenews a dotOdynS name.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"name\"       (string, required) The name to renew\n"
             "\nExamples:\n"
-            + HelpExampleCli("renewname", "satoshi.nav")
+            + HelpExampleCli("renewname", "satoshi.0dyns")
                 );
 
 
@@ -1296,15 +1296,15 @@ UniValue renewname(const UniValue& params, bool fHelp)
 
     std::string sName = params[0].get_str();
 
-    if (!DotNav::IsValid(sName))
+    if (!DotOdynS::IsValid(sName))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid name");
 
-    if (!view.HaveNameData(DotNav::GetHashName(sName)))
+    if (!view.HaveNameData(DotOdynS::GetHashName(sName)))
         throw JSONRPCError(RPC_TYPE_ERROR, "That name is not registered");
 
-    CAmount fee = GetConsensusParameter(Consensus::CONSENSUS_PARAM_NAVNS_FEE, view);
+    CAmount fee = GetConsensusParameter(Consensus::CONSENSUS_PARAM_ODYNSNS_FEE, view);
 
-    SendMoney(address.Get(), fee, fSubtractFeeFromAmount, wtx, true, true, false, 0, DotNav::GetRenewProgram(sName));
+    SendMoney(address.Get(), fee, fSubtractFeeFromAmount, wtx, true, true, false, 0, DotOdynS::GetRenewProgram(sName));
 
     return wtx.GetHash().GetHex();
 }
@@ -1319,14 +1319,14 @@ UniValue resolvename(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1)
         throw std::runtime_error(
             "resolvename \"name\"\n"
-            "\nResolves a dotNav name.\n"
+            "\nResolves a dotOdynS name.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"name\"       (string, required) The name to resolve\n"
             "2. \"subdomains\" (boolean, optional) Include subdomains\n"
             "\nExamples:\n"
-            + HelpExampleCli("resolvename", "satoshi.nav")
-            + HelpExampleCli("resolvename", "satoshi.nav true")
+            + HelpExampleCli("resolvename", "satoshi.0dyns")
+            + HelpExampleCli("resolvename", "satoshi.0dyns true")
                 );
 
     if (!params[0].isStr())
@@ -1350,23 +1350,23 @@ UniValue resolvename(const UniValue& params, bool fHelp)
         sName = sFullName;
     }
 
-    if (subdomain != "" && !DotNav::IsValidKey(subdomain))
+    if (subdomain != "" && !DotOdynS::IsValidKey(subdomain))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid sub domain");
 
-    if (!DotNav::IsValid(sName))
+    if (!DotOdynS::IsValid(sName))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid name");
 
-    if (!view.HaveNameData(DotNav::GetHashName(sName)))
+    if (!view.HaveNameData(DotOdynS::GetHashName(sName)))
         return ret;
 
     NameDataValues data;
 
-    if (!view.GetNameData(DotNav::GetHashName(sName), data))
+    if (!view.GetNameData(DotOdynS::GetHashName(sName), data))
     {
         return ret;
     }
 
-    auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight, subdomain);
+    auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight, subdomain);
 
     for (auto &it: mapData) {
         if (it.first.substr(0,1) == "_") {
@@ -1375,7 +1375,7 @@ UniValue resolvename(const UniValue& params, bool fHelp)
     }
 
     if (getSubdomains && subdomain == "") {
-        auto subData = DotNav::ConsolidateSubdomains(data, chainActive.Tip()->nHeight);
+        auto subData = DotOdynS::ConsolidateSubdomains(data, chainActive.Tip()->nHeight);
         UniValue subUniMain(UniValue::VOBJ);
 
         for (auto &it: subData) {
@@ -1411,14 +1411,14 @@ UniValue updatename(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 3)
         throw std::runtime_error(
             "updatename \"name\" \"key\" \"value\"\n"
-            "\nUpdates a dotNav name.\n"
+            "\nUpdates a dotOdynS name.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"name\"       (string, required) The name to update\n"
             "1. \"key\"        (string, required) The parameter to update\n"
             "1. \"value\"      (string, required) The value to set\n"
             "\nExamples:\n"
-            + HelpExampleCli("updatename", "satoshi.nav nav NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ")
+            + HelpExampleCli("updatename", "satoshi.0dyns 0dyns NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ")
                 );
 
 
@@ -1444,15 +1444,15 @@ UniValue updatename(const UniValue& params, bool fHelp)
         sName = sFullName;
     }
 
-    if (subdomain != "" && !DotNav::IsValidKey(subdomain))
+    if (subdomain != "" && !DotOdynS::IsValidKey(subdomain))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid sub domain");
 
-    if (!DotNav::IsValid(sName))
+    if (!DotOdynS::IsValid(sName))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid name");
 
     std::string sKey = params[1].get_str();
 
-    if (!DotNav::IsValidKey(sKey))
+    if (!DotOdynS::IsValidKey(sKey))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid key");
 
     std::string sValue = params[2].get_str();
@@ -1464,15 +1464,15 @@ UniValue updatename(const UniValue& params, bool fHelp)
     if (!pwalletMain->GetBLSCTSpendKey(sk))
         throw JSONRPCError(RPC_TYPE_ERROR, "Wallet not available");
 
-    blsctKey pk = sk.PrivateChildHash(SerializeHash("name/"+DotNav::GetHashName(sName).ToString()));
+    blsctKey pk = sk.PrivateChildHash(SerializeHash("name/"+DotOdynS::GetHashName(sName).ToString()));
     bls::G1Element pkg1 = pk.GetG1Element();
 
-    if (!view.HaveNameRecord(DotNav::GetHashIdName(sName, pkg1)))
+    if (!view.HaveNameRecord(DotOdynS::GetHashIdName(sName, pkg1)))
         throw JSONRPCError(RPC_TYPE_ERROR, "That name is not registered");
 
     NameRecordValue recordvalue;
 
-    if (!view.GetNameRecord(DotNav::GetHashIdName(sName, pkg1), recordvalue))
+    if (!view.GetNameRecord(DotOdynS::GetHashIdName(sName, pkg1), recordvalue))
         throw JSONRPCError(RPC_TYPE_ERROR, "Can't get that name");
 
     if (chainActive.Tip()->nHeight-recordvalue.height < 6)
@@ -1483,20 +1483,20 @@ UniValue updatename(const UniValue& params, bool fHelp)
     NameDataValues data;
     uint64_t dataSize = 0;
 
-    if (!view.HaveNameData(DotNav::GetHashName(sName)))
+    if (!view.HaveNameData(DotOdynS::GetHashName(sName)))
         first = true;
     else {
-        if (!view.GetNameData(DotNav::GetHashName(sName), data))
+        if (!view.GetNameData(DotOdynS::GetHashName(sName), data))
         {
             throw JSONRPCError(RPC_TYPE_ERROR, "Could not find the name");
         }
-        auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight);
+        auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight);
         if (!mapData.count("_key"))
         {
             first = true;
         } else {
             mapData[sKey] = sValue;
-            dataSize = DotNav::CalculateSize(mapData);
+            dataSize = DotOdynS::CalculateSize(mapData);
             try {
                 if (bls::G1Element::FromByteVector(ParseHex(mapData["_key"])) != pkg1)
                 {
@@ -1508,9 +1508,9 @@ UniValue updatename(const UniValue& params, bool fHelp)
         }
     }
 
-    uint64_t fee = first ? GetConsensusParameter(Consensus::CONSENSUS_PARAM_NAVNS_FEE, view) : std::floor(dataSize/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTNAV_FEE_EXTRADATA, view);
+    uint64_t fee = first ? GetConsensusParameter(Consensus::CONSENSUS_PARAM_ODYNSNS_FEE, view) : std::floor(dataSize/GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_MAXDATA, view))*GetConsensusParameter(Consensus::CONSENSUS_PARAMS_DOTODYNS_FEE_EXTRADATA, view);
 
-    auto program = first ? DotNav::GetUpdateFirstProgram(sName, pkg1, sKey, sValue, subdomain) : DotNav::GetUpdateProgram(sName, pkg1, sKey, sValue, subdomain);
+    auto program = first ? DotOdynS::GetUpdateFirstProgram(sName, pkg1, sKey, sValue, subdomain) : DotOdynS::GetUpdateProgram(sName, pkg1, sKey, sValue, subdomain);
 
     SendMoney(address.Get(), fee, fSubtractFeeFromAmount, wtx, true, true, false, 0, program);
 
@@ -1535,7 +1535,7 @@ UniValue createnft(const UniValue& params, bool fHelp)
             "1. \"scheme\"     (string, required) The scheme for the NFT metadata\n"
             "2. max_supply     (numeric, optional) The max supply of the NFT.\n"
             "\nExamples:\n"
-            + HelpExampleCli("createnft", "\"NAV Artwork\" \"{'resource': 'url'}\" 1000")
+            + HelpExampleCli("createnft", "\"0DYNS Artwork\" \"{'resource': 'url'}\" 1000")
             + HelpExampleCli("createnft", "\"Game Item\" \"{'type': 'string', 'power': 'int'}\" 100")
                 );
 
@@ -1593,7 +1593,7 @@ UniValue minttoken(const UniValue& params, bool fHelp)
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"tokenid\"     (string, required) The token id\n"
-            "2. \"destination\" (string, required) The xNAV destination addressn"
+            "2. \"destination\" (string, required) The x0DYNS destination addressn"
             "3. amount        (string, required) The amount to mint\n"
             "\nExamples:\n"
             + HelpExampleCli("minttoken", "\"a7be93b41e708d21d6c94920401ca5fd93dffe33d2bc197077e3b4fafcc8fe45eebb359b4c8f6bc15a303cc2971a0c48\" \"xNUNs2vtjr6QDL1NiL8TDHgmbuEo5WcY2K2jQ8ATj9pko8wkJ9RutkFQKBCtn6SsBjy6nK5ftofFyLFnAHAynreQCZjuE7dCWVxCX5DCFB2bjx87KvbqVVRCs3KBzdDre7c5FUy7QLo\" 1000")
@@ -1641,7 +1641,7 @@ UniValue minttoken(const UniValue& params, bool fHelp)
 
     COdynStockAddress dest(address);
     if (!dest.IsValid() || !dest.IsPrivateAddress(Params()))
-        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an xNAV address");
+        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an x0DYNS address");
 
     // Supply
     CAmount amount = AmountFromValue(params[2]);
@@ -1681,7 +1681,7 @@ UniValue mintnft(const UniValue& params, bool fHelp)
                 "\nArguments:\n"
             "1. \"tokenid\"     (string, required) The token id\n"
             "1. \"nftid\"       (int, required) The ntf id\n"
-            "2. \"destination\" (string, required) The xNAV destination addressn"
+            "2. \"destination\" (string, required) The x0DYNS destination addressn"
             "3. \"metadata\"    (string, required) The nft metadata\n"
             "\nExamples:\n"
             + HelpExampleCli("mintnft", "\"a7be93b41e708d21d6c94920401ca5fd93dffe33d2bc197077e3b4fafcc8fe45eebb359b4c8f6bc15a303cc2971a0c48\" 1 \"xNUNs2vtjr6QDL1NiL8TDHgmbuEo5WcY2K2jQ8ATj9pko8wkJ9RutkFQKBCtn6SsBjy6nK5ftofFyLFnAHAynreQCZjuE7dCWVxCX5DCFB2bjx87KvbqVVRCs3KBzdDre7c5FUy7QLo\" \"{'resource':'https://odynstock.org/logo.png'}\"")
@@ -1731,7 +1731,7 @@ UniValue mintnft(const UniValue& params, bool fHelp)
 
     COdynStockAddress dest(address);
     if (!dest.IsValid() || !dest.IsPrivateAddress(Params()))
-        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an xNAV address");
+        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an x0DYNS address");
 
     // Supply
     std::string metadata = params[3].get_str();
@@ -1806,7 +1806,7 @@ UniValue burntoken(const UniValue& params, bool fHelp)
 
     COdynStockAddress dest(address);
     if (!dest.IsValid() || !dest.IsPrivateAddress(Params()))
-        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an xNAV address");
+        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an x0DYNS address");
 
     // Burn amount
     CAmount amount = AmountFromValue(params[1]);
@@ -1845,7 +1845,7 @@ UniValue sendtoken(const UniValue& params, bool fHelp)
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"tokenid\"     (string, required) The token id\n"
-            "2. \"destination\" (string, required) The xNAV destination addressn"
+            "2. \"destination\" (string, required) The x0DYNS destination addressn"
             "3. amount        (string, required) The amount to mint\n"
             "\nExamples:\n"
             + HelpExampleCli("sendtoken", "\"a7be93fd93dffe33d2bc197077e3b4fafcc8fe45eebb359b4c8f6bc15a303cc2971a0c48\" \"xNUNs2vtjr6QDL1NiL8TDHgmbuEo5WcY2K2jQ8ATj9pko8wkJ9RutkFQKBCtn6SsBjy6nK5ftofFyLFnAHAynreQCZjuE7dCWVxCX5DCFB2bjx87KvbqVVRCs3KBzdDre7c5FUy7QLo\" 1000")
@@ -1878,7 +1878,7 @@ UniValue sendtoken(const UniValue& params, bool fHelp)
 
     COdynStockAddress dest(address);
     if (!dest.IsValid() || !dest.IsPrivateAddress(Params()))
-        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an xNAV address");
+        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an x0DYNS address");
 
     // Supply
     CAmount amount = AmountFromValue(params[2]);
@@ -1908,7 +1908,7 @@ UniValue sendnft(const UniValue& params, bool fHelp)
                 "\nArguments:\n"
             "1. \"tokenid\"     (string, required) The token id\n"
             "2. \"nftid\"       (int, required) The nft id\n"
-            "3. \"destination\" (string, required) The xNAV destination addressn"
+            "3. \"destination\" (string, required) The x0DYNS destination addressn"
             "\nExamples:\n"
             + HelpExampleCli("sendnft", "\"a7be93fd93dffe33d2bc197077e3b4fafcc8fe45eebb359b4c8f6bc15a303cc2971a0c48\" 1 \"xNUNs2vtjr6QDL1NiL8TDHgmbuEo5WcY2K2jQ8ATj9pko8wkJ9RutkFQKBCtn6SsBjy6nK5ftofFyLFnAHAynreQCZjuE7dCWVxCX5DCFB2bjx87KvbqVVRCs3KBzdDre7c5FUy7QLo\"")
                 );
@@ -1945,7 +1945,7 @@ UniValue sendnft(const UniValue& params, bool fHelp)
 
     COdynStockAddress dest(address);
     if (!dest.IsValid() || !dest.IsPrivateAddress(Params()))
-        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an xNAV address");
+        throw JSONRPCError(RPC_TYPE_ERROR, "Destination must be an x0DYNS address");
 
     EnsureWalletIsUnlocked();
 
@@ -2005,7 +2005,7 @@ UniValue proposeconsensuschange(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 2 || !params[0].isNum() || !params[1].isNum())
         throw std::runtime_error(
                 "proposeconsensuschange parameter value ( fee dump_raw )\n"
-            "\nCreates a proposal to the DAO for changing a consensus paremeter. Min fee of " + FormatMoney(nMinFee) + "NAV is required.\n"
+            "\nCreates a proposal to the DAO for changing a consensus paremeter. Min fee of " + FormatMoney(nMinFee) + "0DYNS is required.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. parameter        (numeric, required) The parameter id as specified in the output of the getconsensusparameters rpc command.\n"
@@ -2216,7 +2216,7 @@ UniValue createconsultation(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1)
         throw std::runtime_error(
                 "createconsultation \"question\" ( min max range fee dump_raw )\n"
-            "\nCreates a consultation for the DAO. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_CONSULTATION_MIN_FEE, view)) + "NAV is required.\n"
+            "\nCreates a consultation for the DAO. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_CONSULTATION_MIN_FEE, view)) + "0DYNS is required.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"question\"       (string, required) The question of the new consultation.\n"
@@ -2312,7 +2312,7 @@ UniValue createconsultationwithanswers(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 2)
         throw std::runtime_error(
                 "createconsultationwithanswers \"question\" \"[answers]\" ( maxanswers admitsanswerproposals fee dump_raw )\n"
-            "\nCreates a consultation for the DAO. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_CONSULTATION_MIN_FEE, view)) + "NAV is required.\n"
+            "\nCreates a consultation for the DAO. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_CONSULTATION_MIN_FEE, view)) + "0DYNS is required.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"question\"            (string, required) The question of the new consultation.\n"
@@ -2421,7 +2421,7 @@ UniValue createpaymentrequest(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 3)
         throw std::runtime_error(
                 "createpaymentrequest \"hash\" \"amount\" \"id\" ( fee dump_raw )\n"
-            "\nCreates a proposal to withdraw funds from the community fund. Fee: 0.0001 NAV\n"
+            "\nCreates a proposal to withdraw funds from the community fund. Fee: 0.0001 0DYNS\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"hash\"               (string, required) The hash of the proposal from which you want to withdraw funds. It must be approved.\n"
@@ -2477,7 +2477,7 @@ UniValue createpaymentrequest(const UniValue& params, bool fHelp)
     std::string sRandom = random_string(16);
 
     std::string Secret = sRandom + "I kindly ask to withdraw " +
-            std::to_string(nReqAmount) + "NAV from the proposal " +
+            std::to_string(nReqAmount) + "0DYNS from the proposal " +
             proposal.hash.ToString() + ". Payment request id: " + id;
 
     CHashWriter ss(SER_GETHASH, 0);
@@ -2557,7 +2557,7 @@ UniValue proposeanswer(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 2)
         throw std::runtime_error(
                 "proposeanswer \"hash\" \"answer\" ( fee dump_raw )\n"
-            "\nProposes an answer for an already existing consultation of the DAO. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_CONSULTATION_ANSWER_MIN_FEE, view)) + "NAV is required.\n"
+            "\nProposes an answer for an already existing consultation of the DAO. Min fee of " + FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_CONSULTATION_ANSWER_MIN_FEE, view)) + "0DYNS is required.\n"
             + HelpRequiringPassphrase() +
                 "\nArguments:\n"
             "1. \"hash\"         (string, required) The hash of the already existing consultation.\n"
@@ -6389,11 +6389,11 @@ static const CRPCCommand commands[] =
   { "wallet",             "walletpassphrase",         &walletpassphrase,         true  },
   { "wallet",             "removeprunedfunds",        &removeprunedfunds,        true  },
   { "wallet",             "resolveopenalias",         &resolveopenalias,         true  },
-  { "dotnav",             "registername",             &registername,             true  },
-  { "dotnav",             "renewname",                &renewname,                true  },
-  { "dotnav",             "updatename",               &updatename,               true  },
-  { "dotnav",             "resolvename",              &resolvename,              true  },
-  { "dotnav",             "genkeyname",               &genkeyname,               true  },
+  { "dotodyns",             "registername",             &registername,             true  },
+  { "dotodyns",             "renewname",                &renewname,                true  },
+  { "dotodyns",             "updatename",               &updatename,               true  },
+  { "dotodyns",             "resolvename",              &resolvename,              true  },
+  { "dotodyns",             "genkeyname",               &genkeyname,               true  },
 };
 
 void RegisterWalletRPCCommands(CRPCTable &tableRPC)

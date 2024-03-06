@@ -8,13 +8,13 @@
 #define ODYNSTOCK_NAMES_H
 
 #include <consensus/programs.h>
-#include <dotnav/namedata.h>
+#include <dotodyns/namedata.h>
 #include <utilstrencodings.h>
 #include <util.h>
 #include <hash.h>
 #include <locale>
 
-namespace DotNav
+namespace DotOdynS
 {
 
 std::string to_lower(const std::string& str);

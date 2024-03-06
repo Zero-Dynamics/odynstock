@@ -38,7 +38,7 @@ IntroPage::IntroPage(QWidget *parent)
                           "      coins sent to the cold staking address.<br>"
                           "You can optionally specify a third address, which would hold the<br>"
                           "voting rights. This address should belong to a wallet compatible<br>"
-                          "with the light wallet voting features like NavCash.<br>"
+                          "with the light wallet voting features like OdynStock.<br>"
                           "These addresses will be used to generate a cold staking address."));
     label->setWordWrap(true);
 

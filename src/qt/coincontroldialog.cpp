@@ -633,7 +633,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog, CAmoun
     ccAmount = nAmount;
 
     // actually update labels
-    int nDisplayUnit = OdynStockUnits::NAV;
+    int nDisplayUnit = OdynStockUnits::ODYNS;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 

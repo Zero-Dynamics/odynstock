@@ -57,9 +57,9 @@ public:
     enum Unit
     {
         // Base currencies
-        NAV, // OdynStock
-        mNAV, // back compat
-        uNAV, // back compat
+        ODYNS, // OdynStock
+        mODYNS, // back compat
+        uODYNS, // back compat
         BTC, // Bitcoin
         EUR, // Euro
         USD, // United States Dollar

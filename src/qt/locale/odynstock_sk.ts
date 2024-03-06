@@ -588,7 +588,7 @@
     </message>
 </context>
 <context>
-    <name>NavTechInit</name>
+    <name>OdynSTechInit</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -2338,14 +2338,14 @@ The network does not appear to fully agree! Some miners appear to be experiencin
     </message>
 </context>
 <context>
-    <name>navtechitem</name>
+    <name>odynstechitem</name>
     <message>
         <source>Form</source>
         <translation>Forma</translation>
     </message>
     </context>
 <context>
-    <name>navtechsetup</name>
+    <name>odynstechsetup</name>
     <message>
         <source>Remove</source>
         <translation>Odstrániť</translation>

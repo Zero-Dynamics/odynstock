@@ -185,7 +185,7 @@ bool parseOdynStockURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!OdynStockUnits::parse(OdynStockUnits::NAV, i->second, &rv.amount))
+                if(!OdynStockUnits::parse(OdynStockUnits::ODYNS, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -216,7 +216,7 @@ QString formatOdynStockURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(OdynStockUnits::format(OdynStockUnits::NAV, info.amount, false, OdynStockUnits::separatorNever));
+        ret += QString("?amount=%1").arg(OdynStockUnits::format(OdynStockUnits::ODYNS, info.amount, false, OdynStockUnits::separatorNever));
         paramCount++;
     }
 

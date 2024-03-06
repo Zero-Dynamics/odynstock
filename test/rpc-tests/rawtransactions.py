@@ -80,7 +80,7 @@ class RawTransactionsTest(OdynStockTestFramework):
         #use balance deltas instead of absolute values
         bal = self.nodes[2].getbalance()
 
-        # send 1.2 NAV to msig adr
+        # send 1.2 0DYNS to msig adr
         txId = self.nodes[0].sendtoaddress(mSigObj, 1.2)
         self.sync_all()
         slow_gen(self.nodes[0], 1)

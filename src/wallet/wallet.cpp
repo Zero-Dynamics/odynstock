@@ -735,7 +735,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
                 if (!CreateBLSCTOutput(ephemeralKey, nonce, blsctOut, dk, thisOut, "Staking reward", gammaOuts, strFailReason, false, vBLSSignatures))
                 {
-                    return error("%s: Could not redirect stakes to xNAV: %s\n", __func__, strFailReason);
+                    return error("%s: Could not redirect stakes to x0DYNS: %s\n", __func__, strFailReason);
                 }
 
                 txNew.vout.push_back(blsctOut);
@@ -3869,7 +3869,7 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt
                             return false;
                         }
 
-                        blsctKey ns = s.PrivateChildHash(SerializeHash("name/"+DotNav::GetHashName(program.sParameters[0]).ToString()));
+                        blsctKey ns = s.PrivateChildHash(SerializeHash("name/"+DotOdynS::GetHashName(program.sParameters[0]).ToString()));
 
                         if (ns.GetG1Element() != program.kParameters[0])
                             strFailReason = strprintf("Can't get name private key");
@@ -3887,18 +3887,18 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt
                             return false;
                         }
 
-                        blsctKey ns = s.PrivateChildHash(SerializeHash("name/"+DotNav::GetHashName(program.sParameters[0]).ToString()));
+                        blsctKey ns = s.PrivateChildHash(SerializeHash("name/"+DotOdynS::GetHashName(program.sParameters[0]).ToString()));
 
                         {
                             CStateViewCache inputs(pcoinsTip);
 
                             NameDataValues data;
-                            if (!inputs.GetNameData(DotNav::GetHashName(program.sParameters[0]), data))
+                            if (!inputs.GetNameData(DotOdynS::GetHashName(program.sParameters[0]), data))
                             {
                                 strFailReason = strprintf("Could not find the name");
                                 return false;
                             }
-                            auto mapData = DotNav::Consolidate(data, chainActive.Tip()->nHeight);
+                            auto mapData = DotOdynS::Consolidate(data, chainActive.Tip()->nHeight);
                             if (!mapData.count("_key"))
                             {
                                 strFailReason = strprintf("Name has not an associated key");
@@ -6040,13 +6040,13 @@ std::string CWallet::formatDisplayAmount(CAmount amount) {
     std::stringstream n;
     n.imbue(std::locale(""));
     n << std::fixed << std::setprecision(8) << amount/COIN;
-    std::string nav_amount = n.str();
-    if(nav_amount.at(nav_amount.length()-1) == '.') {
-        nav_amount = nav_amount.substr(0, nav_amount.size()-1);
+    std::string odyns_amount = n.str();
+    if(odyns_amount.at(odyns_amount.length()-1) == '.') {
+        odyns_amount = odyns_amount.substr(0, odyns_amount.size()-1);
     }
-    nav_amount.append(" NAV");
+    odyns_amount.append(" 0DYNS");
 
-    return nav_amount;
+    return odyns_amount;
 }
 
 CKeyPool::CKeyPool()

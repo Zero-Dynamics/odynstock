@@ -49,7 +49,7 @@ public:
         CAmount val = parse(input, &valid);
         if(valid)
         {
-            input = OdynStockUnits::format(OdynStockUnits::NAV, val, false, OdynStockUnits::separatorAlways);
+            input = OdynStockUnits::format(OdynStockUnits::ODYNS, val, false, OdynStockUnits::separatorAlways);
             lineEdit()->setText(input);
         }
     }
@@ -61,7 +61,7 @@ public:
 
     void setValue(CAmount val)
     {
-        lineEdit()->setText(OdynStockUnits::format(OdynStockUnits::NAV, val, false, OdynStockUnits::separatorAlways));
+        lineEdit()->setText(OdynStockUnits::format(OdynStockUnits::ODYNS, val, false, OdynStockUnits::separatorAlways));
         Q_EMIT valueChanged();
     }
 
@@ -87,7 +87,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(OdynStockUnits::format(OdynStockUnits::NAV, OdynStockUnits::maxMoney(), false, OdynStockUnits::separatorAlways));
+            int w = fm.width(OdynStockUnits::format(OdynStockUnits::ODYNS, OdynStockUnits::maxMoney(), false, OdynStockUnits::separatorAlways));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -124,7 +124,7 @@ private:
     CAmount parse(const QString &text, bool *valid_out=0) const
     {
         CAmount val = 0;
-        bool valid = OdynStockUnits::parse(OdynStockUnits::NAV, text, &val);
+        bool valid = OdynStockUnits::parse(OdynStockUnits::ODYNS, text, &val);
         if(valid)
         {
             if(val < 0 || val > OdynStockUnits::maxMoney())
@@ -269,7 +269,7 @@ void OdynStockAmountField::setDisplayUnit(int newUnit)
 
 void OdynStockAmountField::valueDidChange()
 {
-    if (nCurrentUnit != OdynStockUnits::NAV)
+    if (nCurrentUnit != OdynStockUnits::ODYNS)
         unit->setText(" " + tr("or") + " " + OdynStockUnits::formatWithUnit(nCurrentUnit, value()));
     else
         unit->setText(" " + tr("or") + " " + OdynStockUnits::formatWithUnit(OdynStockUnits::BTC, value()));
