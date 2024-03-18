@@ -10,7 +10,7 @@ Some notes on how to build OdynStock Core in Unix.
 You can easily build the dependencies by running the [OdynStock dev tools script](https://github.com/zero-dynamics/stock-dev-tools/blob/master/ubuntu-20.04-odynstock-core-dev-setup.sh) using the command bellow.
 
 ```bash
-curl -o- https://raw.githubusercontent.com/zero-dynamics/stock-dev-tools/master/ubuntu-20.04-odynstock-core-dev-setup.sh | bash
+curl -o- https://raw.githubusercontent.com/zero-dynamics/installation-tools/master/ubuntu-20.04-stock-core-dev-setup.sh | bash
 ```
 
 From the odynstock-core directory, you will still need to:
