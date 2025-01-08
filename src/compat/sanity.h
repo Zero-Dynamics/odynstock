@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_COMPAT_SANITY_H
-#define ODYNSTOCK_COMPAT_SANITY_H
+#ifndef STOCK_COMPAT_SANITY_H
+#define STOCK_COMPAT_SANITY_H
 
 bool glibc_sanity_test();
 bool glibcxx_sanity_test();
 
-#endif // ODYNSTOCK_COMPAT_SANITY_H
+#endif // STOCK_COMPAT_SANITY_H

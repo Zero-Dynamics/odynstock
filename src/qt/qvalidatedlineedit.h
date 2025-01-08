@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_QVALIDATEDLINEEDIT_H
-#define ODYNSTOCK_QT_QVALIDATEDLINEEDIT_H
+#ifndef STOCK_QT_QVALIDATEDLINEEDIT_H
+#define STOCK_QT_QVALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -40,4 +40,4 @@ private Q_SLOTS:
     void checkValidity();
 };
 
-#endif // ODYNSTOCK_QT_QVALIDATEDLINEEDIT_H
+#endif // STOCK_QT_QVALIDATEDLINEEDIT_H

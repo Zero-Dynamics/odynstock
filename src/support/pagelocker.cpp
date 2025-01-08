@@ -5,7 +5,7 @@
 #include <support/pagelocker.h>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/odynstock-config.h>
+#include <config/stock-config.h>
 #endif
 
 #ifdef WIN32

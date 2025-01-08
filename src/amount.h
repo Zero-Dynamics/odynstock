@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_AMOUNT_H
-#define ODYNSTOCK_AMOUNT_H
+#ifndef STOCK_AMOUNT_H
+#define STOCK_AMOUNT_H
 
 #include <serialize.h>
 
@@ -21,7 +21,7 @@ extern const std::string CURRENCY_UNIT;
 
 /** No amount larger than this (in satoshi) is valid.
  *
- * Note that this constant is *not* the total money supply, which in OdynStock
+ * Note that this constant is *not* the total money supply, which in Stock
  * currently happens to be less than 21,000,000 0DYNS for various reasons, but
  * rather a sanity check. As this sanity check is used by consensus-critical
  * validation code, the exact value of the MAX_MONEY constant is consensus
@@ -69,4 +69,4 @@ public:
     }
 };
 
-#endif //  ODYNSTOCK_AMOUNT_H
+#endif //  STOCK_AMOUNT_H

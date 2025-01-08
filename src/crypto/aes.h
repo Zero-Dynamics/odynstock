@@ -4,8 +4,8 @@
 //
 // C++ wrapper around ctaes, a constant-time AES implementation
 
-#ifndef ODYNSTOCK_CRYPTO_AES_H
-#define ODYNSTOCK_CRYPTO_AES_H
+#ifndef STOCK_CRYPTO_AES_H
+#define STOCK_CRYPTO_AES_H
 
 extern "C" {
 #include <crypto/ctaes/ctaes.h>
@@ -115,4 +115,4 @@ private:
     unsigned char iv[AES_BLOCKSIZE];
 };
 
-#endif // ODYNSTOCK_CRYPTO_AES_H
+#endif // STOCK_CRYPTO_AES_H

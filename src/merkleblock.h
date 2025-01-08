@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_MERKLEBLOCK_H
-#define ODYNSTOCK_MERKLEBLOCK_H
+#ifndef STOCK_MERKLEBLOCK_H
+#define STOCK_MERKLEBLOCK_H
 
 #include <serialize.h>
 #include <uint256.h>
@@ -154,4 +154,4 @@ public:
     }
 };
 
-#endif // ODYNSTOCK_MERKLEBLOCK_H
+#endif // STOCK_MERKLEBLOCK_H

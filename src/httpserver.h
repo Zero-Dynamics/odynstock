@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_HTTPSERVER_H
-#define ODYNSTOCK_HTTPSERVER_H
+#ifndef STOCK_HTTPSERVER_H
+#define STOCK_HTTPSERVER_H
 
 #include <string>
 #include <stdint.h>
@@ -145,4 +145,4 @@ private:
     struct event* ev;
 };
 
-#endif // ODYNSTOCK_HTTPSERVER_H
+#endif // STOCK_HTTPSERVER_H

@@ -5,7 +5,7 @@
 #include <qt/overviewpage.h>
 #include <ui_overviewpage.h>
 
-#include <qt/odynstockunits.h>
+#include <qt/stockunits.h>
 #include <qt/clientmodel.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
@@ -30,7 +30,7 @@ class TxViewDelegate : public QAbstractItemDelegate
     Q_OBJECT
 public:
     TxViewDelegate(const PlatformStyle *platformStyle):
-        QAbstractItemDelegate(), unit(OdynStockUnits::ODYNS),
+        QAbstractItemDelegate(), unit(StockUnits::ODYNS),
         platformStyle(platformStyle)
     {
 
@@ -89,7 +89,7 @@ public:
             foreground = COLOR_POSITIVE;
         }
         painter->setPen(foreground);
-        QString amountText = OdynStockUnits::formatWithUnit(unit, amount, true, OdynStockUnits::separatorAlways, fPrivate);
+        QString amountText = StockUnits::formatWithUnit(unit, amount, true, StockUnits::separatorAlways, fPrivate);
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
         painter->setPen(option.palette.color(QPalette::Text));
@@ -178,14 +178,14 @@ void OverviewPage::setBalance(
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
     currentWatchOnlyTotalBalance = watchOnlyBalance + watchUnconfBalance + watchImmatureBalance;
-    ui->labelBalance->setText(OdynStockUnits::formatWithUnit(unit, balance, false, OdynStockUnits::separatorAlways));
-    ui->labelPrivateBalance->setText(OdynStockUnits::formatWithUnit(unit, privateBalance, false, OdynStockUnits::separatorAlways, true));
-    ui->labelPrivateBalancePending->setText(OdynStockUnits::formatWithUnit(unit, privPending, false, OdynStockUnits::separatorAlways, true));
-    ui->labelUnconfirmed->setText(OdynStockUnits::formatWithUnit(unit, unconfirmedBalance, false, OdynStockUnits::separatorAlways));
-    ui->labelColdStaking->setText(OdynStockUnits::formatWithUnit(unit, currentColdStakingBalance, false, OdynStockUnits::separatorAlways));
-    ui->labelImmature->setText(OdynStockUnits::formatWithUnit(unit, currentImmatureBalance, false, OdynStockUnits::separatorAlways));
-    ui->labelWatchedBalance->setText(OdynStockUnits::formatWithUnit(unit, currentWatchOnlyTotalBalance, false, OdynStockUnits::separatorAlways));
-    ui->labelTotal->setText(OdynStockUnits::formatWithUnit(unit, currentTotalBalance + currentPrivateBalance + currentPrivateBalancePending + currentWatchOnlyTotalBalance, false, OdynStockUnits::separatorAlways));
+    ui->labelBalance->setText(StockUnits::formatWithUnit(unit, balance, false, StockUnits::separatorAlways));
+    ui->labelPrivateBalance->setText(StockUnits::formatWithUnit(unit, privateBalance, false, StockUnits::separatorAlways, true));
+    ui->labelPrivateBalancePending->setText(StockUnits::formatWithUnit(unit, privPending, false, StockUnits::separatorAlways, true));
+    ui->labelUnconfirmed->setText(StockUnits::formatWithUnit(unit, unconfirmedBalance, false, StockUnits::separatorAlways));
+    ui->labelColdStaking->setText(StockUnits::formatWithUnit(unit, currentColdStakingBalance, false, StockUnits::separatorAlways));
+    ui->labelImmature->setText(StockUnits::formatWithUnit(unit, currentImmatureBalance, false, StockUnits::separatorAlways));
+    ui->labelWatchedBalance->setText(StockUnits::formatWithUnit(unit, currentWatchOnlyTotalBalance, false, StockUnits::separatorAlways));
+    ui->labelTotal->setText(StockUnits::formatWithUnit(unit, currentTotalBalance + currentPrivateBalance + currentPrivateBalancePending + currentWatchOnlyTotalBalance, false, StockUnits::separatorAlways));
 
     swapDialog->SetPublicBalance(balance);
     swapDialog->SetPrivateBalance(privateBalance);
@@ -363,12 +363,12 @@ void OverviewPage::setStakes(
     currentAmountAll = amountAll;
     currentAmountExp = amountExp;
 
-    ui->label24hStakingStats->setText(OdynStockUnits::formatWithUnit(unit, amount24h, false, OdynStockUnits::separatorAlways));
-    ui->label7dStakingStats->setText(OdynStockUnits::formatWithUnit(unit, amount7d, false, OdynStockUnits::separatorAlways));
-    ui->label30dStakingStats->setText(OdynStockUnits::formatWithUnit(unit, amount30d, false, OdynStockUnits::separatorAlways));
-    ui->label1yStakingStats->setText(OdynStockUnits::formatWithUnit(unit, amount1y, false, OdynStockUnits::separatorAlways));
-    ui->labelallStakingStats->setText(OdynStockUnits::formatWithUnit(unit, amountAll, false, OdynStockUnits::separatorAlways));
-    ui->labelExpectedStakingStats->setText(OdynStockUnits::formatWithUnit(unit, amountExp, false, OdynStockUnits::separatorAlways));
+    ui->label24hStakingStats->setText(StockUnits::formatWithUnit(unit, amount24h, false, StockUnits::separatorAlways));
+    ui->label7dStakingStats->setText(StockUnits::formatWithUnit(unit, amount7d, false, StockUnits::separatorAlways));
+    ui->label30dStakingStats->setText(StockUnits::formatWithUnit(unit, amount30d, false, StockUnits::separatorAlways));
+    ui->label1yStakingStats->setText(StockUnits::formatWithUnit(unit, amount1y, false, StockUnits::separatorAlways));
+    ui->labelallStakingStats->setText(StockUnits::formatWithUnit(unit, amountAll, false, StockUnits::separatorAlways));
+    ui->labelExpectedStakingStats->setText(StockUnits::formatWithUnit(unit, amountExp, false, StockUnits::separatorAlways));
 
     uiInterface.SetStaked(amountAll, amount24h, amount7d);
 }

@@ -1,11 +1,11 @@
 Benchmarking
 ============
 
-OdynStock Core has an internal benchmarking framework, with benchmarks
+Stock Core has an internal benchmarking framework, with benchmarks
 for cryptographic algorithms such as SHA1, SHA256, SHA512 and RIPEMD160. As well as the rolling bloom filter.
 
-After compiling odynstock-core, the benchmarks can be run with:
-`src/bench/bench_odynstock`
+After compiling stock-core, the benchmarks can be run with:
+`src/bench/bench_stock`
 
 The output will look similar to:
 ```

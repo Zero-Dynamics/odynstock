@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_ADDRMAN_H
-#define ODYNSTOCK_ADDRMAN_H
+#ifndef STOCK_ADDRMAN_H
+#define STOCK_ADDRMAN_H
 
 #include <netbase.h>
 #include <protocol.h>
@@ -596,4 +596,4 @@ public:
 
 };
 
-#endif // ODYNSTOCK_ADDRMAN_H
+#endif // STOCK_ADDRMAN_H

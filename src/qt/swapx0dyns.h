@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The OdynStock Core developers
+// Copyright (c) 2020 The Stock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,9 +6,9 @@
 #define SWAPX0DYNS_H
 
 #include "aggregationsession.h"
-#include "odynstockunits.h"
+#include "stockunits.h"
 #include "optionsmodel.h"
-#include "odynstockamountfield.h"
+#include "stockamountfield.h"
 #include "blsct/key.h"
 #include "wallet/wallet.h"
 #include "clientmodel.h"
@@ -54,7 +54,7 @@ private:
     QLabel *toplabel1;
     QLabel *toplabel2;
     QPushButton *swapButton;
-    OdynStockAmountField *amount;
+    StockAmountField *amount;
 
     QLabel *icon1;
     QLabel *icon2;

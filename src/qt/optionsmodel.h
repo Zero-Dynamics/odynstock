@@ -2,14 +2,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_OPTIONSMODEL_H
-#define ODYNSTOCK_QT_OPTIONSMODEL_H
+#ifndef STOCK_QT_OPTIONSMODEL_H
+#define STOCK_QT_OPTIONSMODEL_H
 
 #include <amount.h>
 
 #include <QAbstractListModel>
 
-/** Interface from Qt to configuration data structure for OdynStock client.
+/** Interface from Qt to configuration data structure for Stock client.
    To Qt, the options are presented as a list with the different options
    laid out vertically.
    This can be changed to a tree once the settings become sufficiently
@@ -34,7 +34,7 @@ public:
         ProxyUseTor,            // bool
         ProxyIPTor,             // QString
         ProxyPortTor,           // int
-        DisplayUnit,            // OdynStockUnits::Unit
+        DisplayUnit,            // StockUnits::Unit
         ThirdPartyTxUrls,       // QString
         Theme,                  // QString
         Scaling,                // int
@@ -93,4 +93,4 @@ Q_SIGNALS:
     void hideTrayIconChanged(bool);
 };
 
-#endif // ODYNSTOCK_QT_OPTIONSMODEL_H
+#endif // STOCK_QT_OPTIONSMODEL_H

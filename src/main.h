@@ -1,14 +1,14 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2018-2020 The OdynStock Core developers
+// Copyright (c) 2018-2020 The Stock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_MAIN_H
-#define ODYNSTOCK_MAIN_H
+#ifndef STOCK_MAIN_H
+#define STOCK_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/odynstock-config.h>
+#include <config/stock-config.h>
 #endif
 
 #include <amount.h>
@@ -599,7 +599,7 @@ bool InvalidateBlock(CValidationState& state, const CChainParams& chainparams, C
 /** Remove invalidity status from a block and its descendants. */
 bool ResetBlockFailureFlags(CBlockIndex *pindex);
 
-// OdynStock
+// Stock
 
 inline unsigned int GetTargetSpacing(int nHeight) { return 30; }
 
@@ -715,4 +715,4 @@ std::vector<std::pair<uint256, int>>* InsertPaymentRequestVotes(const uint256& h
 std::map<uint256, bool>* InsertSupport(const uint256& hash);
 std::map<uint256, uint64_t>* InsertConsultationVotes(const uint256& hash);
 
-#endif // ODYNSTOCK_MAIN_H
+#endif // STOCK_MAIN_H

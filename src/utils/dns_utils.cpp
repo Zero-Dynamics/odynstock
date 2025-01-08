@@ -326,9 +326,9 @@ std::vector<std::string> DNSResolver::get_record(const std::string& url, int rec
     }
 
     /**
-     * @brief gets a odynstock address from the TXT record of a DNS entry
+     * @brief gets a stock address from the TXT record of a DNS entry
      *
-     * gets the odynstock address from the  TXT  record of the DNS entry associated
+     * gets the stock address from the  TXT  record of the DNS entry associated
      * with  <url>.   If this lookup fails,  or the TXT record does not contain a
      * 0DYNS address in the correct format, returns an empty string. <dnssec_valid>
      * will be set true or false according to whether or not the DNS query passes
@@ -337,7 +337,7 @@ std::vector<std::string> DNSResolver::get_record(const std::string& url, int rec
      * @param url the url to look up
      * @param dnssec_valid return-by-reference for DNSSEC status of query
      *
-     * @return a odynstock address (as a string) or an empty string
+     * @return a stock address (as a string) or an empty string
      */
     std::vector<std::string> addresses_from_url(const std::string& url, bool& dnssec_available, bool& dnssec_valid)
     {
@@ -354,7 +354,7 @@ std::vector<std::string> DNSResolver::get_record(const std::string& url, int rec
         }
         else dnssec_valid = false;
 
-        // for each txt record, try to find a odynstock address in it.
+        // for each txt record, try to find a stock address in it.
         for (auto& rec : records)
         {
             std::string addr = address_from_txt_record(rec);

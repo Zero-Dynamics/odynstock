@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: odynstockd.service
-Upstart: odynstockd.conf
-OpenRC:  odynstockd.openrc
-         odynstockd.openrcconf
-CentOS:  odynstockd.init
-OS X:    org.odynstock.odynstockd.plist
+SystemD: stockd.service
+Upstart: stockd.conf
+OpenRC:  stockd.openrc
+         stockd.openrcconf
+CentOS:  stockd.init
+OS X:    org.stock.stockd.plist
 
 have been made available to assist packagers in creating node packages here.
 

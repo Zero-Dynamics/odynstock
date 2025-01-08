@@ -1,4 +1,4 @@
-# OdynStock v4.2.1 Release Notes
+# Stock v4.2.1 Release Notes
 
 ### Hot Fix:
 

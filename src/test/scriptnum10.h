@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_TEST_SCRIPTNUM10_H
-#define ODYNSTOCK_TEST_SCRIPTNUM10_H
+#ifndef STOCK_TEST_SCRIPTNUM10_H
+#define STOCK_TEST_SCRIPTNUM10_H
 
 #include <algorithm>
 #include <limits>
@@ -23,7 +23,7 @@ public:
 class CScriptNum10
 {
 /**
- * The ScriptNum implementation from OdynStock Core 0.10.0, for cross-comparison.
+ * The ScriptNum implementation from Stock Core 0.10.0, for cross-comparison.
  */
 public:
 
@@ -180,4 +180,4 @@ private:
 };
 
 
-#endif // ODYNSTOCK_TEST_BIGNUM_H
+#endif // STOCK_TEST_BIGNUM_H

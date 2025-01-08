@@ -23,32 +23,32 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-ODYNSTOCK_CONFIG_INCLUDES=-I$(builddir)/config
-ODYNSTOCK_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS) $(SODIUM_CFLAGS)
+STOCK_CONFIG_INCLUDES=-I$(builddir)/config
+STOCK_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS) $(SODIUM_CFLAGS)
 
-ODYNSTOCK_INCLUDES += -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include
-ODYNSTOCK_INCLUDES += $(UNIVALUE_CFLAGS)
+STOCK_INCLUDES += -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include
+STOCK_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBODYNSTOCK_SERVER=libodynstock_server.a
-LIBODYNSTOCK_COMMON=libodynstock_common.a
-LIBODYNSTOCK_CONSENSUS=libodynstock_consensus.a
-LIBODYNSTOCK_CLI=libodynstock_cli.a
-LIBODYNSTOCK_UTIL=libodynstock_util.a
-LIBODYNSTOCK_CRYPTO=crypto/libodynstock_crypto.a
-LIBODYNSTOCKQT=qt/libodynstockqt.a
+LIBSTOCK_SERVER=libstock_server.a
+LIBSTOCK_COMMON=libstock_common.a
+LIBSTOCK_CONSENSUS=libstock_consensus.a
+LIBSTOCK_CLI=libstock_cli.a
+LIBSTOCK_UTIL=libstock_util.a
+LIBSTOCK_CRYPTO=crypto/libstock_crypto.a
+LIBSTOCKQT=qt/libstockqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 LIBBLS=bls/build/libbls.a
 LIBMCLBN=mcl/build/lib/libmclbn384_256.a
 LIBMCL=mcl/build/lib/libmcl.a
 
 if ENABLE_ZMQ
-LIBODYNSTOCK_ZMQ=libodynstock_zmq.a
+LIBSTOCK_ZMQ=libstock_zmq.a
 endif
-if BUILD_ODYNSTOCK_LIBS
-LIBODYNSTOCKCONSENSUS=libodynstockconsensus.la
+if BUILD_STOCK_LIBS
+LIBSTOCKCONSENSUS=libstockconsensus.la
 endif
 if ENABLE_WALLET
-LIBODYNSTOCK_WALLET=libodynstock_wallet.a
+LIBSTOCK_WALLET=libstock_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
@@ -64,32 +64,32 @@ $(LIBMCLBN):
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBODYNSTOCK_CRYPTO) \
-  $(LIBODYNSTOCK_UTIL) \
-  $(LIBODYNSTOCK_COMMON) \
-  $(LIBODYNSTOCK_CONSENSUS) \
-  $(LIBODYNSTOCK_SERVER) \
-  $(LIBODYNSTOCK_CLI) \
-  $(LIBODYNSTOCK_WALLET) \
-  $(LIBODYNSTOCK_ZMQ)
+  $(LIBSTOCK_CRYPTO) \
+  $(LIBSTOCK_UTIL) \
+  $(LIBSTOCK_COMMON) \
+  $(LIBSTOCK_CONSENSUS) \
+  $(LIBSTOCK_SERVER) \
+  $(LIBSTOCK_CLI) \
+  $(LIBSTOCK_WALLET) \
+  $(LIBSTOCK_ZMQ)
 
-lib_LTLIBRARIES = $(LIBODYNSTOCKCONSENSUS)
+lib_LTLIBRARIES = $(LIBSTOCKCONSENSUS)
 
 bin_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_ODYNSTOCKD
-  bin_PROGRAMS += odynstockd
+if BUILD_STOCKD
+  bin_PROGRAMS += stockd
 endif
 
-if BUILD_ODYNSTOCK_UTILS
-  bin_PROGRAMS += odynstock-cli odynstock-tx
+if BUILD_STOCK_UTILS
+  bin_PROGRAMS += stock-cli stock-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# odynstock core #
-ODYNSTOCK_CORE_H = \
+# stock core #
+STOCK_CORE_H = \
   addressindex.h \
   spentindex.h \
   timestampindex.h \
@@ -200,12 +200,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libodynstock_util_a-clientversion.$(OBJEXT): obj/build.h
+libstock_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between odynstockd and odynstock-qt
-libodynstock_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libodynstock_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodynstock_server_a_SOURCES = \
+# server: shared between stockd and stock-qt
+libstock_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libstock_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstock_server_a_SOURCES = \
   addrman.cpp \
   bloom.cpp \
   blockencodings.cpp \
@@ -250,23 +250,23 @@ libodynstock_server_a_SOURCES = \
   utils/dns_utils.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(ODYNSTOCK_CORE_H)
+  $(STOCK_CORE_H)
 
 if ENABLE_ZMQ
-libodynstock_zmq_a_CPPFLAGS = $(ODYNSTOCK_INCLUDES) $(ZMQ_CFLAGS)
-libodynstock_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodynstock_zmq_a_SOURCES = \
+libstock_zmq_a_CPPFLAGS = $(STOCK_INCLUDES) $(ZMQ_CFLAGS)
+libstock_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstock_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between odynstockd and odynstock-qt, but only linked
+# wallet: shared between stockd and stock-qt, but only linked
 # when wallet enabled
-libodynstock_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
-libodynstock_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodynstock_wallet_a_SOURCES = \
+libstock_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES)
+libstock_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstock_wallet_a_SOURCES = \
   blsct/rpc.cpp \
   consensus/dao.cpp \
   mnemonic/dictionary.cpp \
@@ -280,12 +280,12 @@ libodynstock_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   policy/rbf.cpp \
   daoversionbit.cpp \
-  $(ODYNSTOCK_CORE_H)
+  $(STOCK_CORE_H)
 
 # crypto primitives library
-crypto_libodynstock_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_CONFIG_INCLUDES)
-crypto_libodynstock_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libodynstock_crypto_a_SOURCES = \
+crypto_libstock_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_CONFIG_INCLUDES)
+crypto_libstock_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libstock_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.cpp \
@@ -317,9 +317,9 @@ crypto_libodynstock_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # consensus: shared between all executables that validate any consensus rules.
-libodynstock_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
-libodynstock_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodynstock_consensus_a_SOURCES = \
+libstock_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES)
+libstock_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstock_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -395,10 +395,10 @@ libodynstock_consensus_a_SOURCES = \
   utiltime.h \
   version.h
 
-# common: shared between odynstockd, and odynstock-qt and non-server tools
-libodynstock_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
-libodynstock_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodynstock_common_a_SOURCES = \
+# common: shared between stockd, and stock-qt and non-server tools
+libstock_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES)
+libstock_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstock_common_a_SOURCES = \
   amount.cpp \
   base58.cpp \
   blsct/bulletproofs.cpp \
@@ -417,14 +417,14 @@ libodynstock_common_a_SOURCES = \
   scheduler.cpp \
   script/sign.cpp \
   script/standard.cpp \
-  $(ODYNSTOCK_CORE_H)
+  $(STOCK_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libodynstock_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
-libodynstock_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodynstock_util_a_SOURCES = \
+libstock_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES)
+libstock_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstock_util_a_SOURCES = \
   support/pagelocker.cpp \
   uint256.cpp \
   chainparamsbase.cpp \
@@ -440,42 +440,42 @@ libodynstock_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(ODYNSTOCK_CORE_H)
+  $(STOCK_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libodynstock_util_a_SOURCES += compat/glibc_compat.cpp
+libstock_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between odynstock-cli and odynstock-qt
-libodynstock_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
-libodynstock_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libodynstock_cli_a_SOURCES = \
+# cli: shared between stock-cli and stock-qt
+libstock_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES)
+libstock_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstock_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(ODYNSTOCK_CORE_H)
+  $(STOCK_CORE_H)
 
-nodist_libodynstock_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libstock_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# odynstockd binary #
-odynstockd_SOURCES = odynstockd.cpp
-odynstockd_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES) $(LIBEVENT_CFLAGS) $(LIBSECCOMP_CFLAGS) $(LIBCAP_CFLAGS) $(ZLIB_CFLAGS)
-odynstockd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-odynstockd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# stockd binary #
+stockd_SOURCES = stockd.cpp
+stockd_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES) $(LIBEVENT_CFLAGS) $(LIBSECCOMP_CFLAGS) $(LIBCAP_CFLAGS) $(ZLIB_CFLAGS)
+stockd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+stockd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-odynstockd_SOURCES += odynstockd-res.rc
+stockd_SOURCES += stockd-res.rc
 endif
 
-odynstockd_LDADD = \
-                 $(LIBODYNSTOCK_SERVER) \
-                 $(LIBODYNSTOCK_COMMON) \
+stockd_LDADD = \
+                 $(LIBSTOCK_SERVER) \
+                 $(LIBSTOCK_COMMON) \
                  $(LIBUNIVALUE) \
-                 $(LIBODYNSTOCK_UTIL) \
-                 $(LIBODYNSTOCK_WALLET) \
-                 $(LIBODYNSTOCK_ZMQ) \
-                 $(LIBODYNSTOCK_CONSENSUS) \
-                 $(LIBODYNSTOCK_CRYPTO) \
+                 $(LIBSTOCK_UTIL) \
+                 $(LIBSTOCK_WALLET) \
+                 $(LIBSTOCK_ZMQ) \
+                 $(LIBSTOCK_CONSENSUS) \
+                 $(LIBSTOCK_CRYPTO) \
                  $(LIBLEVELDB) \
                  $(LIBMEMENV) \
                  $(LIBSECP256K1) \
@@ -484,7 +484,7 @@ odynstockd_LDADD = \
                  $(LIBCAP_LIBS) \
                  $(ZLIB_LIBS)
 
-odynstockd_LDADD += \
+stockd_LDADD += \
                   $(BOOST_LIBS) \
                   $(BDB_LIBS) \
                   $(ZLIB_LIBS) \
@@ -505,59 +505,59 @@ odynstockd_LDADD += \
                   $(LIBCAP_LDFLAGS) \
                   $(ZLIB_LDFLAGS)
 
-# odynstock-cli binary #
-odynstock_cli_SOURCES = odynstock-cli.cpp
-odynstock_cli_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES) $(EVENT_CFLAGS)
-odynstock_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-odynstock_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# stock-cli binary #
+stock_cli_SOURCES = stock-cli.cpp
+stock_cli_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES) $(EVENT_CFLAGS)
+stock_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+stock_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-odynstock_cli_SOURCES += odynstock-cli-res.rc
+stock_cli_SOURCES += stock-cli-res.rc
 endif
 
-odynstock_cli_LDADD = \
-  $(LIBODYNSTOCK_CLI) \
+stock_cli_LDADD = \
+  $(LIBSTOCK_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBODYNSTOCK_UTIL) \
-  $(LIBODYNSTOCK_CRYPTO)
+  $(LIBSTOCK_UTIL) \
+  $(LIBSTOCK_CRYPTO)
 
-odynstock_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(SODIUM_LIBS) $(EVENT_LIBS)
+stock_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(SODIUM_LIBS) $(EVENT_LIBS)
 #
 
-# odynstock-tx binary #
-odynstock_tx_SOURCES = odynstock-tx.cpp
-odynstock_tx_CPPFLAGS = $(AM_CPPFLAGS) $(ODYNSTOCK_INCLUDES)
-odynstock_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-odynstock_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# stock-tx binary #
+stock_tx_SOURCES = stock-tx.cpp
+stock_tx_CPPFLAGS = $(AM_CPPFLAGS) $(STOCK_INCLUDES)
+stock_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+stock_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-odynstock_tx_SOURCES += odynstock-tx-res.rc
+stock_tx_SOURCES += stock-tx-res.rc
 endif
 
-odynstock_tx_LDADD = \
+stock_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBODYNSTOCK_COMMON) \
-  $(LIBODYNSTOCK_UTIL) \
-  $(LIBODYNSTOCK_CONSENSUS) \
-  $(LIBODYNSTOCK_CRYPTO) \
+  $(LIBSTOCK_COMMON) \
+  $(LIBSTOCK_UTIL) \
+  $(LIBSTOCK_CONSENSUS) \
+  $(LIBSTOCK_CRYPTO) \
   $(LIBSECP256K1)
 
-odynstock_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
+stock_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
 #
 
-# odynstockconsensus library #
-if BUILD_ODYNSTOCK_LIBS
-include_HEADERS = script/odynstockconsensus.h
-libodynstockconsensus_la_SOURCES = $(crypto_libodynstock_crypto_a_SOURCES) $(libodynstock_consensus_a_SOURCES)
+# stockconsensus library #
+if BUILD_STOCK_LIBS
+include_HEADERS = script/stockconsensus.h
+libstockconsensus_la_SOURCES = $(crypto_libstock_crypto_a_SOURCES) $(libstock_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libodynstockconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libstockconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libodynstockconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(BOOST_LIBS) $(SODIUM_LIBS)
-libodynstockconsensus_la_LIBADD = $(LIBSECP256K1) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
-libodynstockconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include -DBUILD_ODYNSTOCK_INTERNAL
-libodynstockconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libstockconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(BOOST_LIBS) $(SODIUM_LIBS)
+libstockconsensus_la_LIBADD = $(LIBSECP256K1) $(LIBMCLBN) $(LIBMCL) $(LIBBLS) $(SODIUM_LIBS)
+libstockconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -I$(srcdir)/mcl/include -I$(srcdir)/bls/src -I$(srcdir)/bls/build/_deps/relic-build/include -I$(srcdir)/bls/build/_deps/relic-src/include -DBUILD_STOCK_INTERNAL
+libstockconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #

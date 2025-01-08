@@ -7,11 +7,11 @@
 # Test PrioritiseTransaction code
 #
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 from test_framework.mininode import COIN, MAX_BLOCK_SIZE
 
-class PrioritiseTransactionTest(OdynStockTestFramework):
+class PrioritiseTransactionTest(StockTestFramework):
 
     def __init__(self):
         super().__init__()

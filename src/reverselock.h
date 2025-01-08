@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_REVERSELOCK_H
-#define ODYNSTOCK_REVERSELOCK_H
+#ifndef STOCK_REVERSELOCK_H
+#define STOCK_REVERSELOCK_H
 
 /**
  * An RAII-style reverse lock. Unlocks on construction and locks on destruction.
@@ -31,4 +31,4 @@ private:
     Lock templock;
 };
 
-#endif // ODYNSTOCK_REVERSELOCK_H
+#endif // STOCK_REVERSELOCK_H

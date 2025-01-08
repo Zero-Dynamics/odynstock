@@ -1,5 +1,5 @@
-#ifndef ODYNSTOCK_DICTIONARY_H
-#define ODYNSTOCK_DICTIONARY_H
+#ifndef STOCK_DICTIONARY_H
+#define STOCK_DICTIONARY_H
 
 #include <array>
 #include <vector>
@@ -41,4 +41,4 @@ extern const dictionary_list all;
 
 } // namespace language
 
-#endif //ODYNSTOCK_DICTIONARY_H
+#endif //STOCK_DICTIONARY_H

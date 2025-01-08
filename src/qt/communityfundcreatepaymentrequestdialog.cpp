@@ -8,7 +8,7 @@
 #include <QComboBox>
 #include <string>
 
-#include <qt/odynstockunits.h>
+#include <qt/stockunits.h>
 
 #include <base58.h>
 #include <consensus/dao.h>
@@ -131,7 +131,7 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
         }
 
         // Get Address
-        COdynStockAddress address(proposal.GetOwnerAddress());
+        CStockAddress address(proposal.GetOwnerAddress());
         if(!address.IsValid()) {
             QMessageBox msgBox(this);
             std::string str = "The address of the Proposal is not valid\n";
@@ -216,8 +216,8 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
             if (nReqAmount > proposal.GetAvailable(*pcoinsTip, true)) {
                 str = tr("Requested amount %1 is more than avaible coins in the proposal (%2)\n")
                     .arg(
-                        OdynStockUnits::formatWithUnit(OdynStockUnits::ODYNS, nReqAmount),
-                        OdynStockUnits::formatWithUnit(OdynStockUnits::ODYNS, proposal.GetAvailable(*pcoinsTip, true))
+                        StockUnits::formatWithUnit(StockUnits::ODYNS, nReqAmount),
+                        StockUnits::formatWithUnit(StockUnits::ODYNS, proposal.GetAvailable(*pcoinsTip, true))
                     );
             }
             msgBox.setText(str);
@@ -298,7 +298,7 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
             }
             else {
                 // User accepted making the prequest
-                // Parse OdynStock address
+                // Parse Stock address
                 CScript CFContributionScript;
                 CScript scriptPubKey = GetScriptForDestination(address.Get());
                 SetScriptForCommunityFundContribution(scriptPubKey);

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_BENCH_BENCH_H
-#define ODYNSTOCK_BENCH_BENCH_H
+#ifndef STOCK_BENCH_BENCH_H
+#define STOCK_BENCH_BENCH_H
 
 #include <map>
 #include <string>
@@ -69,4 +69,4 @@ namespace benchmark {
 #define BENCHMARK(n) \
     benchmark::BenchRunner BOOST_PP_CAT(bench_, BOOST_PP_CAT(__LINE__, n))(BOOST_PP_STRINGIZE(n), n);
 
-#endif // ODYNSTOCK_BENCH_BENCH_H
+#endif // STOCK_BENCH_BENCH_H

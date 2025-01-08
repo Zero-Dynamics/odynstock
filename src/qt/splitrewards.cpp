@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The OdynStock Core developers
+// Copyright (c) 2019-2020 The Stock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -79,7 +79,7 @@ SplitRewardsDialog::SplitRewardsDialog(QWidget *parent) :
     {
         CTxDestination dest;
         if (ExtractDestination(out.tx->vout[out.i].scriptPubKey, dest)){
-            COdynStockAddress address(dest);
+            CStockAddress address(dest);
             if (address.IsColdStakingAddress(Params()))
                 if (!address.GetStakingAddress(address))
                     continue;
@@ -120,7 +120,7 @@ void SplitRewardsDialog::showFor(QString sin)
 
     for (auto &key: j.keys())
     {
-        COdynStockAddress address(key.toStdString());
+        CStockAddress address(key.toStdString());
         double amount;
 
         if (address.IsValid())
@@ -225,10 +225,10 @@ void SplitRewardsDialog::onAdd()
         return;
     }
 
-    if (!COdynStockAddress(address.toStdString()).IsValid())
+    if (!CStockAddress(address.toStdString()).IsValid())
     {
         QMessageBox msgBox(this);
-        msgBox.setText(tr("Invalid OdynStock Address"));
+        msgBox.setText(tr("Invalid Stock Address"));
         msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
         msgBox.setIcon(QMessageBox::Warning);
         msgBox.setWindowTitle("Error");

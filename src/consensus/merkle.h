@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_MERKLE
-#define ODYNSTOCK_MERKLE
+#ifndef STOCK_MERKLE
+#define STOCK_MERKLE
 
 #include <stdint.h>
 #include <vector>

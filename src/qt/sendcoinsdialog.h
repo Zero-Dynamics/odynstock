@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_SENDCOINSDIALOG_H
-#define ODYNSTOCK_QT_SENDCOINSDIALOG_H
+#ifndef STOCK_QT_SENDCOINSDIALOG_H
+#define STOCK_QT_SENDCOINSDIALOG_H
 
 #include <blsct/transaction.h>
 #include <qt/walletmodel.h>
@@ -30,7 +30,7 @@ QT_END_NAMESPACE
 
 const int defaultConfirmTarget = 25;
 
-/** Dialog for sending odynstocks */
+/** Dialog for sending stocks */
 class SendCoinsDialog : public QDialog
 {
     Q_OBJECT
@@ -123,4 +123,4 @@ private:
     int secDelay;
 };
 
-#endif // ODYNSTOCK_QT_SENDCOINSDIALOG_H
+#endif // STOCK_QT_SENDCOINSDIALOG_H

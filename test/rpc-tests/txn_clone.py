@@ -7,10 +7,10 @@
 # Test proper accounting with an equivalent malleability clone
 #
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 
-class TxnMallTest(OdynStockTestFramework):
+class TxnMallTest(StockTestFramework):
 
     def __init__(self):
         super().__init__()

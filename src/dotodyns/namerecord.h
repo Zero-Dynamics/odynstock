@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2021 The OdynStock developers
+// Copyright (c) 2021 The Stock developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_NAME_RECORD_H
-#define ODYNSTOCK_NAME_RECORD_H
+#ifndef STOCK_NAME_RECORD_H
+#define STOCK_NAME_RECORD_H
 
 #include <uint256.h>
 

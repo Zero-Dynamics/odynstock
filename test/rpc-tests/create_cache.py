@@ -5,12 +5,12 @@
 
 #
 # Helper script to create the cache
-# (see OdynStockTestFramework.setup_chain)
+# (see StockTestFramework.setup_chain)
 #
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 
-class CreateCache(OdynStockTestFramework):
+class CreateCache(StockTestFramework):
 
     def setup_network(self):
         # Don't setup any test nodes

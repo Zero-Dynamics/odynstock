@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_CONSENSUS_PARAMS_H
-#define ODYNSTOCK_CONSENSUS_PARAMS_H
+#ifndef STOCK_CONSENSUS_PARAMS_H
+#define STOCK_CONSENSUS_PARAMS_H
 
 #include <amount.h>
 #include <uint256.h>
@@ -151,4 +151,4 @@ struct Params {
 };
 } // namespace Consensus
 
-#endif // ODYNSTOCK_CONSENSUS_PARAMS_H
+#endif // STOCK_CONSENSUS_PARAMS_H

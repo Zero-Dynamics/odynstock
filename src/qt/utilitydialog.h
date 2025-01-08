@@ -2,13 +2,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_UTILITYDIALOG_H
-#define ODYNSTOCK_QT_UTILITYDIALOG_H
+#ifndef STOCK_QT_UTILITYDIALOG_H
+#define STOCK_QT_UTILITYDIALOG_H
 
 #include <QDialog>
 #include <QObject>
 
-class OdynStockGUI;
+class StockGUI;
 class ClientModel;
 
 namespace Ui {
@@ -43,10 +43,10 @@ class ShutdownWindow : public QWidget
 
 public:
     ShutdownWindow(QWidget *parent=0, Qt::WindowFlags f=0);
-    static void showShutdownWindow(OdynStockGUI *window);
+    static void showShutdownWindow(StockGUI *window);
 
 protected:
     void closeEvent(QCloseEvent *event);
 };
 
-#endif // ODYNSTOCK_QT_UTILITYDIALOG_H
+#endif // STOCK_QT_UTILITYDIALOG_H

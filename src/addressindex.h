@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_ADDRESSINDEX_H
-#define ODYNSTOCK_ADDRESSINDEX_H
+#ifndef STOCK_ADDRESSINDEX_H
+#define STOCK_ADDRESSINDEX_H
 
 #include <uint256.h>
 #include <amount.h>
@@ -499,4 +499,4 @@ struct CMempoolAddressDeltaKeyCompare
     }
 };
 
-#endif // ODYNSTOCK_ADDRESSINDEX_H
+#endif // STOCK_ADDRESSINDEX_H

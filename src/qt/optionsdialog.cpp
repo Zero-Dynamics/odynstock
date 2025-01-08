@@ -3,14 +3,14 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/odynstock-config.h>
+#include <config/stock-config.h>
 #endif
 
 #include <qt/optionsdialog.h>
 #include <ui_optionsdialog.h>
 
 #include <qt/guiutil.h>
-#include <qt/odynstockunits.h>
+#include <qt/stockunits.h>
 #include <qt/optionsmodel.h>
 #include <qt/platformstyle.h>
 
@@ -105,8 +105,8 @@ OptionsDialog::OptionsDialog(const PlatformStyle *platformStyle, QWidget *parent
     /* Display elements init */
     QDir translations(":translations");
 
-    ui->odynstockAtStartup->setToolTip(ui->odynstockAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
-    ui->odynstockAtStartup->setText(ui->odynstockAtStartup->text().arg(tr(PACKAGE_NAME)));
+    ui->stockAtStartup->setToolTip(ui->stockAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
+    ui->stockAtStartup->setText(ui->stockAtStartup->text().arg(tr(PACKAGE_NAME)));
 
     // Add the themes that we support
     ui->theme->addItem(tr("Light") + "("+ tr("default") + ")", QVariant("light"));
@@ -133,7 +133,7 @@ OptionsDialog::OptionsDialog(const PlatformStyle *platformStyle, QWidget *parent
 
     ui->thirdPartyTxUrls->setPlaceholderText("https://www.0dynsexplorer.com/tx/%s");
 
-    ui->unit->setModel(new OdynStockUnits(this));
+    ui->unit->setModel(new StockUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -217,7 +217,7 @@ void OptionsDialog::setModel(OptionsModel *model)
     connect(ui->thirdPartyTxUrls, SIGNAL(textChanged(const QString &)), this, SLOT(showRestartWarning()));
 
     /* Main */
-    connect(ui->odynstockAtStartup, SIGNAL(clicked(bool)), this, SLOT(markModelDirty()));
+    connect(ui->stockAtStartup, SIGNAL(clicked(bool)), this, SLOT(markModelDirty()));
     connect(ui->threadsScriptVerif, SIGNAL(valueChanged(int)), this, SLOT(markModelDirty()));
     connect(ui->databaseCache, SIGNAL(valueChanged(int)), this, SLOT(markModelDirty()));
 
@@ -254,7 +254,7 @@ void OptionsDialog::setModel(OptionsModel *model)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->odynstockAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->stockAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 
@@ -344,12 +344,12 @@ void OptionsDialog::on_okButton_clicked()
     QMessageBox::information(this, tr("Changes saved"), tr("Changes have been saved!"));
 }
 
-void OptionsDialog::on_openOdynStockConfButton_clicked()
+void OptionsDialog::on_openStockConfButton_clicked()
 {
     QMessageBox::information(this, tr("Configuration options"),
             tr("The configuration is used to specify advanced user options less any command-line or Qt options. "
                 "Any command-line options will override this configuration file."));
-    GUIUtil::openOdynStockConf();
+    GUIUtil::openStockConf();
 }
 
 void OptionsDialog::on_cancelButton_clicked()

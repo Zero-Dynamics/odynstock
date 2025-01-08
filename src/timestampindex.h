@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_TIMESTAMPINDEX_H
-#define ODYNSTOCK_TIMESTAMPINDEX_H
+#ifndef STOCK_TIMESTAMPINDEX_H
+#define STOCK_TIMESTAMPINDEX_H
 
 #include <uint256.h>
 
@@ -128,4 +128,4 @@ struct CTimestampBlockIndexValue {
     }
 };
 
-#endif // ODYNSTOCK_TIMESTAMPINDEX_H
+#endif // STOCK_TIMESTAMPINDEX_H

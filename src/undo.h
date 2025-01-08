@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_UNDO_H
-#define ODYNSTOCK_UNDO_H
+#ifndef STOCK_UNDO_H
+#define STOCK_UNDO_H
 
 #include <compressor.h>
 #include <primitives/transaction.h>
@@ -82,4 +82,4 @@ public:
     }
 };
 
-#endif // ODYNSTOCK_UNDO_H
+#endif // STOCK_UNDO_H

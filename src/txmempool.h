@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_TXMEMPOOL_H
-#define ODYNSTOCK_TXMEMPOOL_H
+#ifndef STOCK_TXMEMPOOL_H
+#define STOCK_TXMEMPOOL_H
 
 #include <list>
 #include <memory>
@@ -839,4 +839,4 @@ struct TxCoinAgePriorityCompare
     }
 };
 
-#endif // ODYNSTOCK_TXMEMPOOL_H
+#endif // STOCK_TXMEMPOOL_H

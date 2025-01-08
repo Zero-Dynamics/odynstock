@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 from test_framework.mininode import *
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 import time
 from test_framework.blocktools import create_block, create_coinbase
@@ -105,11 +105,11 @@ class TestNode(NodeConnCB):
         return received_pong
 
 
-class AcceptBlockTest(OdynStockTestFramework):
+class AcceptBlockTest(StockTestFramework):
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("ODYNSTOCKD", "odynstockd"),
-                          help="odynstockd binary to test")
+                          default=os.getenv("STOCKD", "stockd"),
+                          help="stockd binary to test")
 
     def __init__(self):
         super().__init__()

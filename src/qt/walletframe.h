@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_WALLETFRAME_H
-#define ODYNSTOCK_QT_WALLETFRAME_H
+#ifndef STOCK_QT_WALLETFRAME_H
+#define STOCK_QT_WALLETFRAME_H
 
 #include <QFrame>
 #include <QMap>
@@ -11,7 +11,7 @@
 #include <QPushButton>
 
 
-class OdynStockGUI;
+class StockGUI;
 class ClientModel;
 class PlatformStyle;
 class SendCoinsRecipient;
@@ -27,7 +27,7 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(const PlatformStyle *platformStyle, OdynStockGUI *_gui = 0);
+    explicit WalletFrame(const PlatformStyle *platformStyle, StockGUI *_gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel *clientModel);
@@ -56,7 +56,7 @@ Q_SIGNALS:
 
 private:
     QStackedWidget *walletStack;
-    OdynStockGUI *gui;
+    StockGUI *gui;
     ClientModel *clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 
@@ -118,4 +118,4 @@ public Q_SLOTS:
     void onDaoEntriesChanged(int count);
 };
 
-#endif // ODYNSTOCK_QT_WALLETFRAME_H
+#endif // STOCK_QT_WALLETFRAME_H

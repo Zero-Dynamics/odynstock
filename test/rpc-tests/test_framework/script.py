@@ -6,7 +6,7 @@
 #
 # script.py
 #
-# This file is modified from python-odynstocklib.
+# This file is modified from python-stocklib.
 #
 
 """Scripts

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018 The OdynStock Core developers
+# Copyright (c) 2018 The Stock Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.staticr_util import *
 
-class ImportAddressTest(OdynStockTestFramework):
+class ImportAddressTest(StockTestFramework):
 
     def __init__(self):
         super().__init__()

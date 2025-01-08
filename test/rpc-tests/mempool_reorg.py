@@ -8,11 +8,11 @@
 # that spend (directly or indirectly) coinbase transactions.
 #
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 
 # Create one-input, one-output, no-fee transaction:
-class MempoolCoinbaseTest(OdynStockTestFramework):
+class MempoolCoinbaseTest(StockTestFramework):
     def __init__(self):
         super().__init__()
         self.num_nodes = 2

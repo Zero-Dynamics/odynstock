@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_OVERVIEWPAGE_H
-#define ODYNSTOCK_QT_OVERVIEWPAGE_H
+#ifndef STOCK_QT_OVERVIEWPAGE_H
+#define STOCK_QT_OVERVIEWPAGE_H
 
 #include <amount.h>
 #include <splitrewards.h>
@@ -107,4 +107,4 @@ private Q_SLOTS:
     void ShowSwapDialog();
 };
 
-#endif // ODYNSTOCK_QT_OVERVIEWPAGE_H
+#endif // STOCK_QT_OVERVIEWPAGE_H

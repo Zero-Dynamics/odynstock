@@ -37,7 +37,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="labelOdynStockAddressTitle">
+      <widget class="QLabel" name="labelStockAddressTitle">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -51,12 +51,12 @@
         </font>
        </property>
        <property name="text">
-        <string>OdynStock Address:</string>
+        <string>Stock Address:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QValidatedLineEdit" name="lineEditOdynStockAddress"/>
+      <widget class="QValidatedLineEdit" name="lineEditStockAddress"/>
      </item>
      <item>
       <widget class="QLabel" name="labelRequestedAmountTitle">
@@ -78,7 +78,7 @@
       </widget>
      </item>
      <item>
-      <widget class="OdynStockAmountField" name="lineEditRequestedAmount"/>
+      <widget class="StockAmountField" name="lineEditRequestedAmount"/>
      </item>
      <item>
       <widget class="QLabel" name="labelDescriptionTitle">
@@ -220,9 +220,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>OdynStockAmountField</class>
+   <class>StockAmountField</class>
    <extends>QLineEdit</extends>
-   <header>odynstockamountfield.h</header>
+   <header>stockamountfield.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

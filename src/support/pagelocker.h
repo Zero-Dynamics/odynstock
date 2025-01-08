@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_SUPPORT_PAGELOCKER_H
-#define ODYNSTOCK_SUPPORT_PAGELOCKER_H
+#ifndef STOCK_SUPPORT_PAGELOCKER_H
+#define STOCK_SUPPORT_PAGELOCKER_H
 
 #include <support/cleanse.h>
 
@@ -174,4 +174,4 @@ void UnlockObject(const T& t)
     LockedPageManager::Instance().UnlockRange((void*)(&t), sizeof(T));
 }
 
-#endif // ODYNSTOCK_SUPPORT_PAGELOCKER_H
+#endif // STOCK_SUPPORT_PAGELOCKER_H

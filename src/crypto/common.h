@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_CRYPTO_COMMON_H
-#define ODYNSTOCK_CRYPTO_COMMON_H
+#ifndef STOCK_CRYPTO_COMMON_H
+#define STOCK_CRYPTO_COMMON_H
 
 #if defined(HAVE_CONFIG_H)
-#include <odynstock-config.h>
+#include <stock-config.h>
 #endif
 
 #include <stdint.h>
@@ -84,4 +84,4 @@ uint64_t static inline CountBits(uint64_t x)
     return ret;
 }
 
-#endif // ODYNSTOCK_CRYPTO_COMMON_H
+#endif // STOCK_CRYPTO_COMMON_H

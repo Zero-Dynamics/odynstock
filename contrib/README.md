@@ -21,7 +21,7 @@ Construct a linear, no-fork, best version of the blockchain.
 
 ### [Qos](/contrib/qos) ###
 
-A Linux bash script that will set up traffic control (tc) to limit the outgoing bandwidth for connections to the OdynStock network. This means one can have an always-on odynstockd instance running, and another local odynstockd/odynstock-qt instance which connects to this node and receives blocks from it.
+A Linux bash script that will set up traffic control (tc) to limit the outgoing bandwidth for connections to the Stock network. This means one can have an always-on stockd instance running, and another local stockd/stock-qt instance which connects to this node and receives blocks from it.
 
 ### [Seeds](/contrib/seeds) ###
 Utility to generate the pnSeed[] array that is compiled into the client.
@@ -30,26 +30,26 @@ Build Tools and Keys
 ---------------------
 
 ### [Debian](/contrib/debian) ###
-Contains files used to package odynstockd/odynstock-qt
-for Debian-based Linux systems. If you compile odynstockd/odynstock-qt yourself, there are some useful files here.
+Contains files used to package stockd/stock-qt
+for Debian-based Linux systems. If you compile stockd/stock-qt yourself, there are some useful files here.
 
 ### [Gitian-descriptors](/contrib/gitian-descriptors) ###
 Notes on getting Gitian builds up and running using KVM.
 
 ### [Gitian-keys](/contrib/gitian-keys)
-PGP keys used for signing OdynStock Core [Gitian release](/doc/release-process.md) results.
+PGP keys used for signing Stock Core [Gitian release](/doc/release-process.md) results.
 
 ### [MacDeploy](/contrib/macdeploy) ###
 Scripts and notes for Mac builds. 
 
 ### [RPM](/contrib/rpm) ###
-RPM spec file for building odynstock-core on RPM based distributions
+RPM spec file for building stock-core on RPM based distributions
 
 Test and Verify Tools 
 ---------------------
 
 ### [TestGen](/contrib/testgen) ###
-Utilities to generate test vectors for the data-driven OdynStock tests.
+Utilities to generate test vectors for the data-driven Stock tests.
 
 ### [Verify Binaries](/contrib/verifybinaries) ###
-This script attempts to download and verify the signature file SHA256SUMS.asc from odynstock.org.
+This script attempts to download and verify the signature file SHA256SUMS.asc from stock.org.

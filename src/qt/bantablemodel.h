@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_BANTABLEMODEL_H
-#define ODYNSTOCK_QT_BANTABLEMODEL_H
+#ifndef STOCK_QT_BANTABLEMODEL_H
+#define STOCK_QT_BANTABLEMODEL_H
 
 #include <net.h>
 
@@ -70,4 +70,4 @@ private:
     std::unique_ptr<BanTablePriv> priv;
 };
 
-#endif // ODYNSTOCK_QT_BANTABLEMODEL_H
+#endif // STOCK_QT_BANTABLEMODEL_H

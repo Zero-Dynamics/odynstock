@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_CONSENSUS_VALIDATION_H
-#define ODYNSTOCK_CONSENSUS_VALIDATION_H
+#ifndef STOCK_CONSENSUS_VALIDATION_H
+#define STOCK_CONSENSUS_VALIDATION_H
 
 #include <string>
 
@@ -85,4 +85,4 @@ public:
     std::string GetDebugMessage() const { return strDebugMessage; }
 };
 
-#endif // ODYNSTOCK_CONSENSUS_VALIDATION_H
+#endif // STOCK_CONSENSUS_VALIDATION_H

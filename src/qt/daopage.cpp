@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The OdynStock Core developers
+// Copyright (c) 2019-2020 The Stock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,11 +40,11 @@ DaoPage::DaoPage(const PlatformStyle *platformStyle, QWidget *parent) :
     bottomBox->setLayout(bottomBoxLayout);
 
     viewLbl = new QLabel(tr("View:"));
-    proposalsBtn = new OdynStockPushButton(tr("Fund Proposals"));
-    paymentRequestsBtn = new OdynStockPushButton(tr("Payment Requests"));
-    consultationsBtn = new OdynStockPushButton(tr("Consultations"));
-    deploymentsBtn = new OdynStockPushButton(tr("Deployments"));
-    consensusBtn = new OdynStockPushButton(tr("Consensus Parameters"));
+    proposalsBtn = new StockPushButton(tr("Fund Proposals"));
+    paymentRequestsBtn = new StockPushButton(tr("Payment Requests"));
+    consultationsBtn = new StockPushButton(tr("Consultations"));
+    deploymentsBtn = new StockPushButton(tr("Deployments"));
+    consensusBtn = new StockPushButton(tr("Consensus Parameters"));
     filterLbl = new QLabel(tr("Filter:"));
     filterCmb = new QComboBox();
     filter2Cmb = new QComboBox();
@@ -565,8 +565,8 @@ void DaoPage::initialize(CProposalMap proposalMap, CPaymentRequestMap paymentReq
             it.first,
             "#6666ff",
             (proposal.nVersion & CProposal::SUPER_VERSION ? "SUPER PROPOSAL: ": "" ) + QString::fromStdString(proposal.strDZeel).left(150) + (proposal.strDZeel.size() > 150 ? "..." : ""),
-            OdynStockUnits::formatWithUnit(unit, proposal.nAmount, false, OdynStockUnits::separatorAlways),
-            OdynStockUnits::formatWithUnit(unit, proposal.nAmount - proposal.GetAvailable(coins), false, OdynStockUnits::separatorAlways),
+            StockUnits::formatWithUnit(unit, proposal.nAmount, false, StockUnits::separatorAlways),
+            StockUnits::formatWithUnit(unit, proposal.nAmount - proposal.GetAvailable(coins), false, StockUnits::separatorAlways),
             QString::fromStdString(s_deadline),
             proposal.nVotesYes ? proposal.nVotesYes : 0,
             proposal.nVotesNo ? proposal.nVotesNo : 0,
@@ -673,7 +673,7 @@ void DaoPage::initialize(CProposalMap proposalMap, CPaymentRequestMap paymentReq
             QString::fromStdString(prequest.strDZeel).left(150) + (prequest.strDZeel.size() > 150 ? "..." : ""),
             (proposal.nVersion & CProposal::SUPER_VERSION ? "SUPER PROPOSAL: ": "" ) + QString::fromStdString(proposal.strDZeel).left(150) + (proposal.strDZeel.size() > 150 ? "..." : ""),
             "#6666ff",
-            OdynStockUnits::formatWithUnit(unit, prequest.nAmount, false, OdynStockUnits::separatorAlways),
+            StockUnits::formatWithUnit(unit, prequest.nAmount, false, StockUnits::separatorAlways),
             prequest.nVotesYes ? prequest.nVotesYes : 0,
             prequest.nVotesNo ? prequest.nVotesNo : 0,
             prequest.nVotesAbs ? prequest.nVotesAbs : 0,

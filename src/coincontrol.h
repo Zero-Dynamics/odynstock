@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_COINCONTROL_H
-#define ODYNSTOCK_COINCONTROL_H
+#ifndef STOCK_COINCONTROL_H
+#define STOCK_COINCONTROL_H
 
 #include <primitives/transaction.h>
 
@@ -73,4 +73,4 @@ private:
     std::set<COutPoint> setSelected;
 };
 
-#endif // ODYNSTOCK_COINCONTROL_H
+#endif // STOCK_COINCONTROL_H

@@ -11,7 +11,7 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>odynstock.icns</string>
+  <string>stock.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>OdynStock-Qt</string>
+  <string>Stock-Qt</string>
   
   <key>CFBundleName</key>
-  <string>OdynStock-Qt</string>
+  <string>Stock-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.odynstockfoundation.OdynStock-Qt</string>
+  <string>org.stockfoundation.Stock-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.odynstock.OdynStockPayment</string>
+      <string>org.stock.StockPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>odynstock</string>
+        <string>stock</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.odynstock.paymentrequest</string>
+      <string>org.stock.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>OdynStock payment request</string>
+      <string>Stock payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-odynstock-payment-request</string>
+        <string>application/x-stock-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>odynstockpaymentrequest</string>
+          <string>stockpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.odynstock.paymentrequest</string>
+        <string>org.stock.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

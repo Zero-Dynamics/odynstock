@@ -1,12 +1,12 @@
-![OdynStock](./img/logo-extended.png)
+![Stock](./img/logo-extended.png)
 
-This is the working repository for OdynStock Core, our fork of bitcoin-core 0.13.
+This is the working repository for Stock Core, our fork of bitcoin-core 0.13.
 
 For more information please visit the website:
 
- https://odynstock.org/en/roadmap
+ https://stock.org/en/roadmap
 
-[![Build Status](https://travis-ci.org/odynstock/odynstock-core.svg?branch=master)](https://travis-ci.org/odynstock/odynstock-core)
+[![Build Status](https://travis-ci.org/stock/stock-core.svg?branch=master)](https://travis-ci.org/stock/stock-core)
 
 ## Building
 
@@ -28,13 +28,13 @@ For building the wallet see the markdown files in [doc](doc) folder
 
 | Site | link |
 |:-----------|:-----------|
-| Freenode IRC | #odynstock-dev |
-| Medium | https://medium.com/odynstock |
-| Twitter | https://twitter.com/OdynStock |
+| Freenode IRC | #stock-dev |
+| Medium | https://medium.com/stock |
+| Twitter | https://twitter.com/Stock |
 | Discord | https://discord.gg/y4Vu9jw |
-| Telegram | https://t.me/odynstock |
-| Reddit | http://www.reddit.com/r/odynstock |
-| Facebook | https://www.facebook.com/odynStock |
+| Telegram | https://t.me/stock |
+| Reddit | http://www.reddit.com/r/stock |
+| Facebook | https://www.facebook.com/stock |
 | Instagram | https://www.instagram.com/odynscore/ |
 | Bitcointalk | https://bitcointalk.org/index.php?topic=679791 |
 

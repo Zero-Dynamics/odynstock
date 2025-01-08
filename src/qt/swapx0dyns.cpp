@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The OdynStock Core developers
+// Copyright (c) 2020 The Stock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -26,7 +26,7 @@ SwapX0DYNSDialog::SwapX0DYNSDialog(QWidget *parent) :
     icon1 = new QLabel("");
     icon2 = new QLabel("");
 
-    amount = new OdynStockAmountField(0, 0);
+    amount = new StockAmountField(0, 0);
 
     QPixmap pixmap(":/icons/swap");
     QIcon ButtonIcon(pixmap);
@@ -104,9 +104,9 @@ void SwapX0DYNSDialog::SetPublicBalance(CAmount a)
 
     this->publicBalance = a;
     if (fMode)
-        label1->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, false));
+        label1->setText(QString::fromStdString(_("Available: ")) + StockUnits::formatWithUnit(unit, a, false, StockUnits::separatorAlways, false));
     else
-        label2->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, false));
+        label2->setText(QString::fromStdString(_("Available: ")) + StockUnits::formatWithUnit(unit, a, false, StockUnits::separatorAlways, false));
 }
 
 void SwapX0DYNSDialog::SetPrivateBalance(CAmount a)
@@ -115,9 +115,9 @@ void SwapX0DYNSDialog::SetPrivateBalance(CAmount a)
 
     this->privateBalance = a;
     if (fMode)
-        label2->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, true));
+        label2->setText(QString::fromStdString(_("Available: ")) + StockUnits::formatWithUnit(unit, a, false, StockUnits::separatorAlways, true));
     else
-        label1->setText(QString::fromStdString(_("Available: ")) + OdynStockUnits::formatWithUnit(unit, a, false, OdynStockUnits::separatorAlways, true));
+        label1->setText(QString::fromStdString(_("Available: ")) + StockUnits::formatWithUnit(unit, a, false, StockUnits::separatorAlways, true));
 }
 
 void SwapX0DYNSDialog::Swap()
@@ -182,7 +182,7 @@ void SwapX0DYNSDialog::Ok()
     if ((fMode ? publicBalance : privateBalance) < nAmount)
     {
         QMessageBox msgBox(this);
-        std::string str = tr("You don't have that many coins to swap!\n\nAvailable:\n%1").arg(OdynStockUnits::formatWithUnit(0, fMode ? publicBalance : privateBalance, false, OdynStockUnits::separatorAlways, !fMode)).toStdString();
+        std::string str = tr("You don't have that many coins to swap!\n\nAvailable:\n%1").arg(StockUnits::formatWithUnit(0, fMode ? publicBalance : privateBalance, false, StockUnits::separatorAlways, !fMode)).toStdString();
         msgBox.setText(tr(str.c_str()));
         msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
         msgBox.setIcon(QMessageBox::Warning);
@@ -201,13 +201,13 @@ void SwapX0DYNSDialog::Ok()
         return;
     }
 
-    COdynStockAddress address;
+    CStockAddress address;
 
     if (fMode)
     {
         blsctDoublePublicKey k;
         if (pwalletMain->GetBLSCTSubAddressPublicKeys(std::make_pair(0, 0), k))
-            address = COdynStockAddress(k);
+            address = CStockAddress(k);
         else
         {
             QMessageBox msgBox(this);
@@ -242,7 +242,7 @@ void SwapX0DYNSDialog::Ok()
         }
         CKeyID keyID = newKey.GetID();
 
-        address = COdynStockAddress(keyID);
+        address = CStockAddress(keyID);
     }
 
     CScript scriptPubKey = GetScriptForDestination(address.Get());
@@ -306,11 +306,11 @@ void SwapX0DYNSDialog::Ok()
         if (QMessageBox::No == QMessageBox(QMessageBox::Information,
                                            tr("Swap!"),
                                            tr("In order to swap %1 to %2, you will have to pay a fee of %3.").arg(
-                                               OdynStockUnits::formatWithUnit(0, nAmount, false, OdynStockUnits::separatorAlways, !fMode),
+                                               StockUnits::formatWithUnit(0, nAmount, false, StockUnits::separatorAlways, !fMode),
                                                fMode ? "x0DYNS" : "0DYNS",
-                                               OdynStockUnits::formatWithUnit(0, nFeeRequired, false, OdynStockUnits::separatorAlways, !fMode))
+                                               StockUnits::formatWithUnit(0, nFeeRequired, false, StockUnits::separatorAlways, !fMode))
                                                +"<br><br>"+tr("You will receive a total of %1.").arg(
-                                               OdynStockUnits::formatWithUnit(0, nAmount - nFeeRequired, false, OdynStockUnits::separatorAlways, fMode))
+                                               StockUnits::formatWithUnit(0, nAmount - nFeeRequired, false, StockUnits::separatorAlways, fMode))
                                                +"<br><br>"+tr("Do you want to continue?"),
                                            QMessageBox::Yes|QMessageBox::No).exec())
         {

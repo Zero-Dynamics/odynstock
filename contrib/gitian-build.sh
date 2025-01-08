@@ -17,7 +17,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/odynstock/odynstock-core
+url=https://github.com/stock/stock-core
 proc=2
 mem=2000
 lxc=true
@@ -247,7 +247,7 @@ then
 fi
 
 # Set up build
-pushd ./odynstock-core
+pushd ./stock-core
 git fetch
 git checkout ${COMMIT}
 popd
@@ -256,7 +256,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./odynstock-binaries/${VERSION}
+	mkdir -p ./stock-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -266,7 +266,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../odynstock-core/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../stock-core/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -274,9 +274,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit odynstock-core=${COMMIT} --url odynstock-core=${url} ../odynstock-core/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../odynstock-core/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/odynstock-*.tar.gz build/out/src/odynstock-*.tar.gz ../odynstock-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit stock-core=${COMMIT} --url stock-core=${url} ../stock-core/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../stock-core/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/stock-*.tar.gz build/out/src/stock-*.tar.gz ../stock-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -284,10 +284,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit odynstock-core=${COMMIT} --url odynstock-core=${url} ../odynstock-core/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../odynstock-core/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/odynstock-*-win-unsigned.tar.gz inputs/odynstock-win-unsigned.tar.gz
-	    mv build/out/odynstock-*.zip build/out/odynstock-*.exe ../odynstock-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit stock-core=${COMMIT} --url stock-core=${url} ../stock-core/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../stock-core/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/stock-*-win-unsigned.tar.gz inputs/stock-win-unsigned.tar.gz
+	    mv build/out/stock-*.zip build/out/stock-*.exe ../stock-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -295,10 +295,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit odynstock-core=${COMMIT} --url odynstock-core=${url} ../odynstock-core/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../odynstock-core/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/odynstock-*-osx-unsigned.tar.gz inputs/odynstock-osx-unsigned.tar.gz
-	    mv build/out/odynstock-*.tar.gz build/out/odynstock-*.dmg ../odynstock-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit stock-core=${COMMIT} --url stock-core=${url} ../stock-core/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../stock-core/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/stock-*-osx-unsigned.tar.gz inputs/stock-osx-unsigned.tar.gz
+	    mv build/out/stock-*.tar.gz build/out/stock-*.dmg ../stock-binaries/${VERSION}
 	fi
 	popd
 
@@ -325,27 +325,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../odynstock-core/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../stock-core/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../odynstock-core/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../stock-core/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../odynstock-core/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../stock-core/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../odynstock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../stock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../odynstock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../stock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -360,10 +360,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../odynstock-core/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../odynstock-core/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/odynstock-*win64-setup.exe ../odynstock-binaries/${VERSION}
-	    mv build/out/odynstock-*win32-setup.exe ../odynstock-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../stock-core/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../stock-core/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/stock-*win64-setup.exe ../stock-binaries/${VERSION}
+	    mv build/out/stock-*win32-setup.exe ../stock-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -371,9 +371,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../odynstock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../odynstock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/odynstock-osx-signed.dmg ../odynstock-binaries/${VERSION}/odynstock-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../stock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../stock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/stock-osx-signed.dmg ../stock-binaries/${VERSION}/stock-${VERSION}-osx.dmg
 	fi
 	popd
 

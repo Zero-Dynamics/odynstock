@@ -218,7 +218,7 @@
     <item row="17" column="2">
      <widget class="QLabel" name="messageTextLabel">
       <property name="toolTip">
-       <string>A message that was attached to the odynstock: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the OdynStock network.</string>
+       <string>A message that was attached to the stock: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Stock network.</string>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
@@ -279,7 +279,7 @@
          <enum>Qt::StrongFocus</enum>
         </property>
         <property name="toolTip">
-         <string>The OdynStock address to send the payment to</string>
+         <string>The Stock address to send the payment to</string>
         </property>
        </widget>
       </item>
@@ -289,7 +289,7 @@
          <enum>Qt::StrongFocus</enum>
         </property>
         <property name="icon">
-         <iconset resource="../odynstock.qrc">
+         <iconset resource="../stock.qrc">
           <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
         </property>
         <property name="shortcut">
@@ -408,7 +408,7 @@
     <item row="9" column="2">
      <layout class="QHBoxLayout" name="horizontalLayoutAmount" stretch="0,0,0,0,0,0">
       <item>
-       <widget class="OdynStockAmountField" name="payAmount">
+       <widget class="StockAmountField" name="payAmount">
         <property name="focusPolicy">
          <enum>Qt::StrongFocus</enum>
         </property>
@@ -536,7 +536,7 @@
        <enum>Qt::StrongFocus</enum>
       </property>
       <property name="toolTip">
-       <string>The fee will be deducted from the amount being sent. The recipient will receive less odynstocks than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</string>
+       <string>The fee will be deducted from the amount being sent. The recipient will receive less stocks than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</string>
       </property>
       <property name="text">
        <string>S&amp;ubtract fee from amount</string>
@@ -1031,7 +1031,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../odynstock.qrc">
+         <iconset resource="../stock.qrc">
           <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
         </property>
        </widget>
@@ -1069,7 +1069,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="OdynStockAmountField" name="payAmount_is">
+     <widget class="StockAmountField" name="payAmount_is">
       <property name="acceptDrops">
        <bool>false</bool>
       </property>
@@ -1594,7 +1594,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../odynstock.qrc">
+         <iconset resource="../stock.qrc">
           <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
         </property>
        </widget>
@@ -1632,7 +1632,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="OdynStockAmountField" name="payAmount_s">
+     <widget class="StockAmountField" name="payAmount_s">
       <property name="acceptDrops">
        <bool>false</bool>
       </property>
@@ -1648,9 +1648,9 @@
    <header>qvalidatedlineedit.h</header>
   </customwidget>
   <customwidget>
-   <class>OdynStockAmountField</class>
+   <class>StockAmountField</class>
    <extends>QLineEdit</extends>
-   <header>odynstockamountfield.h</header>
+   <header>stockamountfield.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
@@ -1673,7 +1673,7 @@
   <tabstop>payAmount_s</tabstop>
  </tabstops>
  <resources>
-  <include location="../odynstock.qrc"/>
+  <include location="../stock.qrc"/>
  </resources>
  <connections/>
 </ui>

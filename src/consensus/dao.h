@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2020 The OdynStock Core developers
+// Copyright (c) 2018-2020 The Stock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_DAO_H
-#define ODYNSTOCK_DAO_H
+#ifndef STOCK_DAO_H
+#define STOCK_DAO_H
 
 #include "amount.h"
 #include "script/script.h"
@@ -1100,4 +1100,4 @@ public:
     }
 };
 
-#endif // ODYNSTOCK_DAO_H
+#endif // STOCK_DAO_H

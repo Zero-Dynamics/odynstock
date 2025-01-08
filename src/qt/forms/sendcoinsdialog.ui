@@ -590,7 +590,7 @@
           <string>S&amp;end</string>
          </property>
          <property name="icon">
-          <iconset resource="../odynstock.qrc">
+          <iconset resource="../stock.qrc">
            <normaloff>:/icons/send</normaloff>:/icons/send</iconset>
          </property>
          <property name="autoDefault">
@@ -637,7 +637,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../odynstock.qrc"/>
+  <include location="../stock.qrc"/>
  </resources>
  <connections/>
 </ui>

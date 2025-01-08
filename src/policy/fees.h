@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2015 The Bitcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ODYNSTOCK_POLICYESTIMATOR_H
-#define ODYNSTOCK_POLICYESTIMATOR_H
+#ifndef STOCK_POLICYESTIMATOR_H
+#define STOCK_POLICYESTIMATOR_H
 
 #include <amount.h>
 #include <uint256.h>
@@ -299,4 +299,4 @@ public:
 private:
     std::set<double> feeset;
 };
-#endif /*ODYNSTOCK_POLICYESTIMATOR_H */
+#endif /*STOCK_POLICYESTIMATOR_H */

@@ -2,7 +2,7 @@
 #
 # key.py - OpenSSL wrapper
 #
-# This file is modified from python-odynstocklib.
+# This file is modified from python-stocklib.
 #
 
 """ECC secp256k1 crypto routines

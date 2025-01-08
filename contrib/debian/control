@@ -1,4 +1,4 @@
-Source: odynstock
+Source: stock
 Section: utils
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
@@ -23,45 +23,45 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: https://odynstockcore.org/
-Vcs-Git: git://github.com/odynstock/odynstock.git
-Vcs-Browser: https://github.com/odynstock/odynstock
+Homepage: https://stockcore.org/
+Vcs-Git: git://github.com/stock/stock.git
+Vcs-Browser: https://github.com/stock/stock
 
-Package: odynstockd
+Package: stockd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- OdynStock is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. OdynStock uses peer-to-peer
+ Stock is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Stock uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. OdynStock Core
+ and issuing money are carried out collectively by the network. Stock Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, odynstockd, and the CLI tool
- odynstock-cli to interact with the daemon.
+ This package provides the daemon, stockd, and the CLI tool
+ stock-cli to interact with the daemon.
 
-Package: odynstock-qt
+Package: stock-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- OdynStock is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. OdynStock uses peer-to-peer
+ Stock is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Stock uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. OdynStock Core
+ and issuing money are carried out collectively by the network. Stock Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides OdynStock-Qt, a GUI for OdynStock based on Qt.
+ This package provides Stock-Qt, a GUI for Stock based on Qt.
 
-Package: odynstock-tx
+Package: stock-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- OdynStock is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. OdynStock uses peer-to-peer
+ Stock is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Stock uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. OdynStock Core
+ and issuing money are carried out collectively by the network. Stock Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides odynstock-tx, a command-line transaction creation
- tool which can be used without a odynstock daemon.  Some means of
+ This package provides stock-tx, a command-line transaction creation
+ tool which can be used without a stock daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

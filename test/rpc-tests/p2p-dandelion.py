@@ -27,7 +27,7 @@ Tests:
 
 from collections import defaultdict
 from test_framework.mininode import *                          # NodeConnCB
-from test_framework.test_framework import OdynStockTestFramework # OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework # StockTestFramework
 from test_framework.util import *                              # other stuff
 import time                                                    # sleep
 
@@ -91,7 +91,7 @@ class TestP2PConn(NodeConnCB):
         self.connection.send_message(msg)
 
 
-class DandelionTest(OdynStockTestFramework):
+class DandelionTest(StockTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3

@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The OdynStock Core developers
+// Copyright (c) 2019-2020 The Stock Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -68,7 +68,7 @@ void DaoProposeAnswer::onPropose()
     LOCK2(cs_main, pwalletMain->cs_wallet);
     CStateViewCache view(pcoinsTip);
 
-    COdynStockAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
+    CStockAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
 
     CWalletTx wtx;
     bool fSubtractFeeFromAmount = false;

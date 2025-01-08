@@ -7,10 +7,10 @@
 # Test merkleblock fetch/validation
 #
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 
-class MerkleBlockTest(OdynStockTestFramework):
+class MerkleBlockTest(StockTestFramework):
 
     def __init__(self):
         super().__init__()

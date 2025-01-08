@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_TRANSACTIONTABLEMODEL_H
-#define ODYNSTOCK_QT_TRANSACTIONTABLEMODEL_H
+#ifndef STOCK_QT_TRANSACTIONTABLEMODEL_H
+#define STOCK_QT_TRANSACTIONTABLEMODEL_H
 
-#include <qt/odynstockunits.h>
+#include <qt/stockunits.h>
 
 #include <QAbstractTableModel>
 #include <QIcon>
@@ -102,7 +102,7 @@ private:
     QString formatTxDate(const TransactionRecord *wtx) const;
     QString formatTxType(const TransactionRecord *wtx) const;
     QString formatTxToAddress(const TransactionRecord *wtx, bool tooltip) const;
-    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, OdynStockUnits::SeparatorStyle separators=OdynStockUnits::separatorStandard) const;
+    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, StockUnits::SeparatorStyle separators=StockUnits::separatorStandard) const;
     QString formatTooltip(const TransactionRecord *rec) const;
     QVariant txStatusDecoration(const TransactionRecord *wtx) const;
     QVariant txWatchonlyDecoration(const TransactionRecord *wtx) const;
@@ -125,4 +125,4 @@ public Q_SLOTS:
     friend class TransactionTablePriv;
 };
 
-#endif // ODYNSTOCK_QT_TRANSACTIONTABLEMODEL_H
+#endif // STOCK_QT_TRANSACTIONTABLEMODEL_H

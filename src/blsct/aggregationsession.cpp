@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The OdynStock developers
+// Copyright (c) 2020 The Stock developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -958,9 +958,9 @@ CAmount AggregationSession::GetMaxFee()
 
 void AggregationSessionThread()
 {
-    LogPrintf("OdynStockCandidateCoinsThread started\n");
+    LogPrintf("StockCandidateCoinsThread started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("odynstock-candidate-coins");
+    RenameThread("stock-candidate-coins");
 
     int aggSleep = GetArg("-blsctsleepagg", BLSCT_THREAD_SLEEP_AGG);
 
@@ -1003,19 +1003,19 @@ void AggregationSessionThread()
             MilliSleep(GetRand(aggSleep, 180000));
         }
     } catch (const boost::thread_interrupted&) {
-        LogPrintf("OdynStockCandidateCoinsThread terminated\n");
+        LogPrintf("StockCandidateCoinsThread terminated\n");
         throw;
     } catch (const std::runtime_error& e) {
-        LogPrintf("OdynStockCandidateCoinsThread runtime error: %s\n", e.what());
+        LogPrintf("StockCandidateCoinsThread runtime error: %s\n", e.what());
         return;
     }
 }
 
 void CandidateVerificationThread()
 {
-    LogPrintf("OdynStockCandidateVerificationThread started\n");
+    LogPrintf("StockCandidateVerificationThread started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("odynstock-candidate-coins-verification");
+    RenameThread("stock-candidate-coins-verification");
 
     int verSleep = GetArg("-blsctsleepver", BLSCT_THREAD_SLEEP_VER);
 
@@ -1128,10 +1128,10 @@ void CandidateVerificationThread()
             MilliSleep(GetRand(verSleep, verSleep + 100));
         }
     } catch (const boost::thread_interrupted&) {
-        LogPrintf("OdynStockCandidateVerificationThread terminated\n");
+        LogPrintf("StockCandidateVerificationThread terminated\n");
         throw;
     } catch (const std::runtime_error& e) {
-        LogPrintf("OdynStockCandidateVerificationThread runtime error: %s\n", e.what());
+        LogPrintf("StockCandidateVerificationThread runtime error: %s\n", e.what());
         return;
     }
 }

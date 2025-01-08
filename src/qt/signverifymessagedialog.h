@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_SIGNVERIFYMESSAGEDIALOG_H
-#define ODYNSTOCK_QT_SIGNVERIFYMESSAGEDIALOG_H
+#ifndef STOCK_QT_SIGNVERIFYMESSAGEDIALOG_H
+#define STOCK_QT_SIGNVERIFYMESSAGEDIALOG_H
 
 #include <QDialog>
 
@@ -50,4 +50,4 @@ private Q_SLOTS:
     void on_clearButton_VM_clicked();
 };
 
-#endif // ODYNSTOCK_QT_SIGNVERIFYMESSAGEDIALOG_H
+#endif // STOCK_QT_SIGNVERIFYMESSAGEDIALOG_H

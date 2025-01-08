@@ -16,7 +16,7 @@
 #include <util.h>
 #include <utilstrencodings.h>
 
-#include <test/test_odynstock.h>
+#include <test/test_stock.h>
 
 #include <boost/test/unit_test.hpp>
 //

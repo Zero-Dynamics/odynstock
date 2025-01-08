@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 #
-# Use the raw transactions API to spend odynstocks received on particular addresses,
+# Use the raw transactions API to spend stocks received on particular addresses,
 # and send any change back to that same address.
 #
 # Example usage:
 #  spendfrom.py  # Lists available funds
 #  spendfrom.py --from=ADDRESS --to=ADDRESS --amount=11.00
 #
-# Assumes it will talk to a odynstockd or OdynStock-Qt running
+# Assumes it will talk to a stockd or Stock-Qt running
 # on localhost.
 #
 # Depends on jsonrpc
@@ -33,15 +33,15 @@ def check_json_precision():
         raise RuntimeError("JSON encode/decode loses precision")
 
 def determine_db_dir():
-    """Return the default location of the odynstock data directory"""
+    """Return the default location of the stock data directory"""
     if platform.system() == "Darwin":
-        return os.path.expanduser("~/Library/Application Support/OdynStock/")
+        return os.path.expanduser("~/Library/Application Support/Stock/")
     elif platform.system() == "Windows":
-        return os.path.join(os.environ['APPDATA'], "OdynStock")
-    return os.path.expanduser("~/.odynstock")
+        return os.path.join(os.environ['APPDATA'], "Stock")
+    return os.path.expanduser("~/.stock")
 
-def read_odynstock_config(dbdir):
-    """Read the odynstock.conf file from dbdir, returns dictionary of settings"""
+def read_stock_config(dbdir):
+    """Read the stock.conf file from dbdir, returns dictionary of settings"""
     from ConfigParser import SafeConfigParser
 
     class FakeSecHead(object):
@@ -59,11 +59,11 @@ def read_odynstock_config(dbdir):
                 return s
 
     config_parser = SafeConfigParser()
-    config_parser.readfp(FakeSecHead(open(os.path.join(dbdir, "odynstock.conf"))))
+    config_parser.readfp(FakeSecHead(open(os.path.join(dbdir, "stock.conf"))))
     return dict(config_parser.items("all"))
 
 def connect_JSON(config):
-    """Connect to a odynstock JSON-RPC server"""
+    """Connect to a stock JSON-RPC server"""
     testnet = config.get('testnet', '0')
     testnet = (int(testnet) > 0)  # 0/1 in config file, convert to True/False
     if not 'rpcport' in config:
@@ -72,7 +72,7 @@ def connect_JSON(config):
     try:
         result = ServiceProxy(connect)
         # ServiceProxy is lazy-connect, so send an RPC command mostly to catch connection errors,
-        # but also make sure the odynstockd we're talking to is/isn't testnet:
+        # but also make sure the stockd we're talking to is/isn't testnet:
         if result.getmininginfo()['testnet'] != testnet:
             sys.stderr.write("RPC server at "+connect+" testnet setting mismatch\n")
             sys.exit(1)
@@ -81,36 +81,36 @@ def connect_JSON(config):
         sys.stderr.write("Error connecting to RPC server at "+connect+"\n")
         sys.exit(1)
 
-def unlock_wallet(odynstockd):
-    info = odynstockd.getinfo()
+def unlock_wallet(stockd):
+    info = stockd.getinfo()
     if 'unlocked_until' not in info:
         return True # wallet is not encrypted
     t = int(info['unlocked_until'])
     if t <= time.time():
         try:
             passphrase = getpass.getpass("Wallet is locked; enter passphrase: ")
-            odynstockd.walletpassphrase(passphrase, 5)
+            stockd.walletpassphrase(passphrase, 5)
         except:
             sys.stderr.write("Wrong passphrase\n")
 
-    info = odynstockd.getinfo()
+    info = stockd.getinfo()
     return int(info['unlocked_until']) > time.time()
 
-def list_available(odynstockd):
+def list_available(stockd):
     address_summary = dict()
 
     address_to_account = dict()
-    for info in odynstockd.listreceivedbyaddress(0):
+    for info in stockd.listreceivedbyaddress(0):
         address_to_account[info["address"]] = info["account"]
 
-    unspent = odynstockd.listunspent(0)
+    unspent = stockd.listunspent(0)
     for output in unspent:
         # listunspent doesn't give addresses, so:
-        rawtx = odynstockd.getrawtransaction(output['txid'], 1)
+        rawtx = stockd.getrawtransaction(output['txid'], 1)
         vout = rawtx["vout"][output['vout']]
         pk = vout["scriptPubKey"]
 
-        # This code only deals with ordinary pay-to-odynstock-address
+        # This code only deals with ordinary pay-to-stock-address
         # or pay-to-script-hash outputs right now; anything exotic is ignored.
         if pk["type"] != "pubkeyhash" and pk["type"] != "scripthash":
             continue
@@ -139,8 +139,8 @@ def select_coins(needed, inputs):
         n += 1
     return (outputs, have-needed)
 
-def create_tx(odynstockd, fromaddresses, toaddress, amount, fee):
-    all_coins = list_available(odynstockd)
+def create_tx(stockd, fromaddresses, toaddress, amount, fee):
+    all_coins = list_available(stockd)
 
     total_available = Decimal("0.0")
     needed = amount+fee
@@ -159,7 +159,7 @@ def create_tx(odynstockd, fromaddresses, toaddress, amount, fee):
     # Note:
     # Python's json/jsonrpc modules have inconsistent support for Decimal numbers.
     # Instead of wrestling with getting json.dumps() (used by jsonrpc) to encode
-    # Decimals, I'm casting amounts to float before sending them to odynstockd.
+    # Decimals, I'm casting amounts to float before sending them to stockd.
     #
     outputs = { toaddress : float(amount) }
     (inputs, change_amount) = select_coins(needed, potential_inputs)
@@ -170,8 +170,8 @@ def create_tx(odynstockd, fromaddresses, toaddress, amount, fee):
         else:
             outputs[change_address] = float(change_amount)
 
-    rawtx = odynstockd.createrawtransaction(inputs, outputs)
-    signed_rawtx = odynstockd.signrawtransaction(rawtx)
+    rawtx = stockd.createrawtransaction(inputs, outputs)
+    signed_rawtx = stockd.signrawtransaction(rawtx)
     if not signed_rawtx["complete"]:
         sys.stderr.write("signrawtransaction failed\n")
         sys.exit(1)
@@ -179,10 +179,10 @@ def create_tx(odynstockd, fromaddresses, toaddress, amount, fee):
 
     return txdata
 
-def compute_amount_in(odynstockd, txinfo):
+def compute_amount_in(stockd, txinfo):
     result = Decimal("0.0")
     for vin in txinfo['vin']:
-        in_info = odynstockd.getrawtransaction(vin['txid'], 1)
+        in_info = stockd.getrawtransaction(vin['txid'], 1)
         vout = in_info['vout'][vin['vout']]
         result = result + vout['value']
     return result
@@ -193,12 +193,12 @@ def compute_amount_out(txinfo):
         result = result + vout['value']
     return result
 
-def sanity_test_fee(odynstockd, txdata_hex, max_fee):
+def sanity_test_fee(stockd, txdata_hex, max_fee):
     class FeeError(RuntimeError):
         pass
     try:
-        txinfo = odynstockd.decoderawtransaction(txdata_hex)
-        total_in = compute_amount_in(odynstockd, txinfo)
+        txinfo = stockd.decoderawtransaction(txdata_hex)
+        total_in = compute_amount_in(stockd, txinfo)
         total_out = compute_amount_out(txinfo)
         if total_in-total_out > max_fee:
             raise FeeError("Rejecting transaction, unreasonable fee of "+str(total_in-total_out))
@@ -221,15 +221,15 @@ def main():
 
     parser = optparse.OptionParser(usage="%prog [options]")
     parser.add_option("--from", dest="fromaddresses", default=None,
-                      help="addresses to get odynstocks from")
+                      help="addresses to get stocks from")
     parser.add_option("--to", dest="to", default=None,
-                      help="address to get send odynstocks to")
+                      help="address to get send stocks to")
     parser.add_option("--amount", dest="amount", default=None,
                       help="amount to send")
     parser.add_option("--fee", dest="fee", default="0.0",
                       help="fee to include")
     parser.add_option("--datadir", dest="datadir", default=determine_db_dir(),
-                      help="location of odynstock.conf file with RPC username/password (default: %default)")
+                      help="location of stock.conf file with RPC username/password (default: %default)")
     parser.add_option("--testnet", dest="testnet", default=False, action="store_true",
                       help="Use the test network")
     parser.add_option("--dry_run", dest="dry_run", default=False, action="store_true",
@@ -238,12 +238,12 @@ def main():
     (options, args) = parser.parse_args()
 
     check_json_precision()
-    config = read_odynstock_config(options.datadir)
+    config = read_stock_config(options.datadir)
     if options.testnet: config['testnet'] = True
-    odynstockd = connect_JSON(config)
+    stockd = connect_JSON(config)
 
     if options.amount is None:
-        address_summary = list_available(odynstockd)
+        address_summary = list_available(stockd)
         for address,info in address_summary.iteritems():
             n_transactions = len(info['outputs'])
             if n_transactions > 1:
@@ -253,14 +253,14 @@ def main():
     else:
         fee = Decimal(options.fee)
         amount = Decimal(options.amount)
-        while unlock_wallet(odynstockd) == False:
+        while unlock_wallet(stockd) == False:
             pass # Keep asking for passphrase until they get it right
-        txdata = create_tx(odynstockd, options.fromaddresses.split(","), options.to, amount, fee)
-        sanity_test_fee(odynstockd, txdata, amount*Decimal("0.01"))
+        txdata = create_tx(stockd, options.fromaddresses.split(","), options.to, amount, fee)
+        sanity_test_fee(stockd, txdata, amount*Decimal("0.01"))
         if options.dry_run:
             print(txdata)
         else:
-            txid = odynstockd.sendrawtransaction(txdata)
+            txid = stockd.sendrawtransaction(txdata)
             print(txid)
 
 if __name__ == '__main__':

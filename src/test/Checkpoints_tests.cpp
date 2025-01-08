@@ -9,7 +9,7 @@
 #include <checkpoints.h>
 
 #include <uint256.h>
-#include <test/test_odynstock.h>
+#include <test/test_stock.h>
 #include <chainparams.h>
 
 #include <boost/test/unit_test.hpp>

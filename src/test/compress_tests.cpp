@@ -4,7 +4,7 @@
 
 #include <compressor.h>
 #include <util.h>
-#include <test/test_odynstock.h>
+#include <test/test_stock.h>
 
 #include <stdint.h>
 

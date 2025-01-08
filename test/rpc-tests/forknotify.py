@@ -7,10 +7,10 @@
 # Test -alertnotify 
 #
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 
-class ForkNotifyTest(OdynStockTestFramework):
+class ForkNotifyTest(StockTestFramework):
 
     def __init__(self):
         super().__init__()

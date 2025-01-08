@@ -27,7 +27,7 @@ getAddressToReceive::getAddressToReceive(QWidget *parent) :
     LOCK(pwalletMain->cs_wallet);
     for(const std::pair<CTxDestination, CAddressBookData>& item: pwalletMain->mapAddressBook)
     {
-        const COdynStockAddress& addressbook = item.first;
+        const CStockAddress& addressbook = item.first;
         bool fMine = IsMine(*pwalletMain, addressbook.Get());
         if(fMine)
         {
@@ -74,7 +74,7 @@ void getAddressToReceive::showPrivateAddress(int what)
         LOCK(pwalletMain->cs_wallet);
         for(const std::pair<CTxDestination, CAddressBookData>& item: pwalletMain->mapAddressBook)
         {
-            const COdynStockAddress& addressbook = item.first;
+            const CStockAddress& addressbook = item.first;
             bool fMine = IsMine(*pwalletMain, addressbook.Get());
             if(fMine)
             {
@@ -92,7 +92,7 @@ void getAddressToReceive::showPrivateAddress(int what)
 
         blsctDoublePublicKey k;
         if (pwalletMain->GetBLSCTSubAddressPublicKeys(std::make_pair(0, 0), k))
-            address = QString::fromStdString(COdynStockAddress(k).ToString());
+            address = QString::fromStdString(CStockAddress(k).ToString());
         else
             address = "Unavailable";
 
@@ -144,7 +144,7 @@ void getAddressToReceive::getColdStakingAddress()
 void getAddressToReceive::showQR()
 {
 #ifdef USE_QRCODE
-    QString uri = "odynstock:" + address;
+    QString uri = "stock:" + address;
     ui->lblQRCode->setText("");
     if(!uri.isEmpty())
     {

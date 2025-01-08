@@ -1,15 +1,15 @@
 Release Process
 ====================
 
-Before any code can be accepted into OdynStock Core a Release Candidate branch and PR must be presented to the community for a minimum stand-down period - as detailed below.
+Before any code can be accepted into Stock Core a Release Candidate branch and PR must be presented to the community for a minimum stand-down period - as detailed below.
 
 ### Release Candidates
 
-Release candidates are critical to the OdynStock release eco-system and give the community and interested parties time to review the code and potentially prepare for any changes that may be introduced.  
+Release candidates are critical to the Stock release eco-system and give the community and interested parties time to review the code and potentially prepare for any changes that may be introduced.  
 
 #### Release Candidates and Release Version Convention
 
-OdynStock follows the Semantic Versioning.
+Stock follows the Semantic Versioning.
 
 e.g `v(MAJOR).(MINOR).(PATCH)` = `v4.2.1`
 
@@ -43,7 +43,7 @@ During the release candidate review period, no new pull requests should be merge
 
 Before every release candidate:
 
-* Update translations see [translation_process.md](https://github.com/odynstock/odynstock-core/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations see [translation_process.md](https://github.com/stock/stock-core/blob/master/doc/translation_process.md#synchronising-translations).
 
 Before every minor and major release:
 
@@ -60,9 +60,9 @@ Before every major release:
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/odynstock/odynstock-core.git
+    git clone https://github.com/stock/stock-core.git
 
-### OdynStock maintainers/release engineers, update version in sources
+### Stock maintainers/release engineers, update version in sources
 
 Update the following:
 
@@ -96,7 +96,7 @@ Tag version (or release candidate) in git
 
 Setup Gitian descriptors:
 
-    pushd ./odynstock-core
+    pushd ./stock-core
     export VERSION=(new version, e.g. v4.1.0, which should also be the name of the repository branch)
     git fetch
     git checkout v${VERSION}
@@ -123,7 +123,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../odynstock-core/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../stock-core/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -131,27 +131,27 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url odynstock-core=/path/to/odynstock,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url stock-core=/path/to/stock,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign OdynStock Core for Linux, Windows, and OS X:
+### Build and sign Stock Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit odynstock-core=${VERSION} ../odynstock-core/contrib/gitian-descriptors/gitian-arm.yml
-    mv build/out/odynstock-*.tar.gz build/out/src/odynstock-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit stock-core=${VERSION} ../stock-core/contrib/gitian-descriptors/gitian-arm.yml
+    mv build/out/stock-*.tar.gz build/out/src/stock-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit odynstock-core=${VERSION} ../odynstock-core/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/odynstock-*.tar.gz build/out/src/odynstock-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit stock-core=${VERSION} ../stock-core/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/stock-*.tar.gz build/out/src/stock-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit odynstock-core=${VERSION} ../odynstock-core/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/odynstock-*-win-unsigned.tar.gz inputs/odynstock-win-unsigned.tar.gz
-    mv build/out/odynstock-*.zip build/out/odynstock-*.exe ../
+    ./bin/gbuild --memory 3000 --commit stock-core=${VERSION} ../stock-core/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/stock-*-win-unsigned.tar.gz inputs/stock-win-unsigned.tar.gz
+    mv build/out/stock-*.zip build/out/stock-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit odynstock-core=${VERSION} ../odynstock-core/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/odynstock-*-osx-unsigned.tar.gz inputs/odynstock-osx-unsigned.tar.gz
-    mv build/out/odynstock-*.tar.gz build/out/odynstock-*.dmg ../
+    ./bin/gbuild --memory 3000 --commit stock-core=${VERSION} ../stock-core/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/stock-*-osx-unsigned.tar.gz inputs/stock-osx-unsigned.tar.gz
+    mv build/out/stock-*.tar.gz build/out/stock-*.dmg ../
     popd
 
 ### Next steps:
@@ -172,8 +172,8 @@ Codesigner only: Create Windows/macOS detached signatures:
 
 Codesigner only: Sign the macOS binary:
 
-    transfer odynstock-osx-unsigned.tar.gz to macOS for signing
-    tar xf odynstock-osx-unsigned.tar.gz
+    transfer stock-osx-unsigned.tar.gz to macOS for signing
+    tar xf stock-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
 
@@ -181,7 +181,7 @@ Now a manual deterministic disk image (dmg) creation is required (gbuilt with `g
 
 notarize the disk image:
 
-    xcrun altool --notarize-app --primary-bundle-id "org.odynstock.OdynStock-Qt" -u "<code-signer-apple-developer-account-username>" -p "<password>" --file odynstock-${VERSION}-osx.dmg
+    xcrun altool --notarize-app --primary-bundle-id "org.stock.Stock-Qt" -u "<code-signer-apple-developer-account-username>" -p "<password>" --file stock-${VERSION}-osx.dmg
 
 The notarization takes a few minutes. Check the status:
 
@@ -189,24 +189,24 @@ The notarization takes a few minutes. Check the status:
 
 Staple the notarization ticket onto the application
 
-    xcrun stapler staple dist/OdynStock-Qt.app
+    xcrun stapler staple dist/Stock-Qt.app
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf odynstock-win-unsigned.tar.gz
+    tar xf stock-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/odynstock-detached-sigs
+    cd ~/stock-detached-sigs
     #checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
     tar xf signature-win.tar.gz
     #copy the notarization ticket
-    cp dist/OdynStock-Qt.app/Contents/CodeResources osx/dist/OdynStock-Qt.app/Contents/
+    cp dist/Stock-Qt.app/Contents/CodeResources osx/dist/Stock-Qt.app/Contents/
     git add -a
     git commit -m "point to ${VERSION}"
     git tag -s v${VERSION} HEAD
@@ -215,24 +215,24 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/macOS detached signatures:
 
 - Once the Windows/macOS builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [odynstock-detached-sigs](https://github.com/odynstock/odynstock-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [stock-detached-sigs](https://github.com/stock/stock-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed macOS binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../odynstock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../odynstock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../odynstock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/odynstock-osx-signed.dmg ../odynstock-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../stock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../stock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../stock-core/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/stock-osx-signed.dmg ../stock-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../odynstock-core/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../odynstock-core/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../odynstock-core/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/odynstock-*win64-setup.exe ../odynstock-${VERSION}-win64-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../stock-core/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../stock-core/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../stock-core/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/stock-*win64-setup.exe ../stock-${VERSION}-win64-setup.exe
     popd
 
 Commit your signature for the signed macOS/Windows binaries:
@@ -246,32 +246,32 @@ Commit your signature for the signed macOS/Windows binaries:
 
 Build output expected:
 
-  1. source tarball (`odynstock-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`odynstock-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`odynstock-${VERSION}-win[32|64]-setup-unsigned.exe`, `odynstock-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`odynstock-${VERSION}-osx-unsigned.dmg`, `odynstock-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`stock-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`stock-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`stock-${VERSION}-win[32|64]-setup-unsigned.exe`, `stock-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`stock-${VERSION}-osx-unsigned.dmg`, `stock-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 
 The list of files should be:
 ```
-odynstock-${VERSION}-aarch64-linux-gnu.tar.gz
-odynstock-${VERSION}-arm-linux-gnueabihf.tar.gz
-odynstock-${VERSION}-i686-pc-linux-gnu.tar.gz
-odynstock-${VERSION}-x86_64-linux-gnu.tar.gz
-odynstock-${VERSION}-osx64.tar.gz
-odynstock-${VERSION}-osx.dmg
-odynstock-${VERSION}.tar.gz
-odynstock-${VERSION}-win32-setup.exe
-odynstock-${VERSION}-win32.zip
-odynstock-${VERSION}-win64-setup.exe
-odynstock-${VERSION}-win64.zip
+stock-${VERSION}-aarch64-linux-gnu.tar.gz
+stock-${VERSION}-arm-linux-gnueabihf.tar.gz
+stock-${VERSION}-i686-pc-linux-gnu.tar.gz
+stock-${VERSION}-x86_64-linux-gnu.tar.gz
+stock-${VERSION}-osx64.tar.gz
+stock-${VERSION}-osx.dmg
+stock-${VERSION}.tar.gz
+stock-${VERSION}-win32-setup.exe
+stock-${VERSION}-win32.zip
+stock-${VERSION}-win64-setup.exe
+stock-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the odynstock.org server, nor put them in the torrent*.
+space *do not upload these to the stock.org server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -281,17 +281,17 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the odynstock.org server
-  into `/var/www/bin/odynstock-core-${VERSION}`
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the stock.org server
+  into `/var/www/bin/stock-core-${VERSION}`
 
 - A `.torrent` will appear in the directory after a few minutes. Optionally help seed this torrent. To get the `magnet:` URI use:
 ```bash
 transmission-show -m <torrent file>
 ```
 Insert the magnet URI into the announcement sent to mailing lists. This permits
-people without access to `odynstock.org` to download the binary distribution.
+people without access to `stock.org` to download the binary distribution.
 Also put it into the `optional_magnetlink:` slot in the YAML file for
-odynstock.org (see below for odynstock.org update instructions).
+stock.org (see below for stock.org update instructions).
 
 ### Prepare the Release Tag
 
@@ -301,34 +301,34 @@ Once the release candidate is approved and promoted to a final release, a new re
 
 Before publicly announcing the release the Bootstrap & OdynSPay servers should be updated to the new version.
 
-### Update The OdynStock Website
+### Update The Stock Website
 
 Update the version number and download links on all translations of the Wallets page;
 
-https://github.com/odynstock/odynstock-org/tree/master/content/wallets
+https://github.com/stock/stock-org/tree/master/content/wallets
 
 Also create the notice for the release;
 
-https://github.com/odynstock/odynstock-org/tree/master/content/notices
+https://github.com/stock/stock-org/tree/master/content/notices
 
 The notice can be written manually by duplicating and modifying an existing notice, or through the admin section of the website. The admin section relies on your GitHub login having push access to the repo, so you will need to ensure you have the correct repository rights if you want to create it that way.
 
-The hero image for the release notice is usually generated with the odynstock canva template to ensure it fits the social sharing spec and aligns wtih the brand guidelies.
+The hero image for the release notice is usually generated with the stock canva template to ensure it fits the social sharing spec and aligns wtih the brand guidelies.
 
 ### Publicly Announce the release
 
-To ensure resonable due diligence is done to inform the communtiy of new software releases the final release should be announced on all possible OdynStock platforms;
+To ensure resonable due diligence is done to inform the communtiy of new software releases the final release should be announced on all possible Stock platforms;
 
-[Reddit](https://reddit.com/r/odynstock), [Twitter](https://twitter.com/odynstock), [Facebook](https://facebook.com/odynstock), [Telegram](https://t.me/odynstock), [Discord](https://discord.gg/y4Vu9jw), [BitcoinTalk](https://bitcointalk.org/index.php?topic=679791.new#new), [Medium](https://medium.com/odynstock/), Blockfolio Signal & MailChimp.
+[Reddit](https://reddit.com/r/stock), [Twitter](https://twitter.com/stock), [Facebook](https://facebook.com/stock), [Telegram](https://t.me/stock), [Discord](https://discord.gg/y4Vu9jw), [BitcoinTalk](https://bitcointalk.org/index.php?topic=679791.new#new), [Medium](https://medium.com/stock/), Blockfolio Signal & MailChimp.
 
 
 ### Notify Exchanges, Commercial Nodes
 
 All exchanges should be notified of the update;
 
-https://odynstock.org/en/buy-odynstock
+https://stock.org/en/buy-stock
 
-Most of the exchanges have their contact emails are consolidated into a mailing list inside the admin@odynstock email account which can be set to the BCC to ensure they receive the update. For ones which are not part of the mailing list their is usually a support form on their site which needs to be filled out.
+Most of the exchanges have their contact emails are consolidated into a mailing list inside the admin@stock email account which can be set to the BCC to ensure they receive the update. For ones which are not part of the mailing list their is usually a support form on their site which needs to be filled out.
 
 Additional to exhcanges, the following wallets & services should be notified;
 

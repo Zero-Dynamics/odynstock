@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_CHECKQUEUE_H
-#define ODYNSTOCK_CHECKQUEUE_H
+#ifndef STOCK_CHECKQUEUE_H
+#define STOCK_CHECKQUEUE_H
 
 #include <algorithm>
 #include <vector>
@@ -211,4 +211,4 @@ public:
     }
 };
 
-#endif // ODYNSTOCK_CHECKQUEUE_H
+#endif // STOCK_CHECKQUEUE_H

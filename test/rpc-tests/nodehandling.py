@@ -7,13 +7,13 @@
 # Test node handling
 #
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 
 import http.client
 import urllib.parse
 
-class NodeHandlingTest (OdynStockTestFramework):
+class NodeHandlingTest (StockTestFramework):
 
     def __init__(self):
         super().__init__()

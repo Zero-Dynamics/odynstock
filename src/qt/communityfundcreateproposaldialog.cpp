@@ -25,7 +25,7 @@ CommunityFundCreateProposalDialog::CommunityFundCreateProposalDialog(QWidget *pa
     model(0)
 {
     ui->setupUi(this);
-    GUIUtil::setupAddressWidget(ui->lineEditOdynStockAddress, this);
+    GUIUtil::setupAddressWidget(ui->lineEditStockAddress, this);
 
     CStateViewCache view(pcoinsTip);
 
@@ -73,11 +73,11 @@ void CommunityFundCreateProposalDialog::setModel(WalletModel *model)
 bool CommunityFundCreateProposalDialog::validate()
 {
     bool isValid = true;
-    if(!ui->lineEditOdynStockAddress->isValid() || (ui->lineEditOdynStockAddress->text() == QString("")))
+    if(!ui->lineEditStockAddress->isValid() || (ui->lineEditStockAddress->text() == QString("")))
     {
         // Styling must be done manually as an empty field returns valid (true)
-        ui->lineEditOdynStockAddress->setStyleSheet(STYLE_INVALID);
-        ui->lineEditOdynStockAddress->setValid(false);
+        ui->lineEditStockAddress->setStyleSheet(STYLE_INVALID);
+        ui->lineEditStockAddress->setValid(false);
         isValid = false;
     }
     if(!ui->lineEditRequestedAmount->validate())
@@ -120,13 +120,13 @@ void CommunityFundCreateProposalDialog::click_pushButtonCreateProposal()
 
         CStateViewCache view(pcoinsTip);
 
-        COdynStockAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
+        CStockAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
 
         CWalletTx wtx;
         bool fSubtractFeeFromAmount = false;
 
         // Address
-        std::string Address = ui->lineEditOdynStockAddress->text().toStdString().c_str();
+        std::string Address = ui->lineEditStockAddress->text().toStdString().c_str();
 
         // Requested Amount
         CAmount nReqAmount = ui->lineEditRequestedAmount->value();
@@ -264,7 +264,7 @@ void CommunityFundCreateProposalDialog::click_pushButtonCreateProposal()
     {
         QMessageBox msgBox(this);
         QString str = QString(tr("Please enter a valid:\n"));
-        if(!ui->lineEditOdynStockAddress->isValid() || (ui->lineEditOdynStockAddress->text() == QString("")))
+        if(!ui->lineEditStockAddress->isValid() || (ui->lineEditStockAddress->text() == QString("")))
             str += QString(tr("- Address\n"));
         if(!ui->lineEditRequestedAmount->validate())
             str += QString(tr("- Requested Amount\n"));

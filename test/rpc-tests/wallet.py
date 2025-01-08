@@ -3,12 +3,12 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import OdynStockTestFramework
+from test_framework.test_framework import StockTestFramework
 from test_framework.util import *
 
 BLOCK_REWARD = 50
 
-class WalletTest (OdynStockTestFramework):
+class WalletTest (StockTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -202,7 +202,7 @@ class WalletTest (OdynStockTestFramework):
 
         #do some -walletbroadcast tests
         stop_nodes(self.nodes)
-        wait_odynstockds()
+        wait_stockds()
         self.nodes = start_nodes(3, self.options.tmpdir, [['-walletbroadcast=0','-staking=0'],['-walletbroadcast=0','-staking=0'],['-walletbroadcast=0','-staking=0']])
         connect_nodes_bi(self.nodes,0,1)
         connect_nodes_bi(self.nodes,1,2)
@@ -237,7 +237,7 @@ class WalletTest (OdynStockTestFramework):
 
         #restart the nodes with -walletbroadcast=1
         stop_nodes(self.nodes)
-        wait_odynstockds()
+        wait_stockds()
         self.nodes = start_nodes(3, self.options.tmpdir, [['-staking=0'], ['-staking=0'], ['-staking=0']])
         connect_nodes_bi(self.nodes,0,1)
         connect_nodes_bi(self.nodes,1,2)
@@ -349,13 +349,13 @@ class WalletTest (OdynStockTestFramework):
         #     '-reindex',
         #     '-zapwallettxes=1',
         #     '-zapwallettxes=2',
-        #     # disabled until issue is fixed: https://github.com/odynstock/odynstock/issues/7463
+        #     # disabled until issue is fixed: https://github.com/stock/stock/issues/7463
         #     # '-salvagewallet',
         # ]
         # for m in maintenance:
         #     print("check " + m)
         #     stop_nodes(self.nodes)
-        #     wait_odynstockds()
+        #     wait_stockds()
         #     self.nodes = start_nodes(3, self.options.tmpdir, [[m]] * 3)
         #     while m == '-reindex' and [block_count] * 3 != [self.nodes[i].getblockcount() for i in range(3)]:
         #         # reindex will leave rpc warm up "early"; Wait for it to finish

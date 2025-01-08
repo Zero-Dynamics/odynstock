@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2021 The OdynStock developers
+// Copyright (c) 2021 The Stock developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_NAMES_H
-#define ODYNSTOCK_NAMES_H
+#ifndef STOCK_NAMES_H
+#define STOCK_NAMES_H
 
 #include <consensus/programs.h>
 #include <dotodyns/namedata.h>
@@ -39,4 +39,4 @@ std::map<std::string, std::map<std::string, std::string>> ConsolidateSubdomains(
 size_t CalculateSize(const std::map<std::string, std::string>& map);
 }
 
-#endif // ODYNSTOCK_
+#endif // STOCK_

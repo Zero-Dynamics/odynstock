@@ -137,7 +137,7 @@ function copy_array {
 
 
 function odyns_cli {
-	$odynspath/odynstock-cli -datadir=${array_data[$1]} -rpcport=${array_rpc_port[$1]} -devnet $2 $3 $4 $5 $6 2> /dev/null
+	$odynspath/stock-cli -datadir=${array_data[$1]} -rpcport=${array_rpc_port[$1]} -devnet $2 $3 $4 $5 $6 2> /dev/null
 }
 
 function terminate {
@@ -163,7 +163,7 @@ function terminate {
 	echo "Stopping all nodes..."
 	sleep 30
 	echo Done
-	killall -9 odynstockd
+	killall -9 stockd
 	exit $1
 }
 
@@ -429,7 +429,7 @@ function start_random_stopped_nodes {
 				echo skipping starting node $i
 			fi
 		done
-		echo Waiting 30 seconds for odynstockd...
+		echo Waiting 30 seconds for stockd...
 		sleep 30
 		for j in ${!local_array[@]};
 		do
@@ -751,8 +751,8 @@ function random_verifychain_check {
 }
 
 function start_node {
-        $(echo $odynspath)/odynstockd -datadir=${array_data[$1]} -port=${array_p2p_port[$1]} -rpcport=${array_rpc_port[$1]} -devnet -daemon -debug=dao -debug=statehash -ntpminmeasures=-1 -dandelion=0 -disablesafemode -staking=0 2> /dev/null
-#       gdb -batch -ex "run" -ex "bt" --args $(echo $odynspath)/odynstockd -datadir=${array_data[$1]} -port=${array_p2p_port[$1]} -rpcport=${array_rpc_port[$1]} -devnet -debug=dao -debug=statehash -ntpminmeasures=0 -dandelion=0 -disablesafemode -staking=0 > out.gdb &
+        $(echo $odynspath)/stockd -datadir=${array_data[$1]} -port=${array_p2p_port[$1]} -rpcport=${array_rpc_port[$1]} -devnet -daemon -debug=dao -debug=statehash -ntpminmeasures=-1 -dandelion=0 -disablesafemode -staking=0 2> /dev/null
+#       gdb -batch -ex "run" -ex "bt" --args $(echo $odynspath)/stockd -datadir=${array_data[$1]} -port=${array_p2p_port[$1]} -rpcport=${array_rpc_port[$1]} -devnet -debug=dao -debug=statehash -ntpminmeasures=0 -dandelion=0 -disablesafemode -staking=0 > out.gdb &
 }
 
 function stop_node {
@@ -769,9 +769,9 @@ do
 done
 
 echo ''
-echo Waiting 30 seconds for odynstockd...
+echo Waiting 30 seconds for stockd...
 
-#Sleep to let odynstockd boot up, on slower systems the value may need to be much higher
+#Sleep to let stockd boot up, on slower systems the value may need to be much higher
 sleep 30
 
 if [ "$node_count" == 1 ];
@@ -1009,7 +1009,7 @@ while [ $wait_until_cycle -gt $this_cycle ]; do
 			array_topology_node_pairs+=("$node_count $node")
 			#echo "array topology node pairs is now ${array_topology_node_pairs[@]}"
 			initialize_node $node_count
-			echo Waiting 30 sec for odynstockd...
+			echo Waiting 30 sec for stockd...
 			sleep 30
 			connect_network "${array_topology_node_pairs[@]}"
 			sleep 30
@@ -1060,7 +1060,7 @@ then
 		echo Starting node $i...
 		start_node $i
 	done
-	echo Waiting 30 sec for odynstockd...
+	echo Waiting 30 sec for stockd...
 	sleep 30
 	echo Splitting the network into $network_count sub networks...
 	network_split_started=1

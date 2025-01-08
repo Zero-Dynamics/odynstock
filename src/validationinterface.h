@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_VALIDATIONINTERFACE_H
-#define ODYNSTOCK_VALIDATIONINTERFACE_H
+#ifndef STOCK_VALIDATIONINTERFACE_H
+#define STOCK_VALIDATIONINTERFACE_H
 
 #include <boost/bind/bind.hpp>
 #include <boost/signals2/signal.hpp>
@@ -71,4 +71,4 @@ struct CMainSignals {
 
 CMainSignals& GetMainSignals();
 
-#endif // ODYNSTOCK_VALIDATIONINTERFACE_H
+#endif // STOCK_VALIDATIONINTERFACE_H

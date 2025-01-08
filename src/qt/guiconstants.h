@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_GUICONSTANTS_H
-#define ODYNSTOCK_QT_GUICONSTANTS_H
+#ifndef STOCK_QT_GUICONSTANTS_H
+#define STOCK_QT_GUICONSTANTS_H
 
 #include <QString>
 
@@ -22,7 +22,7 @@ static const int ERROR_LOG_INITIAL_COUNT = 500;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* OdynStockGUI -- Size of icons in status bar */
+/* StockGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 18;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -79,9 +79,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "OdynStock"
-#define QAPP_ORG_DOMAIN "odynstock.org"
-#define QAPP_APP_NAME_DEFAULT "OdynStock-Qt"
-#define QAPP_APP_NAME_TESTNET "OdynStock-Qt-testnet"
+#define QAPP_ORG_NAME "Stock"
+#define QAPP_ORG_DOMAIN "stock.org"
+#define QAPP_APP_NAME_DEFAULT "Stock-Qt"
+#define QAPP_APP_NAME_TESTNET "Stock-Qt-testnet"
 
-#endif // ODYNSTOCK_QT_GUICONSTANTS_H
+#endif // STOCK_QT_GUICONSTANTS_H

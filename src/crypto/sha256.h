@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_CRYPTO_SHA256_H
-#define ODYNSTOCK_CRYPTO_SHA256_H
+#ifndef STOCK_CRYPTO_SHA256_H
+#define STOCK_CRYPTO_SHA256_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -25,4 +25,4 @@ public:
     CSHA256& Reset();
 };
 
-#endif // ODYNSTOCK_CRYPTO_SHA256_H
+#endif // STOCK_CRYPTO_SHA256_H

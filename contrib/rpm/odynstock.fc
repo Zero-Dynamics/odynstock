@@ -1,8 +1,0 @@
-/usr/bin/odynstock-cli		--	gen_context(system_u:object_r:odynstock_exec_t,s0)
-/usr/sbin/odynstockd		--	gen_context(system_u:object_r:odynstock_exec_t,s0)
-/usr/lib(64)?/odynstock/odynstockd		--	gen_context(system_u:object_r:odynstock_exec_t,s0)
-
-/etc/odynstock(/.*)?		gen_context(system_u:object_r:odynstock_conf_t,s0)
-/var/lib/odynstock(/.*)?		gen_context(system_u:object_r:odynstock_var_lib_t,s0)
-
-(/var)?/run/odynstockd(/.*)?   gen_context(system_u:object_r:odynstock_var_run_t,s0)

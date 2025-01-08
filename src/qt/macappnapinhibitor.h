@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_QT_MACOS_APPNAP_H
-#define ODYNSTOCK_QT_MACOS_APPNAP_H
+#ifndef STOCK_QT_MACOS_APPNAP_H
+#define STOCK_QT_MACOS_APPNAP_H
 
 #include <memory>
 
@@ -21,4 +21,4 @@ private:
     std::unique_ptr<CAppNapImpl> impl;
 };
 
-#endif // ODYNSTOCK_QT_MACOS_APPNAP_H
+#endif // STOCK_QT_MACOS_APPNAP_H

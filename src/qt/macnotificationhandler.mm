@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.odynstockfoundation.OdynStock-Qt";
+        return @"org.stockfoundation.Stock-Qt";
     } else {
         return [self __bundleIdentifier];
     }

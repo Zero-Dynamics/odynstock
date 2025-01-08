@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ODYNSTOCK_HTTPRPC_H
-#define ODYNSTOCK_HTTPRPC_H
+#ifndef STOCK_HTTPRPC_H
+#define STOCK_HTTPRPC_H
 
 #include <string>
 #include <map>
